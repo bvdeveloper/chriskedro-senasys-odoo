@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="stock_picking_inherited_view">
+        <field name="name">stock.picking.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='location_dest_id']" position="after">
+                <field name="initial_first_shipment" string="Initial/1st Shipment Method:"/>
+                <field name="override_shipment_method" string="Override Shipment Method"/>
+                <field name="ship_method_for_this_delivery" string="Ship. Method For this Delivery"/>
+                <field name="cust_collect_acct" string="Cust. Collect Acct:"/>
+                <field name="shipment_delivery_notes" string="Shipment Delivery Notes:"/>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="po_tag_" string="PO# / (Tag) #:"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
+

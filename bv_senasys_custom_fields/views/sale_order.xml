@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="sale_order_inherited_view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='note']" position="after">
+                <field name="shipping_method"/>
+                <field name="shipping_collect_acct_"/>
+                <field name="enter_order_specific_notes_below" string="Order Notes (Visible on Cust PDFs)"/>
+                <field name="lead_time_for_quotes_only" string="Lead Time:"/>
+                <field name="order_notes_seen_on_int_reports_only"/>
+            </xpath>
+            <xpath expr="//field[@name='partner_shipping_id']" position="after">
+                <field name="jobnametag" string="Cust PO# / Ref #"/>
+                <field name="portal_cust_contact_method" string="Portal Cust. Contact Method"/>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='sequence']"
+                   position="after">
+                <field name="line_item_number"/>
+                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='product_id']"
+                       position="move"/>
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="order_promised_ship_date"/>
+                <field name="quote_closed"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="res_partner_inherited_view">
+        <field name="name">res.partner.inherit.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='type']" position="before">
+                <field name="type" string="Type:"/>
+            </xpath>
+            <xpath expr="//page[@name='internal_notes']" position="inside">
+                <group>
+                    <field name="ordering_rulesinstructions"/>
+                    <field name="typical_item_types_purchased"/>
+                </group>
+            </xpath>
+            <xpath expr="//page[@name='internal_notes']" position="before">
+                <page string="Portal/Login">
+                    <group>
+                        <field name="portal_website_url" string="Portal Website URL:"/>
+                        <field name="vendor_portallogin" string="Add Vendor Portal/Login?"/>
+                        <field name="username" string="Username:"/>
+                        <field name="password" string="Password:"/>
+                    </group>
+                </page>
+                <page string="Catalogs / PDF">
+                    <group>
+                        <field filename="vendor_catalog_filename" name="vendor_catalog"
+                               string="Vendor Catalog:" widget="pdf_viewer"/>
+                        <field name="vendor_catalog_filename"/>
+                        <field name="add_catalog_price_lists"/>
+                        <field name="catalog_notes_date_etc"/>
+                        <field name="last_updated_notes"/>
+                        <field name="last_updated_notes_1"/>
+                        <field filename="price_list_pdf_filename" name="price_list_pdf"
+                               string="Price List (PDF)" widget="pdf_viewer">
+                            <field invisible="1" name="price_list_pdf_filename"/>
+                        </field>
+                    </group>
+                </page>
+                <page string="Technical Drawings">
+                    <group>
+                        <field filename="tech_cad_drawings_filename" name="tech_cad_drawings"
+                               widget="pdf_viewer" string="Tech. / CAD Drawings">
+                            <field name="tech_cad_drawings_filename"/>
+                        </field>
+                        <field name="include_docs"/>
+                        <field name="last_updated_notes_2"/>
+                        <field name="notesinstructions" string="Notes/Instructions:"/>
+                    </group>
+                </page>
+                <page string="Reference Photos">
+                    <group>
+                        <group>
+                            <field name="include_photos" string="Include Photos?"/>
+                        </group>
+                        <group>
+                            <field name="add_relevant_photos_below" string="Add Relevant Photos Below"/>
+                        </group>
+                        <group>
+                            <group>
+                                <group>
+                                    <field name="image_1" string="Image #1"/>
+                                    <field name="image_1_notes" string="Image 1 Notes"/>
+                                </group>
+                                <group>
+                                    <field name="image_2" string="Image #2"/>
+                                    <field name="image_2_notes" string="Image 2 Notes"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="image_3" string="Image #3"/>
+                                    <field name="image_3_notes" string="Image 3 Notes"/>
+                                </group>
+                                <group>
+                                    <field name="image_4" string="Image #4"/>
+                                    <field name="image_4_notes" string="Image 4 Notes"/>
+                                </group>
+                            </group>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="record_verified" string="Record Verified?"/>
+                <field name="attncontact" string="Attn/Contact:"/>
+                <field name="cust_shipping_preference" string="Cust. Shipping Preference"/>
+                <field name="verif_by_namedate" string="Verif. By Name/Date"/>
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="cc_email_field" string="CC Email Field"/>
+            </xpath>
+            <xpath expr="//notebook" position="after">
+                <group>
+                    <field name="customer_notes" string="Customer Notes:"/>
+                    <field name="internal_report_order_notes" string="Internal Report Order Notes:"
+                           help="This field is printed on any &quot;INTERNAL ORDER ACK&quot; PDF...it is used to hold information that will apply to ALL standard orders for a customer."/>
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='website']" position="after">
+                <field name="fax_" string="Fax #"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

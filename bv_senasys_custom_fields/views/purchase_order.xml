@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="purchase_order_inherited_view">
+        <field name="name">purchase.order.inherit.form</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_approve']" position="after">
+                <field name="po_notes"/>
+                <field name="po_notes_internal_use_only"/>
+                <field name="drop_ship_to_vendor"/>
+                <field name="reconciled_by"/>
+                <field name="select"/>
+                <field name="vendor_drop_ship_enter_address_below"/>
+                <field name="request_date"/>
+                <field name="senasys_buyer"/>
+                <field name="requested_delivery_method"/>
+                <field name="purchase_order_closed"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
