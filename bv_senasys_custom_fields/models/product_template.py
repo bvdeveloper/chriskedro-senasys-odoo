@@ -5,15 +5,15 @@ from odoo import api, fields, models, _
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    add_ecm_historical_data_below = fields.Selection([('YES', 'YES'), ('NO', 'NO')],
-                                                     string='Add ECM Historical Data Below')
+    add_ecm_historical_data_below = fields.Selection([('Yes', 'Yes'), ('No', 'No')],
+                                                     string='Add ECM Historical Data Below?')
     add_tech_data_to_print_to_catalog_record = fields.Text(string='Add Tech. Data to Print to Catalog Record')
     additional_notes = fields.Text(string='Additional Notes')
     additional_notes_1 = fields.Text(string='Additional Notes:')
     additional_notes_2 = fields.Text(string='Additional Notes:')
     additional_notes_3 = fields.Text(string='Additional Notes:')
     additional_notes_4 = fields.Text(string='Additional Notes:')
-    additional_notes_filename = fields.Char(string='Additional Notes:')
+    additional_notes_filename = fields.Char(string='Additional Notes For Filename:')
     additional_notes_import_export = fields.Text(string='Additional Notes:')
     brand_name = fields.Char(string='Brand Name')
     by_salesperson = fields.Char(string='By Salesperson:')
@@ -29,7 +29,7 @@ class ProductTemplate(models.Model):
          ('Connectors / Wires', 'Connectors / Wires'), ('Encoders', 'Encoders'), ('Glue Pans', 'Glue Pans'),
          ('Glue Pan - Accessories', 'Glue Pan - Accessories'), ('Machine Parts', 'Machine Parts'), ('Motors', 'Motors'),
          ('Rods', 'Rods'),
-         ('crews / Nuts / Bolts / Washers', 'crews / Nuts / Bolts / Washers')], string='By Salesperson:')
+         ('crews / Nuts / Bolts / Washers', 'crews / Nuts / Bolts / Washers')], string='Catalog Section')
     country_of_origin = fields.Selection(
         [('Canada', 'Canada'), ('China', 'China'), ('Mexico', 'Mexico'),
          ('USA', 'USA')], string='Country of Origin')
@@ -177,6 +177,10 @@ class ProductTemplate(models.Model):
     tariff_code = fields.Char(string="Tariff Code")
     uploadmodified_drawing_date = fields.Date(string="Upload/Modified Drawing Date:")
     used_in_part_s = fields.Char(string="Used in Part #(s)")
+    vendor_1 = fields.Selection([('ED-K Machining', 'ED-K Machining'), ('Indianhead Plating', 'Indianhead Plating'),
+                                 ('Metal Treaters', 'Metal Treaters'), ('Senasys Machining', 'Senasys Machining'),
+                                 ('Coulson Precision Tooling Inc', 'Coulson Precision Tooling Inc')],
+                                string="Vendor 1:")
     vendor_2 = fields.Selection([('ED-K Machining', 'ED-K Machining'), ('Indianhead Plating', 'Indianhead Plating'),
                                  ('Metal Treaters', 'Metal Treaters'), ('Senasys Machining', 'Senasys Machining'),
                                  ('Coulson Precision Tooling Inc', 'Coulson Precision Tooling Inc')],
@@ -198,3 +202,8 @@ class ProductTemplate(models.Model):
     'Simple Assembly from Sub-Component Parts', 'Simple Assembly from Sub-Component Parts')], string="Work Process Type")
     yesno = fields.Selection([('Yes', 'Yes'), ('No', 'No')], string="Add Technical Product Info Below?")
     yesno_1 = fields.Selection([('Yes', 'Yes'), ('No', 'No'), ('TBD', 'TBD')], string="Yes/No")
+    senasys_division = fields.Selection([('Empire Corrugated', 'Empire Corrugated'), ('Wahl', 'Wahl')], string="Senasys Division")
+    description = fields.Char(string="Vendor PO / Mfg Description")
+    download_full_res_image = fields.Binary(related="product_variant_id.image_1920")
+    image_1024_wide = fields.Binary(related="product_variant_id.image_1024")
+

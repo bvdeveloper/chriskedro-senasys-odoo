@@ -22,5 +22,7 @@ class PurchaseOrder(models.Model):
     senasys_buyer = fields.Char(string='Senasys Buyer:')
     vendor_drop_ship_enter_address_below = fields.Selection(
         [('Yes', 'Yes'), ('No', 'No')], string='Vendor Drop Ship?')
+    senasys_division = fields.Selection([('Empire Corrugated', 'Empire Corrugated'), ('Wahl', 'Wahl')], string="Senasys Division")
+
 
 

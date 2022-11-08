@@ -9,4 +9,5 @@ class StockWarehouseOrderpoint(models.Model):
     our_cost_non_vendor_specific = fields.Float(string="Our Cost (Non-Vendor Specific)")
     target_po_level = fields.Text(string="Target PO Level")
     total_qty_sold = fields.Float(string="Total Qty Sold")
+    vendor = fields.Char(related="product_tmpl_id.seller_ids.name.name")
 

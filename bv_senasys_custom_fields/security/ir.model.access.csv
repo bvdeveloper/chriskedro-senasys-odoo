@@ -1,2 +1,5 @@
-id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+access_purchase_order_ecm_reporting,purchase.order.ecm.reporting,model_purchase_order_ecm_reporting,base.group_user,1,1,1,1
+access_ecm_sales_order_by_line_reporting,ecm.sales.order.by.line.reporting,model_ecm_sales_order_by_line_reporting,base.group_user,1,1,1,1
+
 

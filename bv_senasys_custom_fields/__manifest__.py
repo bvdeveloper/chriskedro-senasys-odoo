@@ -11,7 +11,6 @@
             """,
     'author': 'Brainvire',
     'website': 'https://www.brainvire.com/',
-    # 'depends': ['base', 'product'],
     'depends': ['base', 'sale_management', 'purchase', 'account', 'product', 'stock', 'product_expiry', 'website', 'purchase_stock'],
     'data': [
         'security/ir.model.access.csv',
@@ -23,7 +22,11 @@
         'views/sale_order.xml',
         'views/account_move.xml',
         'views/stock_scrap.xml',
-        'views/product_supplierinfo.xml',
+        'views/stock_warehouse_orderpoint.xml',
+        'views/purchase_order_ecm_reporting_view.xml',
+        'views/ecm_sales_order_by_line_reporting_view.xml',
+        'views/purchase_ecm_reporting_inherit_view.xml',
+        'views/ecm_sales_order_by_line_inherit_view.xml',
     ],
     'demo': [
     ],

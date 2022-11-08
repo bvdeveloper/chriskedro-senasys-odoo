@@ -37,7 +37,7 @@ class ResUsers(models.Model):
     record_verified = fields.Selection(related='partner_id.record_verified')
     tech_cad_drawings = fields.Binary(related='partner_id.tech_cad_drawings')
     tech_cad_drawings_filename = fields.Char(related='partner_id.tech_cad_drawings_filename')
-    type = fields.Selection(related='partner_id.type')
+    type_x = fields.Selection(related='partner_id.type')
     typical_item_types_purchased = fields.Text(related='partner_id.typical_item_types_purchased')
     typical_items_types_purchased_for_ecm = fields.Text(related='partner_id.typical_items_types_purchased_for_ecm')
     typical_items_types_purchased_for_ecm_1 = fields.Text(related='partner_id.typical_items_types_purchased_for_ecm_1')
@@ -46,6 +46,8 @@ class ResUsers(models.Model):
     vendor_catalog_filename = fields.Char(related='partner_id.vendor_catalog_filename')
     vendor_portallogin = fields.Selection(related='partner_id.vendor_portallogin')
     verif_by_namedate = fields.Char(related='partner_id.verif_by_namedate')
+    catalog_pdf_filename = fields.Char(related='partner_id.catalog_pdf_filename')
+    catalog_pdf = fields.Binary(related='partner_id.catalog_pdf')
 
 
 

@@ -6,11 +6,39 @@
         <field name="inherit_id" ref="account.view_move_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='payment_reference']" position="after">
-                <field name="additional_notes" string="Additional Notes For PDF Invoice:"/>
-                <field name="enter_tracking_" string="Enter Tracking #"/>
+                <field name="inv_sent_to_cus"/>
                 <field name="payment_terms" string="Payment Terms"/>
+                <field name="enter_tracking_" string="Enter Tracking #"/>
+                <field name="additional_notes" string="Additional Notes For PDF Invoice:"
+                       help="Allows user to add invoice notes...requested for Packland"/>
                 <field name="incoterm" string="Custom Incoterm"
                        help="Allows user to add an Incoterm (ex: FOB Eau Claire, WI)...requested for Packland"/>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
+                <group name="studio_group_XxuM4">
+                </group>
+                <group name="studio_group_Himuo">
+                    <group name="studio_group_Himuo_left">
+                        <field name="senasys_division" string="Senasys Division"/>
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='invoice_line_ids']/tree[1]/field[@name='sequence']"
+                   position="after">
+                <field name="line_item_from_sales_order_entry" string="Line #"/>
+                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='invoice_line_ids']/tree[1]/field[@name='product_id']"
+                       position="move"/>
+                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='invoice_line_ids']/tree[1]/field[@name='name']"
+                       position="move"/>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='invoice_line_ids']/form[1]/sheet[1]/group[1]/field[@name='price_unit']"
+                   position="after">
+                <field name="po_" string="Cust PO #"
+                       help="Pulled from sales order line to get to print on invoice"/>
+<!--                <field name="x_studio_studio_portal_cust_contact_method_3" string="studio_portal_cust_contact_method_3"-->
+<!--                       help="Used for pulling the ariba vs email info from sales order"/>-->
+<!--                <field name="x_studio_invoice_shipment_" string="Invoice (Shipment #)"/>-->
+                <field name="line_item_from_sales_order_entry" string="Line Item # from Sales Order Entry"/>
             </xpath>
         </field>
     </record>

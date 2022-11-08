@@ -5,7 +5,7 @@ from odoo import api, fields, models, _
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    add_catalog_price_lists = fields.Selection([('Yes', 'Yes'), ('No', 'No')], string='Add Catalog/Price Lists')
+    add_catalog_price_lists = fields.Selection([('Yes', 'Yes'), ('No', 'No')], string='Add Catalog/Price Lists?')
     add_relevant_photos_below = fields.Char(string='Add Relevant Photos Below')
     attncontact = fields.Char(string='Attn/Contact:')
     catalog_notes_date_etc = fields.Text(string='Catalog Notes, Date, Etc:')
@@ -39,7 +39,7 @@ class ResPartner(models.Model):
     record_verified = fields.Selection([('Verified', 'Verified'), ('Not Verified', 'Not Verified')], string="Record Verified?")
     tech_cad_drawings = fields.Binary(string='Tech./CAD Drawings')
     tech_cad_drawings_filename = fields.Char(string='Tech./CAD Drawings Filename')
-    type = fields.Selection([('Vendor', 'Vendor'), ('Customer', 'Customer')], string="Type:")
+    type_x = fields.Selection([('Vendor', 'Vendor'), ('Customer', 'Customer')], string="Type:")
     typical_item_types_purchased = fields.Text(string='Typical Item Type(s) Purchased')
     typical_items_types_purchased_for_ecm = fields.Text(string='Typical Items Types Purchased for ECM')
     typical_items_types_purchased_for_ecm_1 = fields.Text(string='Typical Items Types Purchased for ECM')
@@ -48,5 +48,7 @@ class ResPartner(models.Model):
     vendor_catalog_filename = fields.Char(string='Vendor Catalog Filename:')
     vendor_portallogin = fields.Selection([('Yes', 'Yes'), ('No', 'No')], string="Add Vendor Portal/Login?")
     verif_by_namedate = fields.Char(string='Verif. By Name/Date')
+    catalog_pdf_filename = fields.Char(string='Catalog (PDF) Filename')
+    catalog_pdf = fields.Binary(string='Catalog (PDF)')
 
 

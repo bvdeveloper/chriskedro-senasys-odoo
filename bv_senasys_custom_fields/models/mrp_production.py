@@ -9,3 +9,5 @@ class MrpProduction(models.Model):
     mfg_order_notes_for_pdf_report = fields.Text(string="MFG Order Notes (For PDF Report)")
     trevor_notes = fields.Text(string="Notes/Status Updates")
     work_center = fields.Selection(related='bom_id.work_center_note_for_reporting')
+    senasys_division = fields.Selection([('Empire Corrugated', 'Empire Corrugated'), ('Wahl', 'Wahl')], string="Senasys Division")
+

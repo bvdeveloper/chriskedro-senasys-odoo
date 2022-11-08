@@ -1,0 +1,68 @@
+<odoo>
+    <record model="ir.ui.view" id="ecm_sales_order_by_line_inherit_view">
+        <field name="name">ecm.sales.order.by.line.inherit.form</field>
+        <field name="model">ecm.sales.order.by.line.reporting</field>
+        <field name="inherit_id" ref="bv_senasys_custom_fields.ecm_sales_order_by_line_reporting_form_view"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//group[@name='studio_group_47f0ee_right']" position="replace"/>
+                <xpath expr="//group[@name='studio_group_47f0ee_left']" position="replace">
+                    <field name="so_line_ids">
+                        <tree string="Sales Order Lines" create="false">
+                            <field name="order_id"/>
+                            <field name="order_partner_id"/>
+                            <field name="name"/>
+                            <field name="salesman_id"/>
+                            <field name="state"/>
+                            <field name="scheduled_date"/>
+                            <field name="product_uom_qty" string="Qty"/>
+                            <field name="qty_delivered"/>
+                            <field name="qty_invoiced"/>
+                            <field name="qty_to_invoice"/>
+                            <field name="product_uom" string="Unit of Measure" groups="uom.group_uom"/>
+                            <field name="route_id" groups="stock.group_adv_location" options="{'no_create': True}"/>
+                            <field name="price_subtotal" sum="Total" widget="monetary"/>
+                            <field name="currency_id" invisible="1"/>
+                        </tree>
+                        <form string="Sales Order Item">
+                            <sheet name="studio_sheet_8fe514">
+                                <div class="oe_title" name="studio_div_f510bb">
+                                    <h1>
+                                        <field name="display_name" readonly="1"/>
+                                    </h1>
+                                </div>
+                                <group name="studio_group_9bfa33">
+                                    <group name="studio_group_0bedc3">
+                                        <field name="order_id" readonly="1"/>
+                                        <field name="product_id" readonly="1"/>
+                                        <field name="name" readonly="1"/>
+                                        <field name="product_uom_qty" readonly="1"/>
+                                        <field name="qty_delivered" readonly="1"/>
+                                        <field name="qty_invoiced"/>
+                                        <field name="product_uom" readonly="1"/>
+                                        <field name="state"/>
+                                        <field name="company_id" options="{'no_create': True}"
+                                               groups="base.group_multi_company"/>
+                                        <field name="order_partner_id" invisible="1"/>
+                                        <field name="display_type" invisible="1"/>
+                                        <field name="product_updatable" invisible="1"/>
+                                    </group>
+                                    <group name="studio_group_484d0b">
+                                        <field name="price_unit" readonly="1"/>
+                                        <field name="discount" groups="product.group_discount_per_so_line"
+                                               readonly="1"/>
+                                        <field name="price_subtotal" widget="monetary"/>
+                                        <field name="tax_id" widget="many2many_tags" readonly="1"/>
+                                        <field name="price_tax" widget="monetary"/>
+                                        <field name="price_total" widget="monetary"/>
+                                        <field name="currency_id" invisible="1"/>
+                                    </group>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                </xpath>
+            </data>
+        </field>
+    </record>
+</odoo>

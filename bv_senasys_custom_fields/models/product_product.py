@@ -96,6 +96,7 @@ class ProductProduct(models.Model):
     tariff_code = fields.Char(related='product_tmpl_id.tariff_code')
     uploadmodified_drawing_date = fields.Date(related='product_tmpl_id.uploadmodified_drawing_date')
     used_in_part_s = fields.Char(related='product_tmpl_id.used_in_part_s')
+    vendor_1 = fields.Selection(related='product_tmpl_id.vendor_1')
     vendor_2 = fields.Selection(related='product_tmpl_id.vendor_2')
     vendor_3 = fields.Selection(related='product_tmpl_id.vendor_3')
     vendor_4 = fields.Selection(related='product_tmpl_id.vendor_4')
@@ -105,6 +106,13 @@ class ProductProduct(models.Model):
     work_process_type = fields.Selection(related='product_tmpl_id.work_process_type')
     yesno = fields.Selection(related='product_tmpl_id.work_process_type')
     yesno_1 = fields.Selection(related='product_tmpl_id.yesno_1')
+    senasys_division = fields.Selection(related="product_tmpl_id.senasys_division")
+    description = fields.Char(related="product_tmpl_id.description")
+    download_full_res_image = fields.Binary(related="product_tmpl_id.download_full_res_image")
+    image_1024_wide = fields.Binary(related="product_tmpl_id.image_1024_wide")
+
+
+
 
 
 

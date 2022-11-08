@@ -17,4 +17,6 @@ from . import account_move_line
 from . import sale_order_line
 from . import stock_move_line
 from . import product_supplierinfo
+from . import purchase_order_ecm_reporting
+from . import ecm_sales_order_by_line_reporting
 

@@ -42,3 +42,5 @@ class SaleOrder(models.Model):
          ('USPS Overnight (Cust. Collect)', 'USPS Overnight (Cust. Collect)'), ],
         string='Shipping Method')
     shipping_collect_acct_ = fields.Char(string='Shipping Collect Acct #')
+    senasys_division = fields.Selection([('Empire Corrugated', 'Empire Corrugated'), ('Wahl', 'Wahl')], string="Senasys Division")
+
