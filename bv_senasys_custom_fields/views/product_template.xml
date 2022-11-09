@@ -302,7 +302,7 @@
                     </group>
                 </group>
             </xpath>
-            <xpath expr="//page[@name='inventory']" position="inside">
+            <xpath expr="//group[@name='group_lots_and_weight']" position="inside">
                 <field name="packing_instructions" string="Packing Instructions"/>
                 <field name="senasys_stocking_priority_level" string="A, B, C Class"
                        help="Reference Senasys MS Access Information.  Type C is &quot;Least Important&quot; to stock so usually no reordering rules...But we will review items if demand increases."/>
