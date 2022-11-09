@@ -9,21 +9,21 @@ class ProductTemplate(models.Model):
                                                      string='Add ECM Historical Data Below?')
     add_tech_data_to_print_to_catalog_record = fields.Text(string='Add Tech. Data to Print to Catalog Record')
     additional_notes = fields.Text(string='Additional Notes')
-    additional_notes_1 = fields.Text(string='Additional Notes:')
-    additional_notes_2 = fields.Text(string='Additional Notes:')
-    additional_notes_3 = fields.Text(string='Additional Notes:')
-    additional_notes_4 = fields.Text(string='Additional Notes:')
+    additional_notes_1 = fields.Text(string='Additional Notes 1:')
+    additional_notes_2 = fields.Text(string='Additional Notes 2:')
+    additional_notes_3 = fields.Text(string='Additional Notes 3:')
+    additional_notes_4 = fields.Text(string='Additional Notes 4:')
     additional_notes_filename = fields.Char(string='Additional Notes For Filename:')
-    additional_notes_import_export = fields.Text(string='Additional Notes:')
+    additional_notes_import_export = fields.Text(string='Additional Notes Import Export:')
     brand_name = fields.Char(string='Brand Name')
     by_salesperson = fields.Char(string='By Salesperson:')
-    by_salesperson_1 = fields.Char(string='By Salesperson:')
+    by_salesperson_1 = fields.Char(string='By Salesperson 1:')
     by_salesperson_2 = fields.Selection(
-        [('Alyssa', 'Alyssa'), ('Chris', 'Chris'), ('ECM / Don(Initial Pricing)', 'ECM / Don(Initial Pricing)'),
-         ('Jeremy', 'Jeremy'), ('Kayla', 'Kayla'), ('Lana', 'Lana'), ('Sara', 'Sara')], string='By Salesperson:')
+        [('Alyssa', 'Alyssa'), ('Chris', 'Chris'), ('ECM/Don (Initial Pricing)', 'ECM/Don (Initial Pricing)'),
+         ('Jeremy', 'Jeremy'), ('Kayla', 'Kayla'), ('Lana', 'Lana'), ('Sara', 'Sara'), ('Victoria', 'Victoria')], string='By Salesperson 2:')
     by_salesperson_3 = fields.Selection(
-        [('Alyssa', 'Alyssa'), ('Chris', 'Chris'), ('ECM / Don(Initial Pricing)', 'ECM / Don(Initial Pricing)'),
-         ('Jeremy', 'Jeremy'), ('Kayla', 'Kayla'), ('Lana', 'Lana'), ('Sara', 'Sara')], string='By Salesperson:')
+        [('Alyssa', 'Alyssa'), ('Chris', 'Chris'), ('ECM/Don(Initial Pricing)', 'ECM/Don (Initial Pricing)'),
+         ('Jeremy', 'Jeremy'), ('Kayla', 'Kayla'), ('Lana', 'Lana'), ('Sara', 'Sara'), ('Victoria', 'Victoria')], string='By Salesperson 3:')
     catalog_section = fields.Selection(
         [('Actuators', 'Actuators'), ('Bearings', 'Bearings'), ('Bearing Housings', 'Bearing Housings'),
          ('Connectors / Wires', 'Connectors / Wires'), ('Encoders', 'Encoders'), ('Glue Pans', 'Glue Pans'),
@@ -39,7 +39,7 @@ class ProductTemplate(models.Model):
     cust_part_names = fields.Char(string="Cust. Part Name/#'s")
     date_of_oem_pricing = fields.Date(string="Date of OEM Pricing:")
     date_verified = fields.Date(string="Date Verified:")
-    date_verified_1 = fields.Date(string="Date Verified:")
+    date_verified_1 = fields.Date(string="Date Verified 1:")
     dateqtycust_requesting_no_quote_part = fields.Text(string="Date/Qty/Cust Requesting 'No Quote' Part:")
     describe_here = fields.Text(string='Describe Here:')
     drawing_not_found = fields.Boolean(string='Drawing Not Found')
@@ -133,25 +133,26 @@ class ProductTemplate(models.Model):
         [('Bagged With Qty/Label', 'Bagged With Qty/Label'), ('Boxed (Loose in Box)', 'Boxed (Loose in Box)'),
          ('Boxed (Bubble Wrapped)', 'Boxed (Bubble Wrapped)'),
          ('Boxed (Remove MFG Packaging)', 'Boxed (Remove MFG Packaging)'),
-         ('Crated', 'Crated'),
+         ('Crated', 'Crated (UPS or LTL TBD)'),
+         ('Crated (LTL Required)', 'Crated (LTL Required)'),
          ('Custom: See Below', 'Custom: See Below'),
          ('Double Boxed if Mult. Items in Shipment', 'Double Boxed if Mult. Items in Shipment'),
          ], string='Packing Instructions')
-    pdf_1 = fields.Binary(string='PDF')
-    pdf_1_filename = fields.Char(string='PDF filename')
-    pdf_1_1 = fields.Binary(string='PDF 1')
-    pdf_1_1_filename = fields.Char(string='PDF 1 filename')
+    pdf_1 = fields.Binary(string='PDF 1')
+    pdf_1_filename = fields.Char(string='PDF 1 filename')
+    pdf_1_1 = fields.Binary(string='PDF 1_1')
+    pdf_1_1_filename = fields.Char(string='PDF 1_1 filename')
     pdf_2 = fields.Binary(string='PDF 2')
-    pdf_2_1 = fields.Binary(string='PDF 2')
-    pdf_2_1_filename = fields.Char(string='PDF 2 filename')
+    pdf_2_1 = fields.Binary(string='PDF 2_1')
+    pdf_2_1_filename = fields.Char(string='PDF 2_1 filename')
     pdf_3 = fields.Binary(string='PDF 3')
     pdf_3_filename = fields.Char(string='PDF 3 filename')
-    pdf_3_1 = fields.Binary(string='PDF 3')
-    pdf_3_1_filename = fields.Char(string='PDF 3 filename')
+    pdf_3_1 = fields.Binary(string='PDF 3_1')
+    pdf_3_1_filename = fields.Char(string='PDF 3_1 filename')
     preferred_vendors = fields.Char(string='1st Choice:')
     prepship_notes = fields.Selection([('☐ Date:____/____ /____ Notes: _____________ _____________________',
                                         '☐ Date:____/____ /____ Notes: _____________ _____________________'),
-                                       ('☐ Prepped___ Date:____/____ /____ Notes: _____________ _____________________',
+                                       ('a☐ Prepped___ Date:____/____ /____ Notes: _____________ _____________________',
                                         '☐ Prepped___ Date:____/____ /____ Notes: _____________ _____________________')],
                                       string='Prep/Ship Notes')
     product_composition_galvanized_stainless_steel_etc = fields.Text(
