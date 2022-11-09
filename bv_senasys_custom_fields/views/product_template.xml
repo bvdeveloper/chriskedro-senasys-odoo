@@ -213,11 +213,11 @@
                    position="after">
                 <group name="studio_group_3RsH9">
                     <group name="studio_group_3RsH9_left" string="Sell Price Verification (Last Updated)">
-                        <field name="by_salesperson_1" string="By Salesperson 1:"/>
+                        <field name="by_salesperson_2" string="By Salesperson 2:"/>
                         <field name="date_verified" string="Date Verified:"/>
                     </group>
                     <group name="studio_group_3RsH9_right" string="Purchase Price Verification (Last Updated)">
-                        <field name="by_salesperson_2" string="By Salesperson 2:"/>
+                        <field name="by_salesperson_3" string="By Salesperson 3:"/>
                         <field name="date_verified_1" string="Date Verified 1:"/>
                     </group>
                 </group>
