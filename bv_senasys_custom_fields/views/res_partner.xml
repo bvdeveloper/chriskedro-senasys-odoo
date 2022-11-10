@@ -89,7 +89,7 @@
                                    string="Price List (PDF)" widget="pdf_viewer">
                                 <field invisible="1" name="price_list_pdf_filename"/>
                             </field>
-                            <field name="last_updated_notes_1" string="Last Updated / Notes"/>
+                            <field name="last_updated_notes_1" string="Last Updated / Notes 1"/>
                         </group>
                     </group>
                 </page>
@@ -110,7 +110,7 @@
                                    widget="pdf_viewer" string="Tech. / CAD Drawings">
                                 <field invisible="1" name="tech_cad_drawings_filename"/>
                             </field>
-                            <field name="last_updated_notes_2" string="Last Updated / Notes"/>
+                            <field name="last_updated_notes_2" string="Last Updated / Notes 2"/>
                         </group>
                     </group>
                 </page>
