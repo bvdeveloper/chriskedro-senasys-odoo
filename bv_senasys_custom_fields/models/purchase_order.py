@@ -10,13 +10,13 @@ class PurchaseOrder(models.Model):
     po_notes_internal_use_only = fields.Char(string='P.O. Notes: (Internal Use Only)')
     purchase_order_closed = fields.Boolean(string='Purchase Order Closed')
     reconciled_by = fields.Selection(
-        [('Jess', 'Jess'), ('Kayla', 'Kayla'), ('Chris(credit card)', 'Chris(credit card)')], string='Reconciled By:')
+        [('Jess', 'Jess'), ('Kayla', 'Kayla'), ('Chris (credit card)', 'Chris (credit card)')], string='Reconciled By:')
     request_date = fields.Date(
         string='Request Date (Enter based on standard lead time if known, otherwise leave blank and SELECT TBD BELOW)')
     requested_delivery_method = fields.Selection(
-        [('Standard / Economy', 'Standard / Economy'), ('UPS 2nd Day AIr', 'UPS 2nd Day AIr'),
-         ('Expedited', 'Expedited'), ('UPS Overnight (Early AM)', 'UPS Overnight (Early AM)'), ('LTL', 'LTL')],
-        string='Reconciled By:')
+        [('Standard / Economy', 'UPS Ground'), ('UPS 2nd Day Air', 'UPS 2nd Day Air'),
+         ('Expedited', 'UPS Overnight'), ('UPS Overnight (Early AM)', 'UPS Overnight (Early AM)'), ('LTL', 'LTL')],
+        string='Requested Delivery Method:')
     select = fields.Selection(
         [('Use Request Date Above', 'Use Request Date Above'), ('TBD (As soon as possible)', 'TBD (As soon as possible)')], string='Select:')
     senasys_buyer = fields.Char(string='Senasys Buyer:')
