@@ -51,4 +51,16 @@
             </xpath>
         </field>
     </record>
+
+    <record model="ir.ui.view" id="mrp_bom_inherited_view_tree">
+        <field name="name">mrp.bom.inherit.tree</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sequence']" position="after">
+                <field name="work_center_note_for_reporting" optional="hide"/>
+                <field name="description" string="Description"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>
