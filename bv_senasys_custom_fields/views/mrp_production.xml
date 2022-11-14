@@ -9,6 +9,7 @@
                 <field name="confirmed_completion_date"/>
                 <field name="mfg_order_notes_for_pdf_report"/>
                 <field name="trevor_notes"/>
+                <field name="work_center"/>
             </xpath>
             <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='id']" position="before">
                 <xpath expr="//field[@name='bom_id']" position="move"/>
