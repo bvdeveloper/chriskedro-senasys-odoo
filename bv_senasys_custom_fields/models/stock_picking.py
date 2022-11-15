@@ -5,12 +5,7 @@ from odoo import api, fields, models, _
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
-    initial_first_shipment = fields.Selection(
-        [('UPS Ground', 'UPS Ground'), ('UPS 2nd Day Air', 'UPS 2nd Day Air'), ('UPS Overnight', 'UPS Overnight'),
-         ('USPS Economy', 'USPS Economy'), ('USPS Priority', 'USPS Priority'), ('FedEx Ground', 'FedEx Ground'),
-         ('FedEx 2nd Day Air', 'FedEx 2nd Day Air'),
-         ('FedEx Overnight', 'FedEx Overnight'), ('Other (See Notes)', 'Other (See Notes)')],
-        string='Initial/1st Shipment Method:')
+    initial_first_shipment = fields.Selection(string='Initial/1st Shipment Method:', related='sale_id.shipping_method')
     override_shipment_method = fields.Selection([('Yes', 'Yes'), ('No', 'No')], string='Override Shipment Method')
     ship_method_for_this_delivery = fields.Selection([('UPS Ground (Prepay and Add)', 'UPS Ground (Prepay and Add)'),
                                                       ('UPS 2nd Day Air UPS Ground (Prepay and Add)',
