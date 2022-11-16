@@ -125,7 +125,7 @@
                      t-att-class="'progress-wizard-step %s' % (step == 40 and 'active' or step&gt;40 and 'complete' or 'disabled')">
                     <div class="progress-wizard-bar d-none d-md-block"/>
                     <span class="progress-wizard-dot d-none d-md-inline-block"/>
-                    <div class="text-center progress-wizard-steplabel">Confirm Quote Request</div>
+                    <div class="text-center progress-wizard-steplabel">Send Quote Request</div>
                 </div>
             </xpath>
         </template>
