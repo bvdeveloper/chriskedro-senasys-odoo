@@ -181,7 +181,7 @@
                 <attribute name="options">{"preview_image":"image_128","size":[0,270]}</attribute>
             </xpath>
             <xpath expr="//field[@name='categ_id']" position="after">
-                <field name="description" string="Vendor PO / Mfg Description"
+                <field name="x_description" string="Vendor PO / Mfg Description"
                        help="This is a location to put detailed vendor/mfg part #, etc...assumption is we want this shown on our vendor POs, but don't want our customers to see this information...as they could then order it directly themselves."/>
                 <field name="vendor_noterequirement" string="Vendor Note/Requirement"
                        help="If we require confirmation prior to vendor beginning manufacturing (ex: signoff drawing), enter notes...will print on vendor PO (PDF)."/>

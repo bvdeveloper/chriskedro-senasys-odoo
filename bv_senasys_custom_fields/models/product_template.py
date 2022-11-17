@@ -204,7 +204,7 @@ class ProductTemplate(models.Model):
     yesno = fields.Selection([('Yes', 'Yes'), ('No', 'No')], string="Add Technical Product Info Below?")
     yesno_1 = fields.Selection([('Yes', 'Yes'), ('No', 'No'), ('TBD', 'TBD')], string="Yes/No")
     senasys_division = fields.Selection([('Empire Corrugated', 'Empire Corrugated'), ('Wahl', 'Wahl')], string="Senasys Division")
-    description = fields.Char(string="Vendor PO / Mfg Description")
+    x_description = fields.Char(string="Vendor PO / Mfg Description")
     download_full_res_image = fields.Binary(related="product_variant_id.image_1920")
     image_1024_wide = fields.Binary(related="product_variant_id.image_1024")
 

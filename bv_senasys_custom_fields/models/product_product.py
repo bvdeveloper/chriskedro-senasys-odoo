@@ -107,7 +107,7 @@ class ProductProduct(models.Model):
     yesno = fields.Selection(related='product_tmpl_id.work_process_type')
     yesno_1 = fields.Selection(related='product_tmpl_id.yesno_1')
     senasys_division = fields.Selection(related="product_tmpl_id.senasys_division")
-    description = fields.Char(related="product_tmpl_id.description")
+    x_description = fields.Char(related="product_tmpl_id.x_description")
     download_full_res_image = fields.Binary(related="product_tmpl_id.download_full_res_image")
     image_1024_wide = fields.Binary(related="product_tmpl_id.image_1024_wide")
 
