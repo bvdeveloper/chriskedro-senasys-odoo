@@ -141,5 +141,15 @@
             </xpath>
         </template>
 
+<!--        Payment Confirmation Page Price Hide-->
+        <template id="payment_confirmation_page_price_replace" inherit_id="website_sale.confirmation">
+            <xpath expr="//table[@class='table']" position="replace">
+<!--                <a role="button" t-if="website_sale_order and website_sale_order.website_order_line"-->
+<!--                   class="btn btn-primary float-right d-none d-xl-inline-block" href="/shop/checkout?express=1">-->
+<!--                    <span class="">Process Quote</span>-->
+<!--                    <span class="fa fa-chevron-right"/>-->
+<!--                </a>-->
+            </xpath>
+        </template>
     </data>
 </odoo>
