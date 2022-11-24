@@ -10,7 +10,4 @@ class Website(models.Model):
         required=True,
         default="Our team will check your order and send you payment information soon.",
     )
-    checkout_skip_payment = fields.Boolean(compute="_compute_checkout_skip_payment")
-
-    def _compute_checkout_skip_payment(self):
-        self.checkout_skip_payment = True
+    checkout_skip_payment = fields.Boolean(default=True)
