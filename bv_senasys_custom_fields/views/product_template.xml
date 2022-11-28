@@ -156,6 +156,7 @@
                             <field name="cust_part_names" string="Cust. Part Name/#'s"
                                    help="Enter the information in the template format seen below"
                                    placeholder="GP: tbd / IP: tbd / BHS: tbd / Other: tbd"/>
+                            <field name="website_lead_time" string="Website lead Time"/>
                         </group>
                         <group name="studio_group_9z90h_right">
                             <field widget="image" options="{&quot;size&quot;:[0,180]}"

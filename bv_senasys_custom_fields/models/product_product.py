@@ -110,7 +110,7 @@ class ProductProduct(models.Model):
     x_description = fields.Char(related="product_tmpl_id.x_description")
     download_full_res_image = fields.Binary(related="product_tmpl_id.download_full_res_image")
     image_1024_wide = fields.Binary(related="product_tmpl_id.image_1024_wide")
-
+    website_lead_time = fields.Text(related='product_tmpl_id.website_lead_time')
 
 
 
