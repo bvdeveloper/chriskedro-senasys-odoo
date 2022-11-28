@@ -112,7 +112,7 @@ class ProductTemplate(models.Model):
                                  ('440 Stainless', '440 Stainless'),
                                  ('Brass', 'Brass'), ('Bronze', 'Bronze'), ('Copper', 'Copper'),
                                  ('Aluminum', 'Aluminum')], string='Material:')
-    mfg_bom = fields.Binary(string='MFG BOM')
+    # mfg_bom = fields.Binary(string='MFG BOM')
     mfg_order_notes = fields.Text(string='MFG Order Notes:')
     min_qty = fields.Float(related='product_variant_id.orderpoint_ids.product_min_qty')
     minutes_required = fields.Char(string='Senasys Minutes Required (for pricing/billing)')
@@ -177,7 +177,7 @@ class ProductTemplate(models.Model):
     step_4_machining_action = fields.Char(string="Step 4 Machining Action")
     tariff_code = fields.Char(string="Tariff Code")
     uploadmodified_drawing_date = fields.Date(string="Upload/Modified Drawing Date:")
-    used_in_part_s = fields.Char(string="Used in Part #(s)")
+    # used_in_part_s = fields.Char(string="Used in Part #(s)")
     vendor_1 = fields.Selection([('ED-K Machining', 'ED-K Machining'), ('Indianhead Plating', 'Indianhead Plating'),
                                  ('Metal Treaters', 'Metal Treaters'), ('Senasys Machining', 'Senasys Machining'),
                                  ('Coulson Precision Tooling Inc', 'Coulson Precision Tooling Inc')],

@@ -9,8 +9,8 @@ class PurchaseOrder(models.Model):
     po_notes = fields.Text(string='P.O. Notes: (Visible on PO)')
     po_notes_internal_use_only = fields.Char(string='P.O. Notes: (Internal Use Only)')
     purchase_order_closed = fields.Boolean(string='Purchase Order Closed')
-    reconciled_by = fields.Selection(
-        [('Jess', 'Jess'), ('Kayla', 'Kayla'), ('Chris (credit card)', 'Chris (credit card)')], string='Reconciled By:')
+    # reconciled_by = fields.Selection(
+    #     [('Jess', 'Jess'), ('Kayla', 'Kayla'), ('Chris (credit card)', 'Chris (credit card)')], string='Reconciled By:')
     request_date = fields.Date(
         string='Request Date (Enter based on standard lead time if known, otherwise leave blank and SELECT TBD BELOW)')
     requested_delivery_method = fields.Selection(

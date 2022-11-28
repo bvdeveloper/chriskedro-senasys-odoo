@@ -25,7 +25,7 @@
                                attrs="{&quot;invisible&quot;: [[&quot;vendor_drop_ship_enter_address_below&quot;,&quot;=&quot;,&quot;No&quot;]]}"/>
                         <field name="po_notes"/>
                         <field name="po_notes_internal_use_only"/>
-                        <field name="reconciled_by"/>
+<!--                        <field name="reconciled_by"/>-->
                         <field name="purchase_order_closed"/>
                     </group>
                 </group>

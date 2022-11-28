@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="account.view_move_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='payment_reference']" position="after">
-                <field name="inv_sent_to_cus"/>
+<!--                <field name="inv_sent_to_cus"/>-->
                 <field name="payment_terms" string="Payment Terms"/>
                 <field name="enter_tracking_" string="Enter Tracking #"/>
                 <field name="additional_notes" string="Additional Notes For PDF Invoice:"

@@ -9,7 +9,7 @@ class SaleOrder(models.Model):
     enter_order_specific_notes_below = fields.Char(string='Order Notes (Visible on Cust PDFs)')
     jobnametag = fields.Char(string='Cust PO# / Ref #')
     lead_time_for_quotes_only = fields.Char(string='Lead Time:')
-    order_notes_seen_on_int_reports_only = fields.Char(string='Order Notes (Seen on Int. Reports Only)')
+    # order_notes_seen_on_int_reports_only = fields.Char(string='Order Notes (Seen on Int. Reports Only)')
     order_promised_ship_date = fields.Date(string='Order Promised Ship Date:')
     portal_cust_contact_method = fields.Selection(
         [('Ariba', 'Ariba - ECM'), ('Email / Phone / Other', 'Email / Phone / Other'),

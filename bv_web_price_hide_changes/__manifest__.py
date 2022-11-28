@@ -11,6 +11,7 @@
     ],
     'data': [
         'views/inherit_web_template.xml',
+        'views/unnecessary_field_hide.xml',
 
     ],
     'installable': True,

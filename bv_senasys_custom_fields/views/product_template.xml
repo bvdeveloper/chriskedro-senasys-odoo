@@ -165,16 +165,16 @@
                     </group>
                 </page>
 
-                <page string="Wahl Information" name="studio_page_zA9s8"
-                      attrs="{&quot;invisible&quot;: [[&quot;senasys_division&quot;,&quot;=&quot;,&quot;Empire Corrugated&quot;]]}">
-                    <group name="studio_group_zA9s8">
-                        <group name="studio_group_zA9s8_left">
-                            <field name="used_in_part_s" string="Used in Part #(s)"/>
-                            <field widget="pdf_viewer" name="mfg_bom" string="MFG BOM"/>
-                        </group>
-                        <group name="studio_group_zA9s8_right"/>
-                    </group>
-                </page>
+<!--                <page string="Wahl Information" name="studio_page_zA9s8"-->
+<!--                      attrs="{&quot;invisible&quot;: [[&quot;senasys_division&quot;,&quot;=&quot;,&quot;Empire Corrugated&quot;]]}">-->
+<!--                    <group name="studio_group_zA9s8">-->
+<!--                        <group name="studio_group_zA9s8_left">-->
+<!--                            <field name="used_in_part_s" string="Used in Part #(s)"/>-->
+<!--                            <field widget="pdf_viewer" name="mfg_bom" string="MFG BOM"/>-->
+<!--                        </group>-->
+<!--                        <group name="studio_group_zA9s8_right"/>-->
+<!--                    </group>-->
+<!--                </page>-->
             </xpath>
 
             <xpath expr="//field[@name='image_1920']" position="attributes">
