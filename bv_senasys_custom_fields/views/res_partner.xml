@@ -50,9 +50,9 @@
                             <field name="vendor_portallogin" string="Add Vendor Portal/Login?"/>
                             <field name="portal_website_url" string="Portal Website URL:"
                                    attrs="{&quot;invisible&quot;: [[&quot;vendor_portallogin&quot;,&quot;!=&quot;,&quot;Yes&quot;]]}"/>
-                            <field name="username" string="Username"
+                            <field name="x_username" string="Username"
                                    attrs="{&quot;invisible&quot;: [[&quot;vendor_portallogin&quot;,&quot;!=&quot;,&quot;Yes&quot;]]}"/>
-                            <field name="password" string="Password:"
+                            <field name="x_password" string="Password:"
                                    attrs="{&quot;invisible&quot;: [[&quot;vendor_portallogin&quot;,&quot;!=&quot;,&quot;Yes&quot;]]}"/>
                         </group>
                         <group name="studio_group_od6Oa_right"/>

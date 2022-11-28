@@ -11,7 +11,7 @@
             """,
     'author': 'Brainvire',
     'website': 'https://www.brainvire.com/',
-    'depends': ['base', 'sale_management', 'purchase', 'account', 'product', 'stock', 'product_expiry', 'website', 'purchase_stock'],
+    'depends': ['base', 'sale_management', 'purchase', 'account', 'product', 'stock', 'product_expiry', 'purchase_stock'],
     'data': [
         'security/ir.model.access.csv',
         'views/res_partner.xml',
