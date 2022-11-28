@@ -208,4 +208,5 @@ class ProductTemplate(models.Model):
     download_full_res_image = fields.Binary(related="product_variant_id.image_1920")
     image_1024_wide = fields.Binary(related="product_variant_id.image_1024")
     website_lead_time = fields.Text(string="Website lead Time")
+    
 
