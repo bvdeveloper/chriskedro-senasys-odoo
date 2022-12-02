@@ -8,7 +8,7 @@ class ProductTemplate(models.Model):
     add_ecm_historical_data_below = fields.Selection([('Yes', 'Yes'), ('No', 'No')],
                                                      string='Add ECM Historical Data Below?')
     add_tech_data_to_print_to_catalog_record = fields.Text(string='Add Tech. Data to Print to Catalog Record')
-    additional_notes = fields.Text(string='Additional Notes')
+    additional_notes = fields.Binary(string='Additional Notes')
     additional_notes_1 = fields.Text(string='Additional Notes 1:')
     additional_notes_2 = fields.Text(string='Additional Notes 2:')
     additional_notes_3 = fields.Text(string='Additional Notes 3:')

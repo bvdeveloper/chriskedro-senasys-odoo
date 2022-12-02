@@ -8,7 +8,7 @@ class ProductProduct(models.Model):
     add_ecm_historical_data_below = fields.Selection(related='product_tmpl_id.add_ecm_historical_data_below')
     add_tech_data_to_print_to_catalog_record = fields.Text(
         related='product_tmpl_id.add_tech_data_to_print_to_catalog_record')
-    additional_notes = fields.Text(related='product_tmpl_id.additional_notes')
+    additional_notes = fields.Binary(related='product_tmpl_id.additional_notes')
     additional_notes_1 = fields.Text(related='product_tmpl_id.additional_notes_1')
     additional_notes_2 = fields.Text(related='product_tmpl_id.additional_notes_2')
     additional_notes_3 = fields.Text(related='product_tmpl_id.additional_notes_3')
