@@ -38,10 +38,14 @@
 
         <!--        For Image Replace in Product Form view-->
         <template id="product_form_website" inherit_id="website_sale.shop_product_carousel">
-            <xpath expr="//div[@class='d-flex align-items-center justify-content-center h-100']" position="replace">
-                <div t-else="" t-field="product_image.image_for_product_catalog"
-                     class="d-flex align-items-center justify-content-center h-100"
-                     t-options='{"widget": "image", "preview_image": "image_for_product_catalog", "class": "product_detail_img mh-100", "alt-field": "name", "zoom": product_image.can_image_1024_be_zoomed and "image_for_product_catalog"}'/>
+            <xpath expr="//div[hasclass('carousel-inner')]" position="replace">
+                <t t-foreach="product_images" t-as="product_image">
+                    <div t-attf-class="carousel-item h-100#{' active' if product_image_first else ''}">
+                    <div t-field="product_image.image_for_product_catalog"
+                         class="d-flex align-items-center justify-content-center h-100"
+                         t-options='{"widget": "image", "preview_image": "image_for_product_catalog", "class": "product_detail_img mh-100", "alt-field": "name", "zoom": product_image.can_image_1024_be_zoomed and "image_for_product_catalog"}'/>
+                    </div>
+                </t>
             </xpath>
         </template>
 
