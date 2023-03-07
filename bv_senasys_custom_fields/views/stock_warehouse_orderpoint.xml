@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="stock_warehouse_order_point_inherited_view">
+        <field name="name">stock.warehouse.order.point.tree</field>
+        <field name="model">stock.warehouse.orderpoint</field>
+        <field name="inherit_id" ref="stock.view_warehouse_orderpoint_tree_editable"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="vendor" string="Vendor"/>
+                <field name="our_cost_non_vendor_specific" string="Our Cost (Non-Vendor Specific)"
+                       widget="monetary" optional="hide"/>
+                <field name="total_qty_sold" string="Total Qty Sold" optional="hide"/>
+            </xpath>
+            <xpath expr="//field[@name='location_id']" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='qty_forecast']" position="after">
+                <field name="forecast_exc_pending" string="F.Cast - Exc. Pending"/>
+            </xpath>
+            <xpath expr="//field[@name='route_id']" position="attributes">
+                <attribute name="string">Pref Route</attribute>
+            </xpath>
+            <xpath expr="//field[@name='product_min_qty']" position="attributes">
+                <attribute name="string">Min Qty</attribute>
+            </xpath>
+            <xpath expr="//field[@name='product_min_qty']" position="after">
+                <field name="target_po_level" string="Target PO Level" optional="hide"/>
+            </xpath>
+            <xpath expr="//field[@name='product_max_qty']" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='product_uom_name']" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='supplier_id']" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

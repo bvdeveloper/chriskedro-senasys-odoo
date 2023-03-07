@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="product_template_inherited_view">
+        <field name="name">product.template.inherit.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Technical" name="studio_page_0C2ol">
+                    <group name="studio_group_0C2ol">
+                        <group name="studio_group_0C2ol_left">
+                            <field name="image_1024_wide" options="{&quot;size&quot;:[0,270]}"
+                                   widget="image" string="Image (1024 wide)"/>
+                            <field name="download_full_res_image" string="Download (Full Res) Image"/>
+                            <field name="product_composition_galvanized_stainless_steel_etc"
+                                   string="Product Composition (Galvanized, Stainless Steel,  Brass, etc)"/>
+                            <field name="yesno" string="Add Technical Product Info Below?"/>
+                            <field name="additional_notes"/>
+                        </group>
+                    </group>
+                    <group name="studio_group_huniX">
+                        <group name="studio_group_huniX_left" string="Technical Product Information"
+                               attrs="{&quot;invisible&quot;: [[&quot;yesno&quot;,&quot;!=&quot;,&quot;Yes&quot;]]}">
+                            <field name="faqs_things_to_ask_customer_prior_to_quoting"
+                                   string="FAQs / Things to Ask Customer Prior to Quoting:"/>
+                            <field name="additional_notes_3" string="Additional Notes 3:"/>
+                        </group>
+                        <group name="studio_group_huniX_right" string="Corr. Machinery Models Using Part:"
+                               attrs="{&quot;invisible&quot;: [[&quot;yesno&quot;,&quot;!=&quot;,&quot;Yes&quot;]]}">
+                            <field name="machine_model_s" string="Machine Model #s:"/>
+                            <field name="facility_specific_notes" string="Facility Specific Notes"/>
+                            <field name="additional_notes_4" string="Additional Notes 4:"/>
+                        </group>
+                    </group>
+                    <group name="studio_group_kAgTB">
+                        <group name="studio_group_kAgTB_left" string="MSDS / REACH / RoHS / Cert of Conf"
+                               attrs="{&quot;invisible&quot;: [[&quot;yesno&quot;,&quot;!=&quot;,&quot;Yes&quot;]]}">
+                            <field filename="pdf_1_filename" name="pdf_1" widget="pdf_viewer"
+                                   string="PDF 1">
+                                <field invisible="1" name="pdf_1_filename"/>
+                            </field>
+                            <field widget="pdf_viewer" name="pdf_2" string="PDF 2"/>
+                            <field filename="pdf_3_filename" name="pdf_3" string="PDF 3"
+                                   widget="pdf_viewer"/>
+                            <field name="additional_notes_2" string="Additional Notes 2:"/>
+                            <field invisible="1" name="pdf_3_filename"/>
+                        </group>
+                        <group name="studio_group_kAgTB_right" string="Vendor Drawings/Docs"
+                               attrs="{&quot;invisible&quot;: [[&quot;yesno&quot;,&quot;!=&quot;,&quot;Yes&quot;]]}">
+                            <field name="drawing_not_found" string="Drawing Not Found"/>
+                            <field name="uploadmodified_drawing_date" string="Upload/Modified Drawing Date:"/>
+                            <field name="drawing_status" string="Drawing Status:"/>
+                            <field name="verified_by" string="Verified By"/>
+                            <field filename="pdf_1_1_filename" name="pdf_1_1" widget="pdf_viewer"
+                                   string="PDF 1_1">
+                                <field invisible="1" name="pdf_1_1_filename"/>
+                            </field>
+                            <field filename="pdf_2_1_filename" name="pdf_2_1" string="PDF 2_1"
+                                   widget="pdf_viewer"/>
+                            <field filename="pdf_3_1_filename" name="pdf_3_1" string="PDF 3_1"
+                                   widget="pdf_viewer"/>
+                            <field name="additional_notes_1" string="Additional Notes 1:"/>
+                            <field invisible="1" name="pdf_3_1_filename"/>
+                            <field invisible="1" name="pdf_2_1_filename"/>
+                            <field invisible="1" name="additional_notes_filename" string="Additional Notes filename:"/>
+                        </group>
+                    </group>
+                    <group name="studio_group_iTfxB">
+                        <group name="studio_group_iTfxB_left" string="Import/Export Invoice Information">
+                            <field name="tariff_code" string="Tariff Code"/>
+                            <field name="spanish_product_desc" string="Spanish Product Desc."/>
+                            <field name="brand_name" string="Brand Name"/>
+                            <field name="country_of_origin" string="Country of Origin"/>
+                            <field name="country_of_purchase" string="Country of Purchase"/>
+                            <field name="material_composition" string="Material Composition"/>
+                            <field name="additional_notes_import_export" string="Additional Notes import Export:"/>
+                        </group>
+                        <group name="studio_group_iTfxB_right"/>
+                    </group>
+                </page>
+
+                <page string="ECM Hist. Data" name="studio_page_QmeyY"
+                      attrs="{&quot;invisible&quot;: [[&quot;senasys_division&quot;,&quot;=&quot;,&quot;Wahl&quot;]]}">
+                    <group name="studio_group_QmeyY">
+                        <group name="studio_group_QmeyY_left">
+                            <field name="add_ecm_historical_data_below"
+                                   string="Add ECM Historical Data Below?"/>
+                            <field name="ecm_vendor" string="ECM Vendor"
+                                   attrs="{&quot;invisible&quot;: [[&quot;add_ecm_historical_data_below&quot;,&quot;!=&quot;,&quot;Yes&quot;]]}"/>
+                            <field name="vendor_aliases" string="Vendor Aliases"
+                                   attrs="{&quot;invisible&quot;: [[&quot;add_ecm_historical_data_below&quot;,&quot;!=&quot;,&quot;Yes&quot;]]}"/>
+                            <field name="invoice_aliases" string="Invoice Aliases"
+                                   attrs="{&quot;invisible&quot;: [[&quot;add_ecm_historical_data_below&quot;,&quot;!=&quot;,&quot;Yes&quot;]]}"/>
+                            <field name="rough_margin_calculation" string="Rough Margin Calculation"
+                                   help="This is an error check reference for the &quot;brought in&quot; prices on this page"
+                                   attrs="{&quot;invisible&quot;: [[&quot;add_ecm_historical_data_below&quot;,&quot;!=&quot;,&quot;Yes&quot;]]}"/>
+                            <field name="ecm_on_hand" string="ECM On Hand:"/>
+                            <field name="ecm_senasys_purchasing_levels" string="ECM Senasys Purchasing Levels"
+                                   help="Used for cross-referencing Don's and Senasys SALES for an est. quarterly target total to purchase."/>
+                        </group>
+                        <group name="studio_group_QmeyY_right"
+                               attrs="{&quot;invisible&quot;: [[&quot;add_ecm_historical_data_below&quot;,&quot;!=&quot;,&quot;Yes&quot;]]}"/>
+                    </group>
+                    <group name="studio_group_GrqXa"/>
+                </page>
+
+                <page string="Senasys Machine" name="studio_page_mg1FV"
+                      attrs="{&quot;invisible&quot;: [&quot;|&quot;,[&quot;machining_required&quot;,&quot;=&quot;,&quot;TBD&quot;],[&quot;machining_required&quot;,&quot;=&quot;,&quot;No Machining Required&quot;]]}">
+                    <group name="studio_group_mg1FV">
+                        <group name="studio_group_mg1FV_left">
+                            <field name="material" string="Material:"/>
+                            <field name="product_composition_notes" string="Product Composition Notes:"/>
+                            <field name="minutes_required"
+                                   string="Senasys Minutes Required (for pricing/billing)"/>
+                            <field name="work_process_type" string="Work Process Type"
+                                   help="This field holds data whether a &quot;modified in-house&quot; part requires skilled machinist labor/machine time...OR...is simply assembled from subcomponents and can be done by anyone with instructions...this field will be used to filter items during annual/quarterly price updates."/>
+                        </group>
+                        <group name="studio_group_mg1FV_right" string="Machining Operations Required">
+                            <field name="step_1_machining_action" string="Step 1 Machining Action"
+                                   force_save="True" attrs="{}" readonly="1"/>
+                            <field name="vendor_1" string="Vendor 1:"/>
+                            <field name="function" string="Function 1:"/>
+                            <field name="required_work" string="Specifications 1:"/>
+                            <field name="step_2_machining_action" string="Step 2 Machining Action"
+                                   force_save="True" attrs="{}" readonly="1"/>
+                            <field name="vendor_2" string="Vendor 2:"/>
+                            <field name="function_2" string="Function 2:"/>
+                            <field name="specifications_2" string="Specifications 2:"/>
+                            <field name="step_3_machining_action" string="Step 3 Maching Action"
+                                   force_save="True" attrs="{}" readonly="1"/>
+                            <field name="vendor_3" string="Vendor 3:"/>
+                            <field name="function_3" string="Function 3:"/>
+                            <field name="specifications_3" string="Specifications 3:"/>
+                            <field name="step_4_machining_action" string="Step 4 Machining Action"
+                                   force_save="True" attrs="{}" readonly="1"/>
+                            <field name="vendor_4" string="Vendor 4:"/>
+                            <field name="function_4" string="Function 4:"/>
+                            <field name="specifications_4" string="Specifications 4:"/>
+                            <field name="mfg_order_notes" string="MFG Order Notes:"
+                                   help="These notes will print on the PDF manufacturing work order...brief paragraph description of the process above."/>
+                        </group>
+                    </group>
+                </page>
+
+                <page string="Product Catalog" name="studio_page_9z90h">
+                    <group name="studio_group_9z90h">
+                        <group name="studio_group_9z90h_left">
+                            <field name="product_information" string="Product Information "
+                                   placeholder=" This tab holds information that we will use to populate product catalogs."
+                                   force_save="True" attrs="{}" readonly="1"/>
+                            <field name="add_tech_data_to_print_to_catalog_record"
+                                   string="Add Tech. Data to Print to Catalog Record"
+                                   help="Only include if needed to describe the item, and things a customer would need to know if looking to order/quote."/>
+                            <field name="catalog_section" string="Catalog Section"
+                                   help="This is to be able to arrange the catalog by item type for easier customer usage"/>
+                            <field name="cust_part_names" string="Cust. Part Name/#'s"
+                                   help="Enter the information in the template format seen below"
+                                   placeholder="GP: tbd / IP: tbd / BHS: tbd / Other: tbd"/>
+                            <field name="website_lead_time" string="Website lead Time"/>
+                        </group>
+                        <group name="studio_group_9z90h_right">
+                            <field widget="image" options="{&quot;size&quot;:[0,180]}"
+                                   name="image_for_product_catalog" string="Image for Product Catalog"
+                                   help="Should be Square Aspect Ratio...this is so we can have a different photo here than our internal record. Perhaps to hide mfg. data, internal photo notes, etc"/>
+                        </group>
+                    </group>
+                </page>
+
+<!--                <page string="Wahl Information" name="studio_page_zA9s8"-->
+<!--                      attrs="{&quot;invisible&quot;: [[&quot;senasys_division&quot;,&quot;=&quot;,&quot;Empire Corrugated&quot;]]}">-->
+<!--                    <group name="studio_group_zA9s8">-->
+<!--                        <group name="studio_group_zA9s8_left">-->
+<!--                            <field name="used_in_part_s" string="Used in Part #(s)"/>-->
+<!--                            <field widget="pdf_viewer" name="mfg_bom" string="MFG BOM"/>-->
+<!--                        </group>-->
+<!--                        <group name="studio_group_zA9s8_right"/>-->
+<!--                    </group>-->
+<!--                </page>-->
+            </xpath>
+
+            <xpath expr="//field[@name='image_1920']" position="attributes">
+                <attribute name="options">{"preview_image":"image_128","size":[0,270]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='categ_id']" position="after">
+                <field name="x_description" string="Vendor PO / Mfg Description"
+                       help="This is a location to put detailed vendor/mfg part #, etc...assumption is we want this shown on our vendor POs, but don't want our customers to see this information...as they could then order it directly themselves."/>
+                <field name="vendor_noterequirement" string="Vendor Note/Requirement"
+                       help="If we require confirmation prior to vendor beginning manufacturing (ex: signoff drawing), enter notes...will print on vendor PO (PDF)."/>
+            </xpath>
+            <xpath expr="//field[@name='default_code']" position="attributes">
+                <attribute name="string">Part # Description</attribute>
+            </xpath>
+            <xpath expr="//field[@name='barcode']" position="after">
+                <field name="senasys_division" string="Senasys Division"/>
+                <field name="machining_required" string="Machining Required:"/>
+                <field name="no_quote_this_item" string="No Quote This Item"/>
+                <field name="reason_no_quoting_item" string="Reason No Quoting Item:"
+                       attrs="{&quot;invisible&quot;: [[&quot;no_quote_this_item&quot;,&quot;=&quot;,False]]}"/>
+                <field name="dateqtycust_requesting_no_quote_part"
+                       string="Date/Qty/Cust Requesting &quot;No Quote&quot; Part:"
+                       attrs="{&quot;invisible&quot;: [[&quot;no_quote_this_item&quot;,&quot;=&quot;,False]]}"/>
+            </xpath>
+            <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='general_information']/group[1]/group[@name='group_standard_price']/label[1]"
+                   position="before">
+                <field name="is_a_quote_required_for_each_customer_request"
+                       string="Is a quote required for each customer request?"/>
+            </xpath>
+            <xpath expr="//field[@name='uom_po_id']" position="after">
+                <field name="notes_for_order_entry_1" string="Notes for Order Entry"/>
+                <field name="oem_pricing_information" string="OEM Pricing Information"/>
+                <field name="date_of_oem_pricing" string="Date of OEM Pricing:"/>
+            </xpath>
+            <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='general_information']/group[1]"
+                   position="after">
+                <group name="studio_group_3RsH9">
+                    <group name="studio_group_3RsH9_left" string="Sell Price Verification (Last Updated)">
+                        <field name="by_salesperson_2" string="By Salesperson 2:"/>
+                        <field name="date_verified" string="Date Verified:"/>
+                    </group>
+                    <group name="studio_group_3RsH9_right" string="Purchase Price Verification (Last Updated)">
+                        <field name="by_salesperson_3" string="By Salesperson 3:"/>
+                        <field name="date_verified_1" string="Date Verified 1:"/>
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='seller_ids']" position="inside">
+                <tree string="Vendor Information" multi_edit="1" editable="bottom">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name" readonly="0"/>
+                    <field name="product_id" readonly="0" optional="hide"
+                           invisible="context.get('product_template_invisible_variant', False)"
+                           groups="product.group_product_variant"/>
+                    <field name="product_tmpl_id" string="Product" readonly="1"
+                           invisible="context.get('visible_product_tmpl_id', True)"/>
+                    <field name="product_name" optional="hide"/>
+                    <field name="product_code" optional="hide"/>
+                    <field name="currency_id" groups="base.group_multi_currency"/>
+                    <field name="date_start" optional="hide"/>
+                    <field name="date_end" optional="hide"/>
+                    <field name="company_id" readonly="0" groups="base.group_multi_company" optional="hide"/>
+                    <field name="min_qty" optional="hide"/>
+                    <field name="product_uom" groups="uom.group_uom"/>
+                    <field name="price" string="Price"/>
+                    <field name="delay" optional="show"/>
+                </tree>
+                <form string="Vendor Information">
+                    <sheet name="studio_sheet_3bfe4a">
+                        <group name="studio_group_efc4dc">
+                            <group name="vendor" string="Vendor">
+                                <field name="product_variant_count" invisible="1"/>
+                                <field name="name" context="{'res_partner_search_mode': 'supplier'}"/>
+                                <field name="product_name"/>
+                                <field name="product_code"/>
+                                <label for="delay"/>
+                                <div name="studio_div_66a508">
+                                    <field name="delay" class="oe_inline"/>
+                                    days
+                                </div>
+                            </group>
+                            <group string="Pricelist" name="studio_group_1f2197">
+                                <field name="product_tmpl_id" string="Product"
+                                       invisible="context.get('visible_product_tmpl_id', True)"/>
+                                <field name="product_id" groups="product.group_product_variant"
+                                       domain="[('product_tmpl_id', '=', product_tmpl_id)]"
+                                       options="{'no_create_edit': True}"/>
+                                <label for="min_qty"/>
+                                <div class="o_row" name="studio_div_800fa7">
+                                    <field name="min_qty"/>
+                                    <field name="product_uom" groups="uom.group_uom"/>
+                                </div>
+                                <label for="price" string="Unit Price"/>
+                                <div class="o_row" name="studio_div_161df5">
+                                    <field name="price"/>
+                                    <field name="currency_id" groups="base.group_multi_currency"/>
+                                </div>
+                                <label for="date_start" string="Validity"/>
+                                <div class="o_row" name="studio_div_9e39d7">
+                                    <field name="date_start"/>
+                                    to
+                                    <field name="date_end"/>
+                                </div>
+                                <field name="company_id" options="{'no_create': True}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </xpath>
+            <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='purchase']/group[not(@name)][1]"
+                   position="attributes">
+                <attribute name="string">Purchase Description (These Notes Print on Vendor POs)</attribute>
+            </xpath>
+            <xpath expr="//form[@name='Product Template']/sheet[1]/notebook[1]/page[@name='purchase']/group[not(@name)][1]"
+                   position="after">
+                <group name="studio_group_rLjCx">
+                    <group name="studio_group_rLjCx_left" string="Preferred Vendor(s)">
+                        <field name="preferred_vendors" string="1st Choice:" widget="char"/>
+                        <field name="ranked_alternatives" string="Ranked Alternatives"/>
+                    </group>
+                    <group name="studio_group_rLjCx_right" string="Minimum Order Quantity Required?">
+                        <field name="yesno_1" string="Yes/No"/>
+                        <field name="describe_here" string="Describe Here:"
+                               attrs="{&quot;invisible&quot;: [[&quot;yesno_1&quot;,&quot;!=&quot;,&quot;Yes&quot;]]}"/>
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//group[@name='group_lots_and_weight']" position="inside">
+                <field name="packing_instructions" string="Packing Instructions"/>
+                <field name="senasys_stocking_priority_level" string="A, B, C Class"
+                       help="Reference Senasys MS Access Information.  Type C is &quot;Least Important&quot; to stock so usually no reordering rules...But we will review items if demand increases."/>
+                <field name="inv_location" string="Inv Location:"
+                       help="The physical shelf that products are stored on."/>
+                <field name="est_weight_each_lbs" string="Est Weight/Dim (Each)"
+                       help="Useful for shipping items, planning box weights, LTL vs UPS, etc"/>
+                <field name="prepship_notes" string="Prep/Ship Notes"/>
+                <field name="notes" string="Notes"
+                       attrs="{&quot;invisible&quot;: [[&quot;packing_instructions&quot;,&quot;!=&quot;,&quot;Custom: See Below&quot;]]}"/>
+            </xpath>
+            <!--            <xpath expr="//page[@name='general_information']" position="inside">-->
+            <!--                <group>-->
+            <!--                    <field name="is_a_quote_required_for_each_customer_request"/>-->
+            <!--                </group>-->
+            <!--                <group>-->
+            <!--                    <group>-->
+            <!--                        <field name="by_salesperson_1"/>-->
+            <!--                        <field name="date_verified"/>-->
+            <!--                    </group>-->
+            <!--                    <group>-->
+            <!--                        <field name="by_salesperson_2"/>-->
+            <!--                        <field name="date_verified_1"/>-->
+            <!--                    </group>-->
+            <!--                </group>-->
+            <!--            </xpath>-->
+            <!--            <xpath expr="//field[@name='uom_po_id']" position="after">-->
+            <!--                <field name="date_of_oem_pricing" string="Date of OEM Pricing:"/>-->
+            <!--                <field name="notes_for_order_entry_1" string="Notes for Order Entry"/>-->
+            <!--                <field name="oem_pricing_information" string="OEM Pricing Information"/>-->
+            <!--            </xpath>-->
+            <!--            <xpath expr="//field[@name='barcode']" position="after">-->
+            <!--                <field name="dateqtycust_requesting_no_quote_part"-->
+            <!--                       string="Date/Qty/Cust Requesting &quot;No Quote&quot; Part:"/>-->
+            <!--                <field name="machining_required" string="Machining Required:"/>-->
+            <!--                <field name="no_quote_this_item" string="No Quote This Item"/>-->
+            <!--                <field name="reason_no_quoting_item" string="Reason No Quoting Item:"/>-->
+            <!--                <field name="senasys_division" string="Senasys Division"/>-->
+            <!--            </xpath>-->
+            <!--            <xpath expr="//page[@name='purchase']" position="inside">-->
+            <!--                <group>-->
+            <!--                    <field name="describe_here" string="Describe Here:"/>-->
+            <!--                    <field name="preferred_vendors" string="1st Choice:"/>-->
+            <!--                    <field name="ranked_alternatives" string="Ranked Alternatives"/>-->
+            <!--                    <field name="yesno_1" string="Yes/No"/>-->
+            <!--                </group>-->
+            <!--            </xpath>-->
+            <!--            <xpath expr="//page[@name='inventory']" position="inside">-->
+            <!--                <group>-->
+            <!--                    <field name="est_weight_each_lbs" string="Est Weight/Dim (Each)"/>-->
+            <!--                    <field name="inv_location" string="Inv Location:"/>-->
+            <!--                    <field name="notes" string="Notes"/>-->
+            <!--                    <field name="packing_instructions" string="Packing Instructions"/>-->
+            <!--                    <field name="prepship_notes" string="Prep/Ship Notes"/>-->
+            <!--                    <field name="senasys_stocking_priority_level" string="A, B, C Class"/>-->
+            <!--                </group>-->
+            <!--            </xpath>-->
+            <!--            <xpath expr="//field[@name='categ_id']" position="after">-->
+            <!--                <field name="vendor_noterequirement" string="Vendor Note/Requirement"-->
+            <!--                       help="If we require confirmation prior to vendor beginning manufacturing (ex: signoff drawing), enter notes...will print on vendor PO (PDF)."/>-->
+            <!--            </xpath>-->
+            <xpath expr="//field[@name='seller_ids']" position="inside">
+                <tree string="Vendor Information" multi_edit="1" editable="bottom">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name" readonly="0"/>
+                    <field name="vendor_spec_part_notes" optional="show"/>
+                    <field name="product_id" readonly="0" optional="hide"
+                           invisible="context.get('product_template_invisible_variant', False)"
+                           groups="product.group_product_variant"/>
+                    <field name="product_tmpl_id" string="Product" readonly="1"
+                           invisible="context.get('visible_product_tmpl_id', True)"/>
+                    <field name="product_name" optional="hide"/>
+                    <field name="product_code" optional="hide"/>
+                    <field name="currency_id" groups="base.group_multi_currency"/>
+                    <field name="date_start" optional="hide"/>
+                    <field name="date_end" optional="hide"/>
+                    <field name="company_id" readonly="0" groups="base.group_multi_company" optional="hide"/>
+                    <field name="min_qty" optional="hide"/>
+                    <field name="product_uom" groups="uom.group_uom"/>
+                    <field name="price" string="Price"/>
+                    <field name="delay" optional="show"/>
+                </tree>
+                <form string="Vendor Information">
+                    <sheet name="studio_sheet_3bfe4a">
+                        <group name="studio_group_efc4dc">
+                            <group name="vendor" string="Vendor">
+                                <field name="product_variant_count" invisible="1"/>
+                                <field name="name" context="{'res_partner_search_mode': 'supplier'}"/>
+                                <field name="product_name"/>
+                                <field name="product_code"/>
+                                <field name="vendor_spec_part_notes" string="Vendor Spec. Part# Notes"
+                                       help="A field for recording distinctions between vendors for the same Part # purchased, requirements, etc"/>
+                                <label for="delay"/>
+                                <div name="studio_div_66a508">
+                                    <field name="delay" class="oe_inline"/>
+                                    days
+                                </div>
+                            </group>
+                            <group string="Pricelist" name="studio_group_1f2197">
+                                <field name="product_tmpl_id" string="Product"
+                                       invisible="context.get('visible_product_tmpl_id', True)"/>
+                                <field name="product_id" groups="product.group_product_variant"
+                                       domain="[('product_tmpl_id', '=', product_tmpl_id)]"
+                                       options="{'no_create_edit': True}"/>
+                                <label for="min_qty"/>
+                                <div class="o_row" name="studio_div_800fa7">
+                                    <field name="min_qty"/>
+                                    <field name="product_uom" groups="uom.group_uom"/>
+                                </div>
+                                <label for="price" string="Unit Price"/>
+                                <div class="o_row" name="studio_div_161df5">
+                                    <field name="price"/>
+                                    <field name="currency_id" groups="base.group_multi_currency"/>
+                                </div>
+                                <label for="date_start" string="Validity"/>
+                                <div class="o_row" name="studio_div_9e39d7">
+                                    <field name="date_start"/>
+                                    to
+                                    <field name="date_end"/>
+                                </div>
+                                <field name="company_id" options="{'no_create': True}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </xpath>
+        </field>
+    </record>
+</odoo>

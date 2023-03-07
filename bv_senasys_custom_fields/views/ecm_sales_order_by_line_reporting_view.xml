@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="ecm_sales_order_by_line_reporting_form_view">
+        <field name="name">ecm.sales.order.by.line.reporting.form.view</field>
+        <field name="model">ecm.sales.order.by.line.reporting</field>
+        <field name="arch" type="xml">
+            <form>
+                <header/>
+                <sheet string="ECM_Sales_Order_By_Line_Reporting">
+                    <!--                    <widget name="web_ribbon" text="Archived" bg_color="bg-danger"-->
+                    <!--                            attrs="{'invisible': [('x_active', '=', True)]}"/>-->
+                    <!--                    <field name="x_active" invisible="1"/>-->
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" required="1" placeholder="Name..."/>
+                        </h1>
+                    </div>
+                    <group name="studio_group_47f0ee">
+                        <group name="studio_group_47f0ee_left"/>
+                        <group name="studio_group_47f0ee_right"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter" name="oe_chatter">
+                    <!--                    <field name="message_follower_ids"/>-->
+                    <!--                    <field name="message_ids"/>-->
+                    <!--                    <field name="activity_ids"/>-->
+                </div>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="ecm_sales_order_by_line_reporting_tree_view">
+        <field name="name">ecm.sales.order.by.line.reporting.form.view</field>
+        <field name="model">ecm.sales.order.by.line.reporting</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="name" widget="handle"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="ecm_sales_order_by_line_reporting_kanban_view">
+        <field name="name">ecm.sales.order.by.line.reporting.kanban.view</field>
+        <field name="model">ecm.sales.order.by.line.reporting</field>
+        <field name="arch" type="xml">
+            <kanban string="ECM_Sales_Order_By_Line_Reporting">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                            <div class="o_kanban_card_content">
+                                <field name="name" modifiers="{}"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="ecm_sales_order_by_line_reporting_search_view">
+        <field name="name">ecm.sales.order.by.line.reporting.search.view</field>
+        <field name="model">ecm.sales.order.by.line.reporting</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <separator/>
+                <separator/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_ecm_sales_order_by_line_reporting_form_view" model="ir.actions.act_window">
+        <field name="name">ECM Sales order by line reporting</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ecm.sales.order.by.line.reporting</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('bv_senasys_custom_fields.ecm_sales_order_by_line_reporting_tree_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('bv_senasys_custom_fields.ecm_sales_order_by_line_reporting_form_view')}),
+        ]"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                NO ECM found. Let's create one!
+            </p>
+        </field>
+    </record>
+    <menuitem
+            parent="sale.menu_sale_report"
+            id="ecm_sales_order_by_line_reporting_form"
+            name="Sales Order ECM Reporting"
+            action="bv_senasys_custom_fields.action_ecm_sales_order_by_line_reporting_form_view"/>
+</odoo>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--        For Price Remove in product Form View-->
+        <template id="products_item_inherit" inherit_id="website_sale.product_price">
+            <xpath expr="//div[@class='product_price d-inline-block mt-2 mb-3']" position="replace">
+                <span t-field="product.default_code" style="font-size:22px"/>
+                <br/>
+                <span class="text-primary text-decoration-none" t-field="product.catalog_section"
+                      style="font-size:20px"/>
+                <br/>
+                <span t-field="product.add_tech_data_to_print_to_catalog_record" style="font-size:18px"/>
+                <br/>
+                <br/>
+            </xpath>
+        </template>
+
+        <!--        For Image Replace and price remove in product kanban View-->
+        <template id="products_shop_item_inherit" inherit_id="website_sale.products_item">
+            <xpath expr="//span[@class='d-flex h-100 justify-content-center align-items-center']" position="replace">
+                <span t-field="image_holder.image_for_product_catalog"
+                      t-options="{'widget': 'image', 'preview_image': 'image_for_product_catalog' if image_holder.image_for_product_catalog else 'image_256', 'itemprop': 'image'}"
+                      class="d-flex h-100 justify-content-center align-items-center"/>
+            </xpath>
+            <xpath expr="//div[@class='p-2 o_wsale_product_information_text']" position="replace">
+                <h6 class="o_wsale_products_item_title mb-1">
+                    <a class="text-primary text-decoration-none" itemprop="name" t-att-href="product_href"
+                       t-att-content="product.name" t-field="product.name"/>
+                    <br/>
+                    <a class="text-primary text-decoration-none" itemprop="name" t-att-href="product_href"
+                       t-att-content="product.default_code" t-field="product.default_code"/>
+                    <a role="button" t-if="not product.website_published" t-att-href="product_href"
+                       class="btn btn-sm btn-danger" title="This product is unpublished.">Unpublished
+                    </a>
+                </h6>
+            </xpath>
+        </template>
+
+        <!--        For Image Replace in Product Form view-->
+        <template id="product_form_website" inherit_id="website_sale.shop_product_carousel">
+            <xpath expr="//div[hasclass('carousel-inner')]" position="replace">
+                <t t-foreach="product_images" t-as="product_image">
+                    <div t-attf-class="carousel-item h-100#{' active' if product_image_first else ''}">
+                    <div t-field="product_image.image_for_product_catalog"
+                         class="d-flex align-items-center justify-content-center h-100"
+                         t-options='{"widget": "image", "preview_image": "image_for_product_catalog", "class": "product_detail_img mh-100", "alt-field": "name", "zoom": product_image.can_image_1024_be_zoomed and "image_for_product_catalog"}'/>
+                    </div>
+                </t>
+            </xpath>
+        </template>
+
+        <!--        For Untaxed amount remove in Cart Card-->
+        <template id="product_website_1_sale_cart_lines" inherit_id="website_sale.total">
+            <xpath expr="//tr[@id='order_total_untaxed']" position="replace"/>
+        </template>
+
+        <!--        For Tax amount remove in Cart Card-->
+        <template id="product_website_2_sale_cart_lines" inherit_id="website_sale.total">
+            <xpath expr="//tr[@id='order_total_taxes']" position="replace"/>
+        </template>
+
+        <!--        For Total amount remove in Cart Card-->
+        <template id="product_website_3_sale_cart_lines" inherit_id="website_sale.total">
+            <xpath expr="//tr[@id='order_total']" position="replace"/>
+        </template>
+
+        <!--        For Product amount remove in Cart Summary-->
+        <template id="product_website_sale_cart_lines_form_price" inherit_id="website_sale.cart">
+            <xpath expr="//div[@id='o_cart_summary']" position="replace"/>
+        </template>
+
+        <!--        To Remove Price Header in Cart lines -->
+        <template id="product_website_sale_cart_lines_form_price_header" inherit_id="website_sale.cart_lines">
+            <xpath expr="//th[@class='text-center td-price']" position="replace"/>
+        </template>
+
+        <!--        To Remove Price in Cart lines -->
+        <template id="product_website_sale_cart_lines_form_price_val" inherit_id="website_sale.cart_lines">
+            <xpath expr="//td[@class='text-center td-price']" position="replace"/>
+        </template>
+
+        <!--        To Remove Price Summary from Address Payment Page-->
+        <template id="product_website_sale_cart_lines_form_address_on_payment" inherit_id="website_sale.cart_summary">
+            <xpath expr="//div[@class='card-body p-xl-0']" position="replace"/>
+        </template>
+
+        <!--        To Replace ADD TO CART BUTTON on product form view-->
+        <template id="product_website_sale_form_button_replace" inherit_id="website_sale.product">
+            <xpath expr="//div[@class='d-inline']" position="replace">
+                <a role="button" id="add_to_cart"
+                   class="btn btn-primary btn-lg js_check_product a-submit my-1 mr-1 px-5 font-weight-bold flex-grow-1"
+                   href="#"><i class="fa fa-shopping-cart mr-2"/>ADD TO QUOTE REQUEST
+                </a>
+                <div id="product_option_block" class="d-inline-block align-middle"/>
+            </xpath>
+        </template>
+
+        <!--        To Replace shipping on product form view-->
+        <record id="website_sale.product_custom_text" model="ir.ui.view">
+            <field name="active">False</field>
+        </record>
+        <template id="product_custom_text_2" inherit_id="website_sale.product" active="True" customize_show="True"
+                  name="Terms and Conditions">
+            <xpath expr="//div[@id='o_product_terms_and_share']" position="inside">
+                <p class="text-muted h6 mt-3">
+                    <a href="/terms" class="text-muted">Terms and Conditions</a>
+                    <br/>
+                    10-day money-back guarantee
+                    <br/>
+                    Typical Lead Time : <span t-field="product.website_lead_time"/>
+                </p>
+            </xpath>
+        </template>
+
+        <!--        To Replace Review Order and Confirm Order-->
+        <template id="replace_review_order_cart_page" inherit_id="website_sale.wizard_checkout">
+            <xpath expr="//div[@id='wizard-step10']" position="replace">
+                <div id="wizard-step10"
+                     t-att-class="'progress-wizard-step %s' % (step == 10 and 'active' or step&gt;10 and 'complete' or 'disabled')">
+                    <div class="progress-wizard-bar d-none d-md-block"/>
+                    <span class="progress-wizard-dot d-none d-md-inline-block"/>
+                    <div class="text-center progress-wizard-steplabel">Review Quote Request</div>
+                </div>
+            </xpath>
+        </template>
+        <template id="replace_confirm_order_cart_page" inherit_id="website_sale.wizard_checkout">
+            <xpath expr="//div[@id='wizard-step40']" position="replace">
+                <div id="wizard-step40"
+                     t-att-class="'progress-wizard-step %s' % (step == 40 and 'active' or step&gt;40 and 'complete' or 'disabled')">
+                    <div class="progress-wizard-bar d-none d-md-block"/>
+                    <span class="progress-wizard-dot d-none d-md-inline-block"/>
+                    <div class="text-center progress-wizard-steplabel">Send Quote Request</div>
+                </div>
+            </xpath>
+        </template>
+
+        <!--        Proceed Checkout Button Replace-->
+        <template id="product_website_sale_cart_proceed_checkout_button_replace" inherit_id="website_sale.cart">
+            <xpath expr="//a[@class='btn btn-primary float-right d-none d-xl-inline-block']" position="replace">
+                <a role="button" t-if="website_sale_order and website_sale_order.website_order_line"
+                   class="btn btn-primary float-right d-none d-xl-inline-block" href="/shop/checkout?express=1">
+                    <span class="">Process Quote</span>
+                    <span class="fa fa-chevron-right"/>
+                </a>
+            </xpath>
+        </template>
+
+<!--        Payment Confirmation Page Price Hide-->
+        <template id="payment_confirmation_page_price_replace" inherit_id="website_sale.confirmation">
+            <xpath expr="//table[@class='table']" position="replace">
+<!--                <a role="button" t-if="website_sale_order and website_sale_order.website_order_line"-->
+<!--                   class="btn btn-primary float-right d-none d-xl-inline-block" href="/shop/checkout?express=1">-->
+<!--                    <span class="">Process Quote</span>-->
+<!--                    <span class="fa fa-chevron-right"/>-->
+<!--                </a>-->
+            </xpath>
+        </template>
+    </data>
+</odoo>

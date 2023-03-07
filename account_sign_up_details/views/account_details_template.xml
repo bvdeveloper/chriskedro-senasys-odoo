@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="account_sign_up_details_id" inherit_id="auth_signup.fields">
+            <xpath expr="//div[@class='form-group field-confirm_password']" position="after">
+                <div class="form-group field-name">
+                    <label for="p_contact" class="control-label">Contact</label>
+                    <input type="text" name="p_contact" t-att-value="p_contact" id="p_contact" class="form-control"
+                           required="required" t-att-readonly="'readonly' if only_passwords else None"
+                           t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                    <label for="p_company" class="control-label">Company</label>
+                    <input type="text" name="p_company" t-att-value="p_company" id="p_company" class="form-control"
+                           t-att-readonly="'readonly' if only_passwords else None"
+                           t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</openerp>
