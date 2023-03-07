@@ -22,14 +22,14 @@ class ProductTemplate(models.Model):
         [('Alyssa', 'Alyssa'), ('Chris', 'Chris'), ('ECM/Don (Initial Pricing)', 'ECM/Don (Initial Pricing)'),
          ('Jeremy', 'Jeremy'), ('Kayla', 'Kayla'), ('Lana', 'Lana'), ('Sara', 'Sara'), ('Victoria', 'Victoria')], string='By Salesperson 2:')
     by_salesperson_3 = fields.Selection(
-        [('Alyssa', 'Alyssa'), ('Chris', 'Chris'), ('ECM/Don(Initial Pricing)', 'ECM/Don (Initial Pricing)'),
+        [('Alyssa', 'Alyssa'), ('Chris', 'Chris'), ('ECM/Don (Initial Pricing)', 'ECM/Don (Initial Pricing)'),
          ('Jeremy', 'Jeremy'), ('Kayla', 'Kayla'), ('Lana', 'Lana'), ('Sara', 'Sara'), ('Victoria', 'Victoria')], string='By Salesperson 3:')
     catalog_section = fields.Selection(
         [('Actuators', 'Actuators'), ('Bearings', 'Bearings'), ('Bearing Housings', 'Bearing Housings'),
-         ('Connectors / Wires', 'Connectors / Wires'), ('Encoders', 'Encoders'), ('Glue Pans', 'Glue Pans'),
+         ('Connectors/Wires', 'Connectors/Wires'), ('Encoders', 'Encoders'), ('Glue Pans', 'Glue Pans'),
          ('Glue Pan - Accessories', 'Glue Pan - Accessories'), ('Machine Parts', 'Machine Parts'), ('Motors', 'Motors'),
          ('Rods', 'Rods'),
-         ('crews / Nuts / Bolts / Washers', 'crews / Nuts / Bolts / Washers')], string='Catalog Section')
+         ('Screws/Nuts/Bolts/Washers', 'Screws/Nuts/Bolts/Washers')], string='Catalog Section')
     country_of_origin = fields.Selection(
         [('Canada', 'Canada'), ('China', 'China'), ('Mexico', 'Mexico'),
          ('USA', 'USA')], string='Country of Origin')
@@ -93,7 +93,7 @@ class ProductTemplate(models.Model):
          ('Rack 6', 'Rack 6')]
         , string='Inv Location:')
     invoice_aliases = fields.Text(string='Invoice Aliases')
-    is_a_quote_required_for_each_customer_request = fields.Selection([('YES', 'YES'), ('NO', 'NO'), ('TBD', 'TBD')],
+    is_a_quote_required_for_each_customer_request = fields.Selection([('Yes', 'Yes'), ('No', 'No'), ('TBD', 'TBD')],
                                                                      string='Is a quote required for each customer request?')
     machine_model_s = fields.Text(string='Machine Model #s:')
     machine_model_s_utilizing_part = fields.Text(string='Machine Model S Utilizing Part')
@@ -119,11 +119,11 @@ class ProductTemplate(models.Model):
     no_quote_this_item = fields.Boolean(string='No Quote This Item')
     notes = fields.Char(string='Notes')
     notes_for_order_entry = fields.Char(string='Notes for Order Entry')
-    notes_for_order_entry_1 = fields.Selection([('Alt Vendors/Prices', 'Alt Vendors/Prices'), ('Obsolete', 'Obsolete'),
+    notes_for_order_entry_1 = fields.Selection([('Alt Vendors/Prices', 'Alt Vendors/Prices'),
+                                                ('Long Lead Time','Long Lead Time'),
+                                                ('Obsolete', 'Obsolete'),
                                                 ('Obsolete: See Alt', 'Obsolete: See Alt'),
-                                                (
-                                                    'Part # Variant is Cust. Specific',
-                                                    'Part # Variant is Cust. Specific'),
+                                                ('Part # Variant is Cust. Specific','Part # Variant is Cust. Specific'),
                                                 ('Price Check Req!', 'Price Check Req!'),
                                                 ('See Tech Notes', 'See Tech Notes'),
                                                 ('Upsell Available', 'Upsell Available'),
@@ -150,9 +150,9 @@ class ProductTemplate(models.Model):
     pdf_3_1 = fields.Binary(string='PDF 3_1')
     pdf_3_1_filename = fields.Char(string='PDF 3_1 filename')
     preferred_vendors = fields.Char(string='1st Choice:')
-    prepship_notes = fields.Selection([('☐ Date:____/____ /____ Notes: _____________ _____________________',
+    prepship_notes = fields.Selection([('☐ Date:____/____ /____  Notes: _____________ _____________________',
                                         '☐ Date:____/____ /____ Notes: _____________ _____________________'),
-                                       ('a☐ Prepped___ Date:____/____ /____ Notes: _____________ _____________________',
+                                       ('a☐ Prepped___ Date:____/____ /____  Notes: _____________ _____________________',
                                         '☐ Prepped___ Date:____/____ /____ Notes: _____________ _____________________')],
                                       string='Prep/Ship Notes')
     product_composition_galvanized_stainless_steel_etc = fields.Text(

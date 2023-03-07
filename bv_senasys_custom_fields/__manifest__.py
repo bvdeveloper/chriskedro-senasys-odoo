@@ -11,7 +11,7 @@
             """,
     'author': 'Brainvire',
     'website': 'https://www.brainvire.com/',
-    'depends': ['base', 'sale_management', 'purchase', 'account', 'product', 'stock', 'product_expiry', 'purchase_stock'],
+    'depends':['base', 'sale_management', 'purchase', 'account', 'product', 'stock', 'product_expiry', 'purchase_stock'],
     'data': [
         'security/ir.model.access.csv',
         'views/res_partner.xml',
@@ -35,6 +35,6 @@
     ],
     'css': [],
     'installable': True,
-    'auto_install': True,
-    'application': True,
+    # 'auto_install': True,
+    'application': False,
 }

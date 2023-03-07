@@ -12,7 +12,7 @@ class SaleOrder(models.Model):
     # order_notes_seen_on_int_reports_only = fields.Char(string='Order Notes (Seen on Int. Reports Only)')
     order_promised_ship_date = fields.Date(string='Order Promised Ship Date:')
     portal_cust_contact_method = fields.Selection(
-        [('Ariba', 'Ariba - ECM'), ('Email / Phone / Other', 'Email / Phone / Other'),
+        [('Ariba', 'Ariba - ECM'), ('Email/Phone/Other', 'Email/Phone/Other'),
          ('Ariba - Senasys', 'Ariba - Senasys')],
         string='Portal Cust. Contact Method')
     quote_closed = fields.Boolean(string='Quote Closed')

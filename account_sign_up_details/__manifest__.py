@@ -11,7 +11,7 @@
                              'views/res_partner_view.xml',
                              'views/account_details_template.xml',
                             ],
-  "application"          :  True,
+  "application"          :  False,
   "installable"          :  True,
   "auto_install"         :  False,
 }

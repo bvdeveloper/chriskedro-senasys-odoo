@@ -19,7 +19,7 @@
                     </group>
                     <group name="studio_group_IJ0pM_right">
                         <field name="request_date"/>
-                        <field name="select"/>
+                        <field name="select_"/>
                         <field name="vendor_drop_ship_enter_address_below"/>
                         <field name="drop_ship_to_vendor" string="Drop Ship Address (Autofill):"
                                attrs="{&quot;invisible&quot;: [[&quot;vendor_drop_ship_enter_address_below&quot;,&quot;=&quot;,&quot;No&quot;]]}"/>

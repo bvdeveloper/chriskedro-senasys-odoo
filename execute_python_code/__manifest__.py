@@ -4,7 +4,7 @@
         Allow execution of script with User Interface within Odoo
     """,
     "author": "OpenERP SA",
-    "version": "0.1",
+    "version": "15.0",
     "depends": ["base"],
     "data": [
         'view/python_code_view.xml',

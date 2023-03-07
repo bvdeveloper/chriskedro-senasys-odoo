@@ -17,7 +17,7 @@ class PurchaseOrder(models.Model):
         [('Standard / Economy', 'UPS Ground'), ('UPS 2nd Day Air', 'UPS 2nd Day Air'),
          ('Expedited', 'UPS Overnight'), ('UPS Overnight (Early AM)', 'UPS Overnight (Early AM)'), ('LTL', 'LTL')],
         string='Requested Delivery Method:')
-    select = fields.Selection(
+    select_ = fields.Selection(
         [('Use Request Date Above', 'Use Request Date Above'), ('TBD (As soon as possible)', 'TBD (As soon as possible)')], string='Select:')
     senasys_buyer = fields.Char(string='Senasys Buyer:')
     vendor_drop_ship_enter_address_below = fields.Selection(
