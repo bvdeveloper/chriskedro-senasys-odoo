@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="purchase_order_inherited_view">
+        <field name="name">purchase.order.inherit.form</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/label[2]" position="attributes">
+                <attribute name="string">Confirmed Promise Date (Delete and Leave blank initially, then enter once we
+                    receive Vendor Confirmation)
+                </attribute>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
+                <group name="studio_group_IJ0pM">
+                    <group name="studio_group_IJ0pM_left">
+                        <field name="senasys_buyer"/>
+                        <field name="requested_delivery_method"/>
+                        <field name="senasys_division"/>
+                    </group>
+                    <group name="studio_group_IJ0pM_right">
+                        <field name="request_date"/>
+                        <field name="select_"/>
+                        <field name="vendor_drop_ship_enter_address_below"/>
+                        <field name="drop_ship_to_vendor" string="Drop Ship Address (Autofill):"
+                               attrs="{&quot;invisible&quot;: [[&quot;vendor_drop_ship_enter_address_below&quot;,&quot;=&quot;,&quot;No&quot;]]}"/>
+                        <field name="po_notes"/>
+                        <field name="po_notes_internal_use_only"/>
+<!--                        <field name="reconciled_by"/>-->
+                        <field name="purchase_order_closed"/>
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='products']/field[@name='order_line']/tree[1]/field[@name='name']"
+                   position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
