@@ -9,5 +9,6 @@
     "data": [
         'view/python_code_view.xml',
     ],
+    'license': 'LGPL-3',
     "installable": True,
 }
