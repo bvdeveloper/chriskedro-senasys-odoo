@@ -35,6 +35,7 @@
     ],
     'css': [],
     'installable': True,
+    'license': 'LGPL-3',
     # 'auto_install': True,
     'application': False,
 }
