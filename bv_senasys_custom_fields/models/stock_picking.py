@@ -18,7 +18,7 @@ class StockPicking(models.Model):
                                                       ('FedEx 2nd Day Air (Prepay and Add)', 'FedEx 2nd Day Air (Prepay and Add)')],
                                                      string='Ship. Method For this Delivery')
     cust_collect_acct = fields.Char(string='Cust. Collect Acct:')
-    po_tag_ = fields.Char(string='PO# / Ref#:')
+    po_tag_ = fields.Char(string='PO# / Ref#:', related="sale_id.jobnametag")
     shipment_delivery_notes = fields.Text(string='Shipment Delivery Notes:')
     x_studio_related_field_lWIty = fields.Selection(string='Senasys Division', related="sale_id.senasys_division")
     x_studio_related_field_Pl4hB = fields.Char(related='sale_id.attncontact', string='Attn/Contact')

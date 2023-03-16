@@ -57,4 +57,15 @@
             </xpath>
         </field>
     </record>
+    <!--Inherit quotations search view-->
+    <record id="view_sale_order_inherit_search_po" model="ir.ui.view">
+      <field name="name">sale.order.search.expand.po</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+      <field name="arch" type="xml">
+        <xpath expr="//search" position="inside">
+          <field name="jobnametag"/>
+        </xpath>
+      </field>
+    </record>
 </odoo>
