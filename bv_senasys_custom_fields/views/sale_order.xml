@@ -52,8 +52,8 @@
             </xpath>
             <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='order_lines']/field[@name='order_line']/tree[1]/widget[@name='qty_at_date_widget']"
                    position="after">
-                <field name="on_hand" string="On Hand"/>
-                <field name="free_2_sell" string="Free 2 Sell"/>
+                <field name="x_studio_related_field_Rpv4q" string="On Hand"/>
+                <field name="x_studio_related_field_Af1vN" string="Free 2 Sell"/>
             </xpath>
         </field>
     </record>

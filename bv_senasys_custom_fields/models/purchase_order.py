@@ -23,6 +23,11 @@ class PurchaseOrder(models.Model):
     vendor_drop_ship_enter_address_below = fields.Selection(
         [('Yes', 'Yes'), ('No', 'No')], string='Vendor Drop Ship?')
     senasys_division = fields.Selection([('Empire Corrugated', 'Empire Corrugated'), ('Wahl', 'Wahl')], string="Senasys Division")
+    dedicated_ecm_contact = fields.Char(related='partner_id.attncontact', string='Dedicated ECM Contact:')
 
 
+class PurchaseOrderLine(models.Model):
+    _inherit = "purchase.order.line"
+
+    inv_loc = fields.Selection(related='product_id.inv_location')
 

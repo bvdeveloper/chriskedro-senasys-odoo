@@ -2,7 +2,7 @@
 <odoo>
     <record model="ir.ui.view" id="purchase_order_ecm_reporting_form_view">
         <field name="name">purchase.order.ecm.reporting.form.view</field>
-        <field name="model">purchase.order.ecm.reporting</field>
+        <field name="model">x_purchase_order_ecm_r</field>
         <field name="arch" type="xml">
             <form>
 
@@ -33,7 +33,7 @@
     </record>
     <record model="ir.ui.view" id="purchase_order_ecm_reporting_tree_view">
         <field name="name">purchase.order.ecm.reporting.tree.view</field>
-        <field name="model">purchase.order.ecm.reporting</field>
+        <field name="model">x_purchase_order_ecm_r</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="sequence" widget="handle"/>
@@ -43,7 +43,7 @@
     </record>
     <record model="ir.ui.view" id="purchase_order_ecm_reporting_search_view">
         <field name="name">purchase.order.ecm.reporting.search.view</field>
-        <field name="model">purchase.order.ecm.reporting</field>
+        <field name="model">x_purchase_order_ecm_r</field>
         <field name="arch" type="xml">
             <search>
                 <field name="name"/>
@@ -56,7 +56,7 @@
     <record id="action_purchase_order_ecm_reporting_form_view" model="ir.actions.act_window">
         <field name="name">Purchase Order ECM Reporting</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">purchase.order.ecm.reporting</field>
+        <field name="res_model">x_purchase_order_ecm_r</field>
         <field name="view_mode">tree,form</field>
         <field name="view_ids" eval="[(5, 0, 0),
             (0, 0, {'view_mode': 'tree', 'view_id': ref('bv_senasys_custom_fields.purchase_order_ecm_reporting_tree_view')}),
