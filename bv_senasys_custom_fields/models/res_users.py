@@ -48,7 +48,13 @@ class ResUsers(models.Model):
     verif_by_namedate = fields.Char(related='partner_id.verif_by_namedate')
     catalog_pdf_filename = fields.Char(related='partner_id.catalog_pdf_filename')
     catalog_pdf = fields.Binary(related='partner_id.catalog_pdf')
-
+    add_rel_ref_photos_description = fields.Char(related='partner_id.add_rel_ref_photos_description')
+    portal_url_1 = fields.Char(related='partner_id.portal_url_1')
+    x_studio_binary_field_3V0L2 = fields.Binary(related='partner_id.x_studio_binary_field_3V0L2')
+    x_studio_binary_field_r07XT = fields.Binary(related='partner_id.x_studio_binary_field_r07XT')
+    x_studio_binary_field_KsP2R_filename = fields.Char(related='partner_id.x_studio_binary_field_KsP2R_filename')
+    x_studio_binary_field_NjvGx_filename = fields.Char(related='partner_id.x_studio_binary_field_NjvGx_filename')
+    x_studio_binary_field_ruCRS_filename = fields.Char(related='partner_id.x_studio_binary_field_ruCRS_filename')
 
 
 

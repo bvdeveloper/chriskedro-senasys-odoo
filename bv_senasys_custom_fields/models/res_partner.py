@@ -50,5 +50,12 @@ class ResPartner(models.Model):
     verif_by_namedate = fields.Char(string='Verif. By Name/Date')
     catalog_pdf_filename = fields.Char(string='Catalog (PDF) Filename')
     catalog_pdf = fields.Binary(string='Catalog (PDF)')
+    add_rel_ref_photos_description = fields.Char(string='Add Relevant Reference Photos Below and Provide Description')
+    portal_url_1 = fields.Char(string='Portal URL:')
+    x_studio_binary_field_3V0L2 = fields.Binary(string='New Image')
+    x_studio_binary_field_r07XT = fields.Binary(string="Catalog (PDF)")
+    x_studio_binary_field_KsP2R_filename = fields.Char(string="Filename for x_studio_binary_field_KsP2R")
+    x_studio_binary_field_NjvGx_filename = fields.Char(string="Filename for x_studio_binary_field_NjvGx")
+    x_studio_binary_field_ruCRS_filename = fields.Char(string="Filename for x_studio_binary_field_ruCRS")
 
 

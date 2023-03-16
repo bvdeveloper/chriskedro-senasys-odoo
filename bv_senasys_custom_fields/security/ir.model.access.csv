@@ -1,5 +1,7 @@
 "id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
-access_purchase_order_ecm_reporting,purchase.order.ecm.reporting,model_purchase_order_ecm_reporting,base.group_user,1,1,1,1
-access_ecm_sales_order_by_line_reporting,ecm.sales.order.by.line.reporting,model_ecm_sales_order_by_line_reporting,base.group_user,1,1,1,1
+access_x_ecm_sales_order_by_l,x_ecm_sales_order_by_l,model_x_ecm_sales_order_by_l,base.group_user,1,1,1,1
+access_x_purchase_order_ecm_r,x_purchase_order_ecm_r,model_x_purchase_order_ecm_r,base.group_user,1,1,1,1
+access_invoice_lines_export,invoice.lines.export,model_invoice_lines_export,base.group_user,1,1,1,1
+access_test_comm_export,test.comm.export,model_test_comm_export,base.group_user,1,1,1,1
 
 

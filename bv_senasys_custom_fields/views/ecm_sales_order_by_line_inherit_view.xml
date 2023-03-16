@@ -1,7 +1,7 @@
 <odoo>
     <record model="ir.ui.view" id="ecm_sales_order_by_line_inherit_view">
         <field name="name">ecm.sales.order.by.line.inherit.form</field>
-        <field name="model">ecm.sales.order.by.line.reporting</field>
+        <field name="model">x_ecm_sales_order_by_l</field>
         <field name="inherit_id" ref="bv_senasys_custom_fields.ecm_sales_order_by_line_reporting_form_view"/>
         <field name="arch" type="xml">
             <data>

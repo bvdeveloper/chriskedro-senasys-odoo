@@ -6,13 +6,13 @@
         <field name="inherit_id" ref="stock.view_picking_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']" position="after">
-                <field name="attncontact" string="Attn/Contact"/>
+                <field name="x_studio_related_field_Pl4hB" string="Attn/Contact"/>
                 <field name="po_tag_" string="PO# / (Tag) #:"/>
             </xpath>
             <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
                 <group name="studio_group_TX5B4">
                     <group name="left">
-                        <field name="initial_first_shipment" string="Initial/1st Shipment Method:"/>
+                        <field name="x_studio_related_field_He86r" string="Initial/1st Shipment Method:"/>
                         <field name="override_shipment_method" string="Override Shipment Method"
                                help="Select YES to enter a specific shipping method...typical case would be an overnight rush partial 1st shipment...but then we would use GROUND for subsequent deliveries...The &quot;Ship Method for This Delivery&quot; will then print on this SPECIFIC delivery instead."/>
                         <field name="ship_method_for_this_delivery" string="Ship. Method For this Delivery"
@@ -20,7 +20,7 @@
                         <field name="cust_collect_acct" string="Cust. Collect Acct:"/>
                     </group>
                     <group name="right">
-                        <field name="senasys_division" string="Senasys Division"/>
+                        <field name="x_studio_related_field_lWIty" string="Senasys Division"/>
                         <field name="shipment_delivery_notes" string="Shipment Delivery Notes:"
                                help="This is a text field where we can record specific things to this INDIVIDUAL WH/OUT (Instructions, Notes, etc)"/>
                     </group>

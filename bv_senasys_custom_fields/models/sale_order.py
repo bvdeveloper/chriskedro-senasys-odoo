@@ -43,4 +43,6 @@ class SaleOrder(models.Model):
         string='Shipping Method')
     shipping_collect_acct_ = fields.Char(string='Shipping Collect Acct #')
     senasys_division = fields.Selection([('Empire Corrugated', 'Empire Corrugated'), ('Wahl', 'Wahl')], string="Senasys Division")
+    deliv_address_default_customer_contact = fields.Char(related='partner_shipping_id.attncontact', string="Deliv. Address Default Customer Contact")
+    delivery_address_for_emailing_quotesorders = fields.Char(related='partner_shipping_id.email', string="Delivery Address for Emailing Quotes/Orders")
 

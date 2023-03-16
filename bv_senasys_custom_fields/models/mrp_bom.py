@@ -2,7 +2,7 @@
 from odoo import api, fields, models,_
 
 
-class ProductProduct(models.Model):
+class MrpBom(models.Model):
     _inherit = "mrp.bom"
 
     process_notes = fields.Text(string="Process Notes")
@@ -11,3 +11,8 @@ class ProductProduct(models.Model):
                                                         ('Order Assembly (Kits, Sets, etc)', 'Order Assembly (Kits, Sets, etc)'),
                                                         ('3rd Party - Kreicko, Ed-K, etc', '3rd Party - Kreicko, Ed-K, etc')], string="Work Center Note (For Reporting)")
     description = fields.Char(related="product_tmpl_id.default_code")
+
+class MrpBomLine(models.Model):
+    _inherit = "mrp.bom.line"
+
+    inv_loc = fields.Selection(related='product_id.inv_location')
