@@ -9,6 +9,7 @@
                 <!--                <field name="inv_sent_to_cus"/>-->
                 <field name="payment_terms" string="Payment Terms"/>
                 <field name="enter_tracking_" string="Enter Tracking #"/>
+                <field name="pull_to_invoice" string="Customer_PO#:"/>
                 <field name="additional_notes" string="Additional Notes For PDF Invoice:"
                        help="Allows user to add invoice notes...requested for Packland"/>
                 <field name="incoterm" string="Custom Incoterm"
@@ -26,6 +27,7 @@
             <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='invoice_line_ids']/tree[1]/field[@name='sequence']"
                    position="after">
                 <field name="line_item_from_sales_order_entry" string="Line #"/>
+                <field name="name_short" string="Part #"/>
                 <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='invoice_line_ids']/tree[1]/field[@name='product_id']"
                        position="move"/>
                 <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='invoice_line_ids']/tree[1]/field[@name='name']"
@@ -49,4 +51,16 @@
             </xpath>
         </field>
     </record>
+    <template id="invoice_po_tracking_add" inherit_id="account.report_invoice_document">
+        <xpath expr="//div[@name='invoice_date']" position="after">
+            <div class="col-auto col-3 mw-100 mb-2" t-if="o.enter_tracking_" name="enter_tracking_">
+                <strong>Tracking#:</strong>
+                <p class="m-0" t-field="o.enter_tracking_"/>
+            </div>
+            <div class="col-auto col-3 mw-100 mb-2" t-if="o.pull_to_invoice" name="pull_to_invoice">
+                <strong>Customer PO#:</strong>
+                <p class="m-0" t-field="o.pull_to_invoice"/>
+            </div>
+        </xpath>
+    </template>
 </odoo>
