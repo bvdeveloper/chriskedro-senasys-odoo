@@ -34,6 +34,9 @@
                    position="attributes">
                 <attribute name="optional">hide</attribute>
             </xpath>
+            <xpath expr="//field[@name='fiscal_position_id']" position="after">
+                <field name="po_drawing_attach" string="Attach Drawing" widget="image"/>
+            </xpath>
         </field>
     </record>
 </odoo>

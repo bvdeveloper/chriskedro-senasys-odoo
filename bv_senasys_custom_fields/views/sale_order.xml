@@ -65,6 +65,7 @@
       <field name="arch" type="xml">
         <xpath expr="//search" position="inside">
           <field name="jobnametag"/>
+          <field name="x_delivery_address"/>
         </xpath>
       </field>
     </record>
@@ -76,6 +77,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='date_order']" position="after">
                   <field name="jobnametag" string="Cust PO# / Ref #"/>
+                  <field name="x_delivery_address" string="Delivery Address"/>
                 </xpath>
             </field>
         </record>
@@ -87,6 +89,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='partner_id']" position="before">
                     <field name="jobnametag" string="Cust PO# / Ref #"/>
+                    <field name="x_delivery_address" string="Delivery Address"/>
                 </xpath>
             </field>
         </record>

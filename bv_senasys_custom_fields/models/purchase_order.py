@@ -24,7 +24,7 @@ class PurchaseOrder(models.Model):
         [('Yes', 'Yes'), ('No', 'No')], string='Vendor Drop Ship?')
     senasys_division = fields.Selection([('Empire Corrugated', 'Empire Corrugated'), ('Wahl', 'Wahl')], string="Senasys Division")
     dedicated_ecm_contact = fields.Char(related='partner_id.attncontact', string='Dedicated ECM Contact:')
-
+    po_drawing_attach = fields.Binary(string='Attach Drawing')
 
 class PurchaseOrderLine(models.Model):
     _inherit = "purchase.order.line"
