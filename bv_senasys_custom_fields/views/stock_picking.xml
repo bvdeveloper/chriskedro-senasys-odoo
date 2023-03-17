@@ -9,6 +9,9 @@
                 <field name="x_studio_related_field_Pl4hB" string="Attn/Contact"/>
                 <field name="po_tag_" string="PO# / (Tag) #:"/>
             </xpath>
+            <xpath expr="//field[@name='date_done']" position="before">
+                    <field name="order_promised_ship_date" string="Order Promised Ship Date:"/>
+            </xpath>
             <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
                 <group name="studio_group_TX5B4">
                     <group name="left">
@@ -49,6 +52,15 @@
             </xpath>
         </field>
     </record>
+
+    <template id="delivery_slip_po_add" inherit_id="stock.report_delivery_document">
+        <xpath expr="//div[@class='row mt32 mb32']" position="inside">
+            <div t-if="o.po_tag_" class="col-auto" name="div_po">
+                <strong>Jobname/Tag/PO #:</strong>
+                <p t-field="o.po_tag_"/>
+            </div>
+        </xpath>
+    </template>
 </odoo>
 
 
