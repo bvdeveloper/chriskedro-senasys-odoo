@@ -62,5 +62,11 @@
                 <p class="m-0" t-field="o.pull_to_invoice"/>
             </div>
         </xpath>
+        <xpath expr="//th[@name='th_description']" position="before">
+            <th name="name_short" class="text-left"><span>Part#</span></th>
+        </xpath>
+        <xpath expr="//td[@name='account_invoice_line_name']" position="before">
+            <td name="account_invoice_line_part"><span t-field="line.name_short" t-options="{'widget': 'text'}"/></td>
+        </xpath>
     </template>
 </odoo>
