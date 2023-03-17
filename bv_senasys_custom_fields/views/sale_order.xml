@@ -68,4 +68,26 @@
         </xpath>
       </field>
     </record>
+    <!--Inherit Sale order list view-->
+    <record id="view_order_tree_with_po" model="ir.ui.view">
+            <field name="name">sale.order.tree.po</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_order']" position="after">
+                  <field name="jobnametag" string="Cust PO# / Ref #"/>
+                </xpath>
+            </field>
+        </record>
+    <!--Inherit Sale Quotation list view-->
+    <record id="view_quotation_tree_po" model="ir.ui.view">
+            <field name="name">sale.quotation.tree.po</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="before">
+                    <field name="jobnametag" string="Cust PO# / Ref #"/>
+                </xpath>
+            </field>
+        </record>
 </odoo>
