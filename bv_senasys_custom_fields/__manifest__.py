@@ -14,6 +14,7 @@
     'depends':['base', 'sale_management', 'purchase', 'account', 'product', 'stock', 'product_expiry', 'purchase_stock'],
     'data': [
         'security/ir.model.access.csv',
+        'views/picking_operation_template_inherit.xml',
         'views/res_partner.xml',
         'views/product_template.xml',
         'views/mrp_production.xml',

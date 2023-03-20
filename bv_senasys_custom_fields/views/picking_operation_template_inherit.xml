@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="picking_operation_name_inherit_bv"
+                  inherit_id="stock.report_picking">
+            <!--            <xpath expr="//div[@class='row mt48 mb32']" position="before">-->
+            <!--                <div class="row mt48 mb32">-->
+            <!--                    <div class="col-auto" name="PO">-->
+            <!--                        <strong>PO:</strong>-->
+            <!--                        <p t-field="o.po_tag_"/>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </xpath>-->
+            <!--        </template>-->
+            <!--    </data>-->
+            <!--    <data>-->
+            <xpath expr="/t/t/t/t/div/h1" position="after">
+                <div class="row">
+                    <div class="col-3">
+                        <span>
+                            <strong>Attn/Contact:</strong>
+                            <br/>
+                        </span>
+                        <span t-field="o.x_studio_related_field_Pl4hB"/>
+                    </div>
+                    <div class="col-3"/>
+                    <div class="col-3"/>
+                    <div class="col-3"/>
+                </div>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/h1" position="after">
+                <div class="row">
+                    <div class="col-3"/>
+                    <div class="col-3">
+                        <span>
+                            <strong>Order Promised Ship Date::</strong>
+                            <br/>
+                        </span>
+                        <span t-field="o.order_promised_ship_date"/>
+                    </div>
+                    <div class="col-3"/>
+                    <div class="col-3"/>
+                </div>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/table[1]/thead/tr/th[4]" position="after">
+                <th>
+                    <span>Inv Location:</span>
+                </th>
+<!--                <th>-->
+<!--                    <span>Vendor PO / Mfg Description:</span>-->
+<!--                </th>-->
+            </xpath>
+            <xpath expr="/t/t/t/t/div/table[1]/tbody/t/tr/td[4]" position="after">
+                <td>
+                    <span t-field="ml.product_id.inv_location"/>
+                </td>
+<!--                <td>-->
+<!--                    <span t-field="ml.product_id.x_description"/>-->
+<!--                </td>-->
+            </xpath>
+            <xpath expr="/t/t/t/t/div/table[1]" position="after">
+                <div class="row">
+                    <div class="col">
+                        <span>New Text Block</span>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[6]/div/span" position="replace">
+                <span>
+                    <p style="margin-bottom: 0px;">Shipping Clerk Instruction</p>
+                </span>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[6]/div/span/p" position="replace">
+                <p style="margin-bottom: 0px;"/>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[6]/div/span/p" position="replace">
+                <p style="margin-bottom: 0px;">Shipping Clerk Instruction</p>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[6]" position="after">
+                <div class="row">
+                    <div class="col">
+                        <span>New Text Block</span>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[7]/div/span" position="replace">
+                <span>
+                    <p style="margin-bottom: 0px;"><b>Enter as UPS Ref #1</b>
+                        <br/>
+                    </p>
+                </span>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[7]" position="after">
+                <div class="row">
+                    <div class="col">
+                        <span>New Text Block</span>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[8]/div/span" position="replace">
+                <span>
+                    <p style="margin-bottom: 0px;"><b>Enter as UPS Ref #2</b></p>
+                </span>
+            </xpath>
+            <xpath expr="/t[1]/t[1]/t[1]/t[1]/div[1]/div[6]/div[1]" position="replace"/>
+            <xpath expr="/t/t/t/t/div/div[6]" position="after">
+                <div class="row">
+                    <div class="col h2">
+                        <span>New Title</span>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[7]/div/span" position="replace">
+                <span>
+                    <p style="margin-bottom: 0px;">Shipping Clerk Instructions
+                        <br/>
+                    </p>
+                </span>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[8]" position="after">
+                <div class="row">
+                    <div class="col-3">
+                        <span>
+                            <strong>PO# / Ref#::</strong>
+                            <br/>
+                        </span>
+<!--                        <span t-field="o.po_tag_"/>-->
+                    </div>
+                    <div class="col-3"/>
+                    <div class="col-3"/>
+                    <div class="col-3"/>
+                </div>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[9]/div[2]" position="inside">
+                <span>New Text Block</span>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[9]/div[3]" position="inside">
+                <span>New Text Block</span>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[9]/div[4]" position="inside">
+                <span>New Text Block</span>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[9]/div[2]/span" position="replace">
+                <span>
+                    <p style="margin-bottom: 0px;"><strong>Total Order value</strong></p>
+                </span>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[9]/div[3]/span" position="replace">
+                <span>
+                    <p style="margin-bottom: 0px;">Shipping Method:</p>
+                </span>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[9]/div[4]/span" position="replace">
+                <span>
+                    <p style="margin-bottom: 0px;">Gen Order Notes:</p>
+                </span>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[9]/div[1]/span[1]/strong" position="replace">
+                <strong>
+                    <p style="margin-bottom: 0px;">PO# :</p>
+                </strong>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[10]" position="after">
+                <div class="row">
+                    <div class="col">
+                        <span t-field="o.origin"/> - <span t-field="o.display_name"/>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[11]" position="after">
+                <div class="row">
+                    <div class="col">
+<!--                        <span t-field="o.display_name"/>-->
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[12]" position="after">
+                <div class="row">
+                    <div class="col">
+                        <span>New Text Block</span>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[13]/div/span" position="replace">
+                <span>
+                    <p style="margin-bottom: 0px;"><strong>Pkg (1) Dim</strong>: ________W x ________L x ________H     
+                         
+                         ________Lbs    Notes______________________   <strong>Enter UPS Charge</strong>: $__________
+                        <br/>
+                    </p>
+                </span>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[13]/div/span" position="replace">
+                <span>
+                    <p style="margin-bottom: 0px;"><strong>Pkg (1) Dim</strong>: ________W x ________L x ________H     
+                         
+                         ________Lbs    Notes______________________   <strong>Enter UPS Charge</strong>: $__________
+                        <br/>
+                    </p>
+                </span>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[12]" position="after">
+                <div class="row">
+                    <div class="col">
+                        <span>New Text Block</span>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[13]/div/span" position="replace">
+                <span>
+                    <p style="margin-bottom: 0px;">                                           </p>
+                </span>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[14]" position="after">
+                <div class="row">
+                    <div class="col">
+                        <span>New Text Block</span>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[15]/div/span" position="replace">
+                <span>
+                    <p style="margin-bottom: 0px;" placeholder="Type &quot;/&quot; for commands"
+                       class="oe-hint oe-command-temporary-hint">
+                        <br/>
+                    </p>
+                </span>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[15]" position="after">
+                <div class="row">
+                    <div class="col">
+                        <span>New Text Block</span>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[16]/div/span" position="replace">
+                <span>
+                    <p style="margin-bottom: 0px;"><strong style="font-weight: bolder">Pkg (1) Dim</strong>: ________W x
+                        ________L x ________H         ________Lbs    Notes______________________   <strong
+                                style="font-weight: bolder">Enter UPS Charge</strong>: $__________
+                        <br/>
+                    </p>
+                    <p style="margin-bottom: 0px;">
+                        <span style="color: rgb(73, 80, 87);font-size: 15px;background-color: rgba(1, 126, 132, 0.1)"/>
+                        <br/>
+                    </p>
+                </span>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[16]/div/span" position="replace">
+                <span>
+                    <p style="margin-bottom: 0px;"><strong style="font-weight: bolder">Pkg (2) Dim</strong>: ________W x
+                        ________L x ________H         ________Lbs    Notes______________________   <strong
+                                style="font-weight: bolder">Enter UPS Charge</strong>: $__________
+                        <br/>
+                    </p>
+                    <p style="margin-bottom: 0px;">
+                        <span style="color: rgb(73, 80, 87);font-size: 15px;background-color: rgba(1, 126, 132, 0.1)"/>
+                        <br/>
+                    </p>
+                </span>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[16]/div/span" position="replace">
+                <span>
+                    <p style="margin-bottom: 0px;"><strong style="font-weight: bolder">Pkg (2) Dim</strong>: ________W x
+                        ________L x ________H         ________Lbs    Notes______________________   <strong
+                                style="font-weight: bolder">Enter UPS Charge</strong>: $__________
+                        <br/>
+                    </p>
+                    <p style="margin-bottom: 0px;">
+                        <span style="color: rgb(73, 80, 87);font-size: 15px;background-color: rgba(1, 126, 132, 0.1)"/>
+                        <br/>
+                    </p>
+                </span>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[16]" position="after">
+                <div class="row">
+                    <div class="col">
+                        <span>New Text Block</span>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[17]" position="after">
+                <div class="row">
+                    <div class="col">
+                        <span>New Text Block</span>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[17]/div/span" position="replace">
+                <span>
+                    <p style="margin-bottom: 0px;" placeholder="Type &quot;/&quot; for commands"
+                       class="oe-hint oe-command-temporary-hint">
+                        <br/>
+                    </p>
+                </span>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[18]/div/span" position="replace">
+                <span>
+                    <p style="margin-bottom: 0px;">
+                        <strong style="font-weight: bolder;font-size: 13px">Pkg (3) Dim</strong>
+                        <span style="font-size: 13px">: ________W x ________L x ________H         ________Lbs   
+                            Notes______________________   
+                        </span>
+                        <strong style="font-weight: bolder;font-size: 13px">Enter UPS Charge</strong>
+                        <span style="font-size: 13px">: $__________</span>
+                        <br/>
+                    </p>
+                </span>
+            </xpath>
+            <xpath expr="/t[1]/t[1]/t[1]/t[1]/div[1]/div[16]/div[1]/span[1]/p[2]" position="replace"/>
+            <xpath expr="/t/t/t/t/div/div[18]/div/span/p" position="replace">
+                <p style="margin-bottom: 0px;"/>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[18]/div/span/p" position="replace">
+                <p style="margin-bottom: 0px;" placeholder="Type &quot;/&quot; for commands"
+                   class="oe-hint oe-command-temporary-hint">
+                    <br/>
+                </p>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[18]/div/span/p" position="replace">
+                <p style="margin-bottom: 0px;" placeholder="Type &quot;/&quot; for commands"
+                   class="oe-hint oe-command-temporary-hint"/>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[18]/div/span/p" position="replace">
+                <p style="margin-bottom: 0px;">Pkg (1) Dim: ________W x ________L x ________H         ________Lbs   
+                    Notes______________________   Enter UPS Charge: $__________
+                    <br/>
+                </p>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[18]/div/span/p" position="replace">
+                <p style="margin-bottom: 0px;" placeholder="Type &quot;/&quot; for commands"
+                   class="oe-hint oe-command-temporary-hint"/>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[18]/div/span/p" position="replace">
+                <p style="margin-bottom: 0px;"><strong>Pkg (1) Dim</strong>: ________W x ________L x ________H       
+                     ________Lbs    Notes______________________   <strong>Enter UPS Charge</strong>: $__________
+                    <br/>
+                </p>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[18]/div/span/p" position="replace">
+                <p style="margin-bottom: 0px;" placeholder="Type &quot;/&quot; for commands"
+                   class="oe-hint oe-command-temporary-hint"/>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[18]/div/span/p" position="replace">
+                <p style="margin-bottom: 0px;"><strong>Pkg (3) Dim</strong>: ________W x ________L x ________H       
+                     ________Lbs    Notes______________________   <strong>Enter UPS Charge</strong>: $__________
+                    <br/>
+                </p>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[9]/div[2]/span/p" position="replace">
+                <p style="margin-bottom: 0px;"/>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[9]/div[2]/span/p" position="replace">
+                <p style="margin-bottom: 0px;"><b>Total Order value:</b></p>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/table[1]/thead/tr/th[4]" position="after">
+                <th>
+                    <span>Total</span>
+                </th>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/table[1]/tbody/t/tr/td[4]" position="after">
+                <td>
+                    <span t-field="o.sale_id.amount_total"/>
+                </td>
+            </xpath>
+            <xpath expr="/t[1]/t[1]/t[1]/t[1]/div[1]/div[9]/div[4]" position="replace"/>
+            <xpath expr="/t/t/t/t/div/div[9]/div[2]/span/p" position="after">
+                <span t-field="o.sale_id.amount_total"/>
+            </xpath>
+            <xpath expr="/t[1]/t[1]/t[1]/t[1]/div[1]/div[9]/div[1]/span[1]/strong[1]" position="replace"/>
+            <xpath expr="/t/t/t/t/div/div[9]/div[1]/span[1]/br" position="before">
+                <span>New Text Block</span>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[9]/div[1]/span[1]/span" position="replace">
+                <span>
+                    <p style="margin-bottom: 0px;"><b>PO:</b></p>
+                </span>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[9]/div[1]/span[1]/span/p" position="after">
+                <span t-field="o.po_tag_"/>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[9]/div[3]/span/p" position="replace">
+                <p style="margin-bottom: 0px;"/>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[9]/div[3]/span/p" position="replace">
+                <p style="margin-bottom: 0px;">Shipping Method:</p>
+            </xpath>
+            <xpath expr="/t/t/t/t/div/div[9]/div[3]/span/p" position="replace">
+                <p style="margin-bottom: 0px;"/>
+            </xpath>
+<!--            <xpath expr="/t/t/t/t/div/div[9]/div[3]/span/p" position="replace">-->
+<!--                <p style="margin-bottom: 0px;">-->
+<!--                    <span style="color: rgb(34, 34, 34);font-size: 14.6667px">Vendor PO / Mfg Description:</span>-->
+<!--                    <br/>-->
+<!--                </p>-->
+<!--            </xpath>-->
+<!--            <xpath expr="/t/t/t/t/div/div[9]/div[3]/span/p/span" position="after">-->
+<!--                <span t-field="o.product_id.x_description"/>-->
+<!--            </xpath>-->
+            <xpath expr="/t[1]/t[1]/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[5]" position="replace"/>
+            <xpath expr="/t[1]/t[1]/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[1]/tr[1]/td[5]" position="replace"/>
+        </template>
+    </data>
+</odoo>
