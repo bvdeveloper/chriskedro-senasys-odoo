@@ -28,11 +28,19 @@
                    position="after">
                 <field name="line_item_from_sales_order_entry" string="Line #"/>
                 <field name="name_short" string="Part #"/>
+                <field name="p_description" string="Description"/>
                 <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='invoice_line_ids']/tree[1]/field[@name='product_id']"
                        position="move"/>
                 <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='invoice_line_ids']/tree[1]/field[@name='name']"
                        position="move"/>
             </xpath>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='invoice_line_ids']/tree[1]/field[@name='name']" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath expr="//field[@name='product_id']" position="attributes">
+                    <attribute name="optional">hide</attribute>
+            </xpath>
+
             <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='invoice_line_ids']/form[1]/sheet[1]/group[1]/field[@name='price_unit']"
                    position="after">
                 <field name="po_" string="Cust PO #"
@@ -53,13 +61,17 @@
     </record>
     <template id="invoice_po_tracking_add" inherit_id="account.report_invoice_document">
         <xpath expr="//div[@name='invoice_date']" position="after">
-            <div class="col-auto col-3 mw-100 mb-2" t-if="o.enter_tracking_" name="enter_tracking_">
-                <strong>Tracking#:</strong>
-                <p class="m-0" t-field="o.enter_tracking_"/>
-            </div>
             <div class="col-auto col-3 mw-100 mb-2" t-if="o.pull_to_invoice" name="pull_to_invoice">
                 <strong>Customer PO#:</strong>
                 <p class="m-0" t-field="o.pull_to_invoice"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='informations']" position="after">
+            <div id="tracking" class="row mt-4 mb-4">
+                <div class="col-auto col-3 mw-100 mb-2" t-if="o.enter_tracking_" name="enter_tracking_">
+                    <strong>Tracking#:</strong>
+                    <p class="m-0 text-dark" t-field="o.enter_tracking_"/>
+                </div>
             </div>
         </xpath>
         <xpath expr="//th[@name='th_description']" position="before">
@@ -67,6 +79,12 @@
         </xpath>
         <xpath expr="//td[@name='account_invoice_line_name']" position="before">
             <td name="account_invoice_line_part"><span t-field="line.name_short" t-options="{'widget': 'text'}"/></td>
+        </xpath>
+        <xpath expr="//p[@name='payment_term']" position="after">
+            Additional Notes:<b><span t-field="o.additional_notes"/></b>
+        </xpath>
+        <xpath expr="//td[@name='account_invoice_line_name']" position="replace">
+            <td name="account_invoice_line_name"><span t-field="line.product_id.default_code" t-options="{'widget': 'text'}"/></td>
         </xpath>
     </template>
 </odoo>
