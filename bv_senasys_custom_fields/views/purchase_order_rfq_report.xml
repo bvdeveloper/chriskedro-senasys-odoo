@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="senasys_report_purchaseorder_rfq_document_inherit" inherit_id="purchase.report_purchasequotation_document">
+
+        <xpath expr="//table" position="before">
+            <br/>
+            <div class="row">
+                <div class="col-3">
+                    <span>
+                        <strong>Requested Delivery Method:</strong>
+                        <br/>
+                    </span>
+
+                    <span t-field="o.requested_delivery_method"/>
+                </div>
+                <div class="col-3">
+                    <span>
+                        <strong>Requested Ship Date:</strong>
+                        <br/>
+                        <span t-field="o.select_"/>
+
+                    </span>
+
+                    <span t-field="o.request_date"/>
+                </div>
+                <div class="col-3">
+                    <span>
+                        <strong>P.O. Notes:</strong>
+                        <br/>
+                    </span>
+
+                    <span t-field="o.po_notes"/>
+                </div>
+            </div>
+            <br/>
+        </xpath>
+
+        <xpath expr="//t//div[@class='page']//table//thead//tr//th[@name='th_description']" position="before">
+            <th name="inv_location"><strong>INV LOC.</strong></th>
+        </xpath>
+        <xpath expr="//t//div[@class='page']//table//td[@id='product']" position="before">
+            <td name="inv_location">
+                <span t-field="order_line.product_id.inv_location"/>
+            </td>
+        </xpath>
+
+        <xpath expr="//t//div[@class='page']//table//thead//tr//th[@name='th_description']" position="after">
+            <th name="th_vendor_or_mfg_disc"><strong>Vendor #/ mfg desc</strong></th>
+        </xpath>
+        <xpath expr="//t//div[@class='page']//table//td[@id='product']" position="after">
+            <td name="Vendor/Mfg disc">
+                <span t-field="order_line.product_id.x_description"/>
+            </td>
+        </xpath>
+
+        <xpath expr="//table" position="after">
+            <br/>
+            <br/>
+            <span><strong>SHIPPING INSTRUCTION:</strong></span>
+            <span>For Parcel shipments, please ship UPS (Ground/3 Day/Overnight/Etc as stated above) Collect account 2T0T80. For LTL Shipments please use Unishippers 1-888-681-7447</span>
+        </xpath>
+
+    </template>
+</odoo>
