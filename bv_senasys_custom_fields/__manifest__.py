@@ -28,6 +28,9 @@
         'views/ecm_sales_order_by_line_reporting_view.xml',
         'views/purchase_ecm_reporting_inherit_view.xml',
         'views/ecm_sales_order_by_line_inherit_view.xml',
+        'views/purchase_order_report_inherit.xml',
+        'views/purchase_order_rfq_report.xml',
+        'views/sale_order_quotation_template_inherit.xml',
     ],
     'demo': [
     ],
