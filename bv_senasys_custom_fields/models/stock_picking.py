@@ -20,7 +20,7 @@ class StockPicking(models.Model):
     cust_collect_acct = fields.Char(string='Cust. Collect Acct:')
     po_tag_ = fields.Char(string='PO# / Ref#:', related="sale_id.jobnametag")
     shipment_delivery_notes = fields.Text(string='Shipment Delivery Notes:')
-    x_studio_related_field_lWIty = fields.Selection(string='Senasys Division', related="sale_id.senasys_division")
+    x_studio_related_field_lWIty = fields.Char(related='sale_id.senasys_division')
     x_studio_related_field_Pl4hB = fields.Char(related='sale_id.attncontact', string='Attn/Contact')
     order_promised_ship_date = fields.Date(string='Order Promised Ship Date:', related="sale_id.order_promised_ship_date")
 

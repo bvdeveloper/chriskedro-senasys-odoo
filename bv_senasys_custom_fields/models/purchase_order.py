@@ -12,7 +12,7 @@ class PurchaseOrder(models.Model):
     # reconciled_by = fields.Selection(
     #     [('Jess', 'Jess'), ('Kayla', 'Kayla'), ('Chris (credit card)', 'Chris (credit card)')], string='Reconciled By:')
     request_date = fields.Date(
-        string='Request Date (Enter based on standard lead time if known, otherwise leave blank and SELECT TBD BELOW)')
+        string='Requested Ship Date (Enter based on standard lead time if known, otherwise leave blank and SELECT TBD BELOW)')
     requested_delivery_method = fields.Selection(
         [('Standard / Economy', 'UPS Ground'), ('UPS 2nd Day Air', 'UPS 2nd Day Air'),
          ('Expedited', 'UPS Overnight'), ('UPS Overnight (Early AM)', 'UPS Overnight (Early AM)'), ('LTL', 'LTL')],
@@ -22,7 +22,7 @@ class PurchaseOrder(models.Model):
     senasys_buyer = fields.Char(string='Senasys Buyer:')
     vendor_drop_ship_enter_address_below = fields.Selection(
         [('Yes', 'Yes'), ('No', 'No')], string='Vendor Drop Ship?')
-    senasys_division = fields.Selection([('Empire Corrugated', 'Empire Corrugated'), ('Wahl', 'Wahl')], string="Senasys Division")
+    senasys_division = fields.Char(string="Senasys Division", ondelete={'Empire Corrugated': 'set default'}, default='Empire Corrugated')
     dedicated_ecm_contact = fields.Char(related='partner_id.attncontact', string='Dedicated ECM Contact:')
     po_drawing_attach = fields.Binary(string='Attach Drawing')
 
