@@ -42,7 +42,7 @@ class SaleOrder(models.Model):
          ('USPS Overnight (Cust. Collect)', 'USPS Overnight (Cust. Collect)'), ],
         string='Shipping Method')
     shipping_collect_acct_ = fields.Char(string='Shipping Collect Acct #')
-    senasys_division = fields.Selection([('Empire Corrugated', 'Empire Corrugated'), ('Wahl', 'Wahl')], string="Senasys Division")
+    senasys_division = fields.Char(string="Senasys Division", ondelete={'Empire Corrugated': 'set default'}, default='Empire Corrugated')
     deliv_address_default_customer_contact = fields.Char(related='partner_shipping_id.attncontact', string="Deliv. Address Default Customer Contact")
     delivery_address_for_emailing_quotesorders = fields.Char(related='partner_shipping_id.email', string="Delivery Address for Emailing Quotes/Orders")
     x_delivery_address = fields.Char(related='partner_shipping_id.name', string="Delivery Address")
