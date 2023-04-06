@@ -164,4 +164,17 @@
             </xpath>
         </field>
     </record>
+
+    <record model="ir.ui.view" id="res_partner_extended_view">
+        <field name="name">res.partner.sale.inherit.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="delivery.view_partner_property_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='property_delivery_carrier_id']" position="after">
+                <field name="carried_has_acc_number" invisible="1" />
+                <field name="carrier_account_number" attrs="{'invisible': [('carried_has_acc_number','=', False)]}" />
+            </xpath>
+        </field>
+    </record>
+
 </odoo>
