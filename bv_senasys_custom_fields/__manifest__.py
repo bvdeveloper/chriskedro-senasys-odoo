@@ -11,7 +11,7 @@
             """,
     'author': 'Brainvire',
     'website': 'https://www.brainvire.com/',
-    'depends':['base', 'sale_management', 'purchase', 'account', 'product', 'stock', 'product_expiry', 'purchase_stock'],
+    'depends':['base', 'sale_management', 'purchase', 'account', 'product', 'stock', 'product_expiry', 'purchase_stock', 'delivery'],
     'data': [
         'security/ir.model.access.csv',
         'views/picking_operation_template_inherit.xml',
@@ -31,6 +31,7 @@
         'views/purchase_order_report_inherit.xml',
         'views/purchase_order_rfq_report.xml',
         'views/sale_order_quotation_template_inherit.xml',
+        'views/delivery_carrier.xml',
     ],
     'demo': [
     ],
