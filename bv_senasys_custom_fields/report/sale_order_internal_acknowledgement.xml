@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_sale_order_inter_acknowledgement_document">
+        <t t-call="web.external_layout">
+            <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
+<!--            <t t-set="address">-->
+<!--                <p t-if="o.partner_id.vat"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>:-->
+<!--                    <span t-field="o.partner_id.vat"/>-->
+<!--                </p>-->
+<!--            </t>-->
+<!--            <t t-if="o.partner_shipping_id == o.partner_invoice_id and o.partner_invoice_id != o.partner_id or o.partner_shipping_id != o.partner_invoice_id">-->
+<!--                <t t-set="information_block">-->
+<!--                    <strong t-if="o.partner_shipping_id == o.partner_invoice_id">Invoicing and Shipping Address:-->
+<!--                    </strong>-->
+<!--                    <t t-if="o.partner_shipping_id != o.partner_invoice_id">-->
+<!--                        <strong>Shipping Address:</strong>-->
+<!--                        <div t-field="o.partner_shipping_id"-->
+<!--                             t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>-->
+<!--                    </t>-->
+<!--                </t>-->
+<!--            </t>-->
+            <div class="page">
+                <div class="oe_structure"/>
+                <div class="row"/>
+                <div class="row">
+                    <div class="col-5">
+                        <span>
+                            <strong>Shipping Address:</strong>
+                            <br/>
+                        </span>
+                        <span t-field="o.partner_shipping_id" t-options-widget="&quot;contact&quot;"
+                              t-options-fields="['name', 'address', 'phone']" t-options-no_marker="True"/>
+                    </div>
+                    <div class="col-5">
+                        <span>
+                            <strong>Invoice Address:</strong>
+                            <br/>
+                        </span>
+
+                        <span t-field="o.partner_invoice_id" t-options-widget="&quot;contact&quot;"
+                              t-options-fields="['name', 'address', 'phone', 'email']" t-options-no_marker="True"/>
+                    </div>
+                    <div class="col-3"/>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <span> </span>
+                    </div>
+                </div>
+
+
+                <h2 class="mt16">
+                    <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
+                        <span t-if="o.state not in ['draft','sent']">INTERNAL - Order Acknowledgement #</span>
+                        <span t-if="o.state in ['draft','sent']">*INTERNAL* - Order Acknowledgement #</span>
+                    </t>
+                    <t t-if="env.context.get('proforma', False) or is_pro_forma">
+                        <span>Pro-Forma Invoice #</span>
+                    </t>
+                    <span t-field="o.name"/>
+                </h2>
+
+                <div class="row mt32 mb32" id="informations">
+                    <div t-if="o.client_order_ref" class="col-auto col-3 mw-100 mb-2">
+                        <strong>Your Reference:</strong>
+                        <p class="m-0" t-field="o.client_order_ref"/>
+                    </div>
+                    <div t-if="o.date_order and o.state not in ['cancel']" class="col-auto col-3 mw-100 mb-2">
+                        <strong>Order Date:</strong>
+                        <p class="m-0" t-field="o.date_order" t-options-widget="&quot;date&quot;"/>
+                    </div>
+                    <div t-if="o.date_order and o.state in ['draft','sent']" class="col-auto col-3 mw-100 mb-2">
+                        <strong>Quotation Date:</strong>
+                        <p class="m-0" t-field="o.date_order" t-options="{&quot;widget&quot;: &quot;date&quot;}"/>
+                    </div>
+                    <div t-if="o.validity_date and o.state in ['draft', 'sent']" class="col-auto col-3 mw-100 mb-2"
+                         name="expiration_date">
+                        <strong>Expiration:</strong>
+                        <p class="m-0" t-field="o.validity_date"/>
+                    </div>
+                    <div class="col-3" t-if="o.incoterm" groups="sale_stock.group_display_incoterm">
+                        <strong>Incoterm:</strong>
+                        <p t-field="o.incoterm.code"/>
+                    </div>
+
+<!--                    <div t-if="o.user_id.name" class="col-auto col-3 mw-100 mb-2">-->
+<!--                        <strong>Senasys Rep:-->
+<!--                            <br/>-->
+<!--                        </strong>-->
+<!--                        <p class="m-0" t-field="o.user_id"/>-->
+<!--                    </div>-->
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <span>
+                            <strong>Attn/Contact:</strong>
+                            <br/>
+                            <span t-field="o.attncontact"/>
+
+<!--                            <span t-field="o.x_studio_quote_spec_contact_if_diff_than_above"-->
+<!--                                  t-if="o.x_studio_quote_spec_contact_if_diff_than_above is False"/>-->
+
+                        </span>
+                    </div>
+                    <div class="col-3">
+                        <span>
+                            <strong>Cust PO# / Ref #:</strong>
+                            <br/>
+                        </span>
+
+                        <span t-field="o.jobnametag"/>
+                    </div>
+                    <div class="col-3">
+                        <span>
+                            <strong>Order Promised Ship Date:</strong>
+                            <br/>
+                        </span>
+                        <span t-field="o.order_promised_ship_date"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span> </span>
+                    </div>
+                </div>
+
+                <span>&lt;br&gt;Customer Notes:</span>
+                <!-- Is there a discount on at least one line? -->
+                <t t-set="display_discount" t-value="any(l.discount for l in o.order_line)"/>
+
+                <table class="table table-sm o_main_table">
+                    <!-- In case we want to repeat the header, remove "display: table-row-group" -->
+                    <thead style="display: table-row-group">
+                        <tr>
+                            <th name="th_name_short">Name Short</th>
+<!--                            <th  class="text-left">Part #</th>-->
+                            <th name="th_description">Description</th>
+                            <th name="th_quantity" class="text-right">QTY</th>
+                            <th name="th_priceunit" class="text-right">Net Price</th>
+                            <th name="th_discount" t-if="display_discount" class="text-right"
+                                groups="product.group_discount_per_so_line">
+                                <span>Disc.%</span>
+                            </th>
+                            <th name="th_subtotal" class="text-right">
+                                <span groups="account.group_show_line_subtotals_tax_excluded"
+                                      studio_groups="[{&quot;id&quot;: 20, &quot;name&quot;: &quot;Tax display B2B&quot;, &quot;display_name&quot;: &quot;Technical / Tax display B2B&quot;}]">
+                                    Line Total
+                                </span>
+                                <span groups="account.group_show_line_subtotals_tax_included">Total Price</span>
+                            </th>
+                            <th name="th_loc">
+                                <span>Loc:</span>
+                            </th>
+                            <th name="th_prom_date">
+                                <span>Prom&lt;br&gt;Date</span>
+                            </th>
+                            <th name="th_packing_instruction">
+                                <span>Packing Instructions</span>
+                            </th>
+                            <th name="td_pre_ship_notes">
+                                <span>Prep/Ship Notes</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="sale_tbody">
+
+                        <t t-set="current_subtotal" t-value="0"/>
+
+                        <t t-foreach="o.order_line" t-as="line">
+
+                            <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal"
+                               groups="account.group_show_line_subtotals_tax_excluded"/>
+                            <t t-set="current_subtotal" t-value="current_subtotal + line.price_total"
+                               groups="account.group_show_line_subtotals_tax_included"/>
+
+                            <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
+                                <t t-if="not line.display_type">
+                                    <td name="td_name_short">
+                                        <span t-esc="line.name_short">
+                                            <p>
+                                                <br/>
+                                            </p>
+                                        </span>
+                                    </td>
+                                    <td name="td_name">
+                                        <span t-esc="line.name">
+                                            <p>
+                                                <br/>
+                                            </p>
+                                        </span>
+                                    </td>
+<!--                                    <td>-->
+<!--                                        <span t-field="line.product_id.default_code"/>-->
+<!--                                    </td>-->
+
+                                    <td name="td_quantity" class="text-right">
+                                        <span t-field="line.product_uom_qty"/>
+<!--                                        <span t-field="line.product_uom"/>-->
+                                    </td>
+                                    <td name="td_priceunit" class="text-right">
+                                        <span t-field="line.price_unit"/>
+                                    </td>
+                                    <td t-if="display_discount" class="text-right"
+                                        groups="product.group_discount_per_so_line">
+                                        <span t-field="line.discount"/>
+                                    </td>
+                                    <td name="td_subtotal" class="text-right o_price_total">
+                                        <span t-field="line.price_subtotal"
+                                              groups="account.group_show_line_subtotals_tax_excluded"/>
+                                        <span t-field="line.price_total"
+                                              groups="account.group_show_line_subtotals_tax_included"/>
+                                    </td>
+                                    <td name="td_inv_location">
+                                        <span t-field="line.product_template_id.inv_location"/>
+                                    </td>
+                                    <td name="td_prom_date">
+<!--                                        <span t-field="line.line_item_est_ship"-->
+<!--                                              t-options-widget="&quot;date&quot;"/>-->
+                                    </td>
+                                    <td name="td_packing_instruction">
+                                        <span t-field="line.product_id.packing_instructions"/>
+                                    </td>
+                                    <td name="td_prepship_notes">
+                                        <span t-field="line.product_id.prepship_notes"/>
+                                    </td>
+
+                                </t>
+                                <t t-if="line.display_type == 'line_section'">
+                                    <td name="td_section_line" colspan="99">
+                                        <span t-field="line.name"/>
+                                    </td>
+                                    <t t-set="current_section" t-value="line"/>
+                                    <t t-set="current_subtotal" t-value="0"/>
+                                </t>
+                                <t t-if="line.display_type == 'line_note'">
+                                    <td name="td_note_line" colspan="99">
+                                        <span t-field="line.name"/>
+                                    </td>
+                                </t>
+                            </tr>
+
+                            <t t-if="current_section and (line_last or o.order_line[line_index+1].display_type == 'line_section')">
+                                <tr class="is-subtotal text-right">
+                                    <td name="td_section_subtotal" colspan="103">
+                                        <strong class="mr16">Subtotal</strong>
+                                        <span t-esc="current_subtotal"
+                                              t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.pricelist_id.currency_id}"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </t>
+                    </tbody>
+                </table>
+                <div class="row">
+                </div>
+
+                <div class="row">
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <span>
+                            <strong><u>Order Notes:</u></strong>
+                            <br/>
+                        </span>
+                        <strong>Internal Senasys Notes:- </strong><span t-field="o.lead_time_for_quotes_only"></span>
+                        <br/>
+                        <br/>
+                        <strong>Notes to Cust:- </strong><span t-field="o.enter_order_specific_notes_below"/>
+                    </div>
+<!--                    <div class="col-3"/>-->
+<!--                    <div class="col-3"/>-->
+                </div>
+
+
+                <div class="row">
+                </div>
+
+<!--
+<t t-set="tax_totals" t-value="json.loads(o.tax_totals_json)"/>
+
+
+
+-->
+<!--                <div class="clearfix" name="so_total_summary">-->
+<!--                    <div id="total" class="row" name="total">-->
+<!--                        <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">-->
+<!--                            <table class="table table-sm">-->
+<!--                                <tr class="border-black o_subtotal" style="">-->
+<!--                                    <td name="td_amount_untaxed_label">-->
+<!--                                        <strong>Subtotal</strong>-->
+<!--                                    </td>-->
+<!--                                    <td name="td_amount_untaxed" class="text-right">-->
+<!--                                        <span t-field="o.amount_untaxed"/>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                                <t t-foreach="o.amount_by_group" t-as="amount_by_group">-->
+<!--                                    <tr style="">-->
+<!--                                        <t t-if="amount_by_group[5] == 1 and o.amount_untaxed == amount_by_group[2]">-->
+<!--                                            <td name="td_amount_by_group_label_3">-->
+<!--                                                <span t-esc="amount_by_group[0]"/>-->
+<!--                                                <span>&amp;nbsp;<span>on</span>&amp;nbsp;-->
+<!--                                                    <t t-esc="amount_by_group[2]"-->
+<!--                                                       t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.pricelist_id.currency_id}"/>-->
+<!--                                                </span>-->
+<!--                                            </td>-->
+<!--                                            <td name="td_amount_by_group_3" class="text-right o_price_total">-->
+<!--                                                <span t-esc="amount_by_group[1]"-->
+<!--                                                      t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.pricelist_id.currency_id}"/>-->
+<!--                                            </td>-->
+<!--                                        </t>-->
+<!--                                        <t t-else="">-->
+<!--                                            <td name="td_amount_by_group_label">-->
+<!--                                                <span t-esc="amount_by_group[0]"/>-->
+<!--                                            </td>-->
+<!--                                            <td name="td_amount_by_group" class="text-right o_price_total">-->
+<!--                                                <span t-esc="amount_by_group[1]"-->
+<!--                                                      t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.pricelist_id.currency_id}"/>-->
+<!--                                            </td>-->
+<!--                                        </t>-->
+<!--                                    </tr>-->
+<!--                                </t>-->
+<!--                                <tr class="border-black o_total">-->
+<!--                                    <td name="td_amount_total_label">-->
+<!--                                        <strong>Total</strong>-->
+<!--                                    </td>-->
+<!--                                    <td name="td_amount_total" class="text-right">-->
+<!--                                        <span t-field="o.amount_total"/>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                            </table>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+                <div id="total" class="row justify-content-end">
+                    <div class="col-4">
+                        <table class="table table-sm">
+                            <t t-set="tax_totals" t-value="json.loads(o.tax_totals_json)"/>
+                            <t t-call="account.document_tax_totals"/>
+                        </table>
+                    </div>
+                </div>
+                <div t-if="o.signature" class="mt32 ml64 mr4" name="signature">
+                    <div class="offset-8">
+                        <strong>Signature</strong>
+                    </div>
+                    <div class="offset-8">
+                        <img t-att-src="image_data_uri(o.signature)" style="max-height: 4cm; max-width: 8cm;"/>
+                    </div>
+                    <div class="offset-8 text-center">
+                        <p t-field="o.signed_by"/>
+                    </div>
+                </div>
+
+                <div t-if="o.sale_order_option_ids and o.state in ['draft', 'sent']">
+                    <t t-set="has_option_discount"
+                       t-value="any(option.discount != 0.0 for option in o.sale_order_option_ids)"/>
+                    <h4 name="h_optional_products">
+                        <span>Options</span>
+                    </h4>
+                    <table name="table_optional_products" class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th name="th_option_name" class="text-left">Description</th>
+                                <th t-if="has_option_discount" name="th_option_discount"
+                                    groups="product.group_discount_per_so_line" class="text-left">Disc.%
+                                </th>
+                                <th name="th_option_price_unit" class="text-right">Unit Price</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <tr t-foreach="o.sale_order_option_ids" t-as="option">
+                                <td name="td_option_name">
+                                    <span t-field="option.name"/>
+                                </td>
+                                <td t-if="has_option_discount" name="td_option_discount"
+                                    groups="product.group_discount_per_so_line">
+                                    <strong t-if="option.discount != 0.0" class="text-info">
+                                        <t t-esc="((option.discount % 1) and '%s' or '%d') % option.discount"/>%
+                                    </strong>
+                                </td>
+                                <td name="td_option_price_unit">
+                                    <strong class="text-right">
+                                        <div t-field="option.price_unit"
+                                             t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.pricelist_id.currency_id}"
+                                             t-att-style="option.discount and 'text-decoration: line-through' or None"
+                                             t-att-class="option.discount and 'text-danger' or None"/>
+                                        <div t-if="option.discount">
+                                            <t t-esc="'%.2f' % ((1-option.discount / 100.0) * option.price_unit)"/>
+                                        </div>
+                                    </strong>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="oe_structure"/>
+                <div class="row">
+                </div>
+                <div class="row">
+                </div>
+                <div class="row">
+                </div>
+                <div class="row">
+                </div>
+                <div class="row">
+<!--                    <div class="col-3"-->
+<!--                         t-if="o.x_studio_selection_field_9ruBI == &quot;Yes (Override Standard Shipping Policy)&quot;">-->
+<!--                        <span>-->
+<!--                            <strong>Requested Ship Schedule:</strong>-->
+<!--                            <br/>-->
+<!--                        </span>-->
+
+<!--                        <span t-field="o.x_studio_order_fulfillment"/>-->
+<!--                    </div>-->
+                    <div class="col-3"/>
+                    <div class="col-3"/>
+                    <div class="col-3">
+                        <span>
+                            <strong>Payment Terms:</strong>
+                            <br/>
+                        </span>
+                        <span t-field="o.payment_term_id.name"/>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span> </span>
+                    </div>
+                </div>
+<!--                <div class="row">-->
+<!--                    <div class="col-3" t-if="o.x_studio_selection_field_9ruBI == &quot;No&quot;">-->
+<!--                        <span>-->
+<!--                            <strong>Standard Shipping Schedule:</strong>-->
+<!--                            <br/>-->
+<!--                        </span>-->
+<!--                        <span t-field="o.x_studio_delivery_loc_general_shipping_preference"/>-->
+<!--                    </div>-->
+<!--                    <div class="col-3"/>-->
+<!--                    <div class="col-3"/>-->
+<!--                    <div class="col-3"/>-->
+<!--                </div>-->
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <span>
+                            <strong>Shipping Method:</strong>
+                            <br/>
+                        </span>
+                        <span t-field="o.shipping_method"/>
+                    </div>
+<!--                    <div class="col-3"/>-->
+<!--                    <div class="col-3"/>-->
+<!--                    <div class="col-3"/>-->
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col">
+                        <span>
+                            <p>
+                                <span style="font-weight: bolder;">*Freight total is not included in total price above,
+                                    determined at time of shipment and added to invoice.*
+                                </span>
+                                <br/>
+                                <span>
+                                    <i>&amp;ensp;Please contact us at time of order if you prefer your items to ship
+                                        together&lt;br&gt;&amp;ensp;once all are available, or individually as they come
+                                        into stock.
+                                    </i>
+                                </span>
+                            </p>
+                        </span>
+                    </div>
+                </div>
+<!--                <div class="row">-->
+<!--                    <div class="col">-->
+<!--                        <span>-->
+<!--                            <b>Est. Business Days to Shipment From Order Ack Date:</b>-->
+<!--                            <span t-field="o.x_studio_estimated_days_to_delivery_once_ordered"/>-->
+
+<!--                        </span>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+
+                <div class="row">
+                    <div class="col-3">
+                        <span>
+
+                            <br/>
+                        </span>
+                    </div>
+                    <div class="col-3"/>
+                    <div class="col-3"/>
+                    <div class="col-3"/>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span>
+                            <b>
+                                <u>&lt;br&gt;Confirmation:</u>
+                            </b>
+                            <i>&amp;ensp;This acknowledgment serves as record that your order is in production. Please
+                                contact <u>orders@senasys.com</u> with inquiries related to expediting, change orders,
+                                cancellations, etc.
+                            </i>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span>
+                            <p>&lt;/span&gt;&lt;/div&gt;<br/>
+                            </p>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span>&lt;br&gt;<b>Terms &amp; Conditions:</b>&lt;br&gt;FOB: Eau Claire, WI 54701. Prices are
+                            FOB Factory with risk of loss or damage passing to buyer upon delivery to carrier. Any claim
+                            for shortage or other cause must be reported within 30 days of receipt of product. Buyer may
+                            be responsible for bank transfer fees for small dollar and international transactions.&lt;br&gt;&lt;br&gt;Buyer
+                            may cancel an order, in whole or part, prior to order being shipped. Senasys will make an
+                            effort to cancel but buyer will be liable for all unique materials and assemblies with
+                            allowance for reasonable profit.&lt;br&gt;&lt;br&gt;Order returns must be approved by
+                            Senasys and receive a return authorization number. We cannot accecpt C.O.D. returns, and all
+                            returns may be subject to a 15% restocking fee. A copy of the order invoice must acompany
+                            any return.&lt;br&gt;&lt;br&gt;Senasys warrants goods it manufactures in-house to be free of
+                            defective material and faulty workmanship for a period of 12 months from date of
+                            manufacture. 3rd party manufactured goods will have manufacturer warranty "carried through"
+                            to end user. Contact Senasys for itemized warranty summary. Non-complying goods returned
+                            freight prepaid to Senasys will be repaired, replaced, or credited at Senasys's option. No
+                            goods will be accepted for return without an authorization number obtained in advance of
+                            shipment to Senasys.&lt;br&gt;&lt;br&gt;Senasys will not be liable for any cost of the
+                            Buyer's, including any indirect, special, consequential, incidental, or punitive damages of
+                            any sort, whether based on tort or breach of contract and/or warranty.&lt;br&gt;&lt;br&gt;*Terms
+                            listed above are for quotation only. All terms must be approved prior to receipt of initial
+                            PO. Approval documents sent upon request. Default terms will be prepaid without approval.
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row">
+                </div>
+
+
+                <span t-if="o.payment_term_id.note">
+                    <span t-field="o.payment_term_id.note"/>
+                </span>
+                <span id="fiscal_position_remark" t-if="o.fiscal_position_id and o.fiscal_position_id.sudo().note">
+                    <strong>Fiscal Position Remark:</strong>
+                    <span t-field="o.fiscal_position_id.sudo().note"/>
+                </span>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_sale_order_inter_acknowledgement">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="bv_senasys_custom_fields.report_sale_order_inter_acknowledgement_document" t-lang="o.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>

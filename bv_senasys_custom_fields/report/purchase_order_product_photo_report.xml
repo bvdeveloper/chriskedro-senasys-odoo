@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_quote_with_photo_document">
+        <t t-call="web.external_layout">
+            <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
+            <t t-set="address">
+                <div t-field="o.partner_id"
+                     t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
+                <p t-if="o.partner_id.vat"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>:
+                    <span t-field="o.partner_id.vat"/>
+                </p>
+            </t>
+            <t t-if="o.dest_address_id">
+                <t t-set="information_block">
+                    <strong>Shipping address:</strong>
+                    <div t-if="o.dest_address_id">
+                        <div t-field="o.dest_address_id"
+                             t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"
+                             name="purchase_shipping_address"/>
+                    </div>
+
+                </t>
+            </t>
+            <t t-else="">
+                <t t-set="information_block">
+                    <strong>
+                        <font style="color: rgb(156, 0, 0); font-size: 18px;">ECM Shipping Address:</font>
+                    </strong>
+                    <div t-if="o.picking_type_id and o.picking_type_id.warehouse_id">
+                        <div t-field="o.picking_type_id.warehouse_id.partner_id"
+                             t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
+                    </div>
+                </t>
+            </t>
+
+            <div class="page">
+                <div class="oe_structure"/>
+
+                <div class="row h2 o_underline" style="color:#8F1515">
+                    <div class="col">
+                        <span><b>SENASYS</b>- Purchase Order  #
+                        </span>
+                        <span t-field="o.name" class="o_bold"/>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                </div>
+
+
+<!--                <h2 t-if="o.state == 'draft'">Request for Quotation #-->
+<!--                    <span t-field="o.name"/>-->
+<!--                </h2>-->
+                <h2 t-if="o.state in ['purchase', 'done']">Purchase Order #
+                    <span t-field="o.name"/>
+                </h2>
+
+                <div class="row">
+                    <div class="col-3" t-if="o.vendor_drop_ship_enter_address_below == &quot;Yes&quot;">
+                        <span>
+                            <strong>Drop Ship To Address:</strong>
+                            <br/>
+                        </span>
+                        <span t-field="o.drop_ship_to_vendor"/>
+                    </div>
+                    <div class="col-3"/>
+                    <div class="col-3"/>
+                    <div class="col-3"/>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <span>
+                            <p t-if="o.vendor_drop_ship_enter_address_below != &quot;Yes&quot;">
+                                <b>
+                                    <u>Delivery Address:</u>
+                                </b>
+                                <br/>Senasys&lt;br&gt;ECM Division&lt;br&gt;1435 International Drive&lt;br&gt;Eau
+                                Claire, WI 54701
+                            </p>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span> </span>
+                    </div>
+                </div>
+
+
+                <h2 t-if="o.state == 'cancel'">Cancelled Purchase Order #
+                    <span t-field="o.name"/>
+                </h2>
+
+                <div id="informations" class="row mt32 mb32">
+                    <div t-if="o.user_id" class="col-3 bm-2">
+                        <strong>Senasys Representative:</strong>
+                        <p t-field="o.user_id" class="m-0"/>
+                    </div>
+                    <div t-if="o.partner_ref" class="col-3 bm-2">
+                    </div>
+                    <div t-if="o.date_order" class="col-3 bm-2">
+                        <strong>Order Date:</strong>
+                        <p t-field="o.date_order" class="m-0" t-options-widget="&quot;date&quot;"/>
+                    </div>
+                    <div t-if="o.incoterm_id" class="col-3 bm-2">
+                        <strong>Incoterm:</strong>
+                        <p t-field="o.incoterm_id.code" class="m-0"/>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span> </span>
+                    </div>
+                </div>
+
+                <div class="row">
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span>
+                            <b>
+                                <font style="color: rgb(156, 0, 0);">Please acknowledge ship date(s) to
+                                    lana@senasys.com.
+                                </font>
+                            </b>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span> </span>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-3">
+                        <span>
+                            <strong>Requested Delivery Method:</strong>
+                            <br/>
+                        </span>
+
+                        <span t-field="o.requested_delivery_method"/>
+                    </div>
+                    <div class="col-3">
+                        <span>
+                            <strong>Requested Ship Date:</strong>
+                            <br/>
+                            <span t-field="o.select_"/>
+
+                        </span>
+
+                        <span t-field="o.request_date"/>
+                    </div>
+                    <div class="col-6">
+                        <span>
+                            <strong>P.O. Notes:</strong>
+                            <br/>
+                        </span>
+
+                        <span t-field="o.po_notes"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <span>
+                            <strong t-if="o.requested_delivery_method == &quot;Drop Ship (see notes below)&quot;">
+                                Drop Ship Address:
+                            </strong>
+                            <br/>
+                        </span>
+                        <span t-field="o.drop_ship_address"/>
+                    </div>
+                    <div class="col-3"/>
+                    <div class="col-3"/>
+                    <div class="col-3"/>
+                </div>
+
+
+                <div class="row">
+                </div>
+
+
+                <table class="table o_main_table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="text-center">
+                                <span>Inv&lt;br&gt;Loc:</span>
+                            </th>
+                            <th class="text-center">
+                                <span>Senasys&lt;br&gt;Part #</span>
+                            </th>
+                            <th class="text-center">
+                                <span>Description</span>
+                            </th>
+                            <th class="text-center">
+                                <span>Vendor&lt;br&gt;Desc/Notes</span>
+                            </th>
+
+
+                            <th name="th_quantity" class="text-center">
+                                <strong>Qty</strong>
+                            </th>
+                            <th name="th_price_unit" class="text-center">
+                                <strong>Unit Price</strong>
+                            </th>
+                            <th name="th_amount" class="text-center">
+                                <strong>Amount</strong>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="current_subtotal" t-value="0"/>
+                        <t t-foreach="o.order_line" t-as="line">
+                            <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal"
+                               groups="account.group_show_line_subtotals_tax_excluded"/>
+                            <t t-set="current_subtotal" t-value="current_subtotal + line.price_total"
+                               groups="account.group_show_line_subtotals_tax_included"/>
+
+                            <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
+                                <t t-if="not line.display_type">
+                                    <td>
+                                        <span t-field="line.product_id.inv_loc"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.product_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.product_id.default_code"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.product_id.x_studio_description"/>
+                                        <span>// </span>
+                                        <span t-field="line.product_id.x_studio_vendor_noterequirement"/>
+
+                                    </td>
+
+
+                                    <td class="text-right">
+                                        <span t-field="line.product_qty" t-options-widget="&quot;integer&quot;"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="line.price_unit" t-options-widget="&quot;float&quot;"
+                                              t-options-precision="2"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="line.price_subtotal"
+                                              t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                    </td>
+                                </t>
+                                <t t-if="line.display_type == 'line_section'">
+                                    <td colspan="99" id="section">
+                                        <span t-field="line.name"/>
+                                    </td>
+                                    <t t-set="current_section" t-value="line"/>
+                                    <t t-set="current_subtotal" t-value="0"/>
+                                </t>
+                                <t t-if="line.display_type == 'line_note'">
+                                    <td colspan="99" id="note">
+                                        <span t-field="line.name"/>
+                                    </td>
+                                </t>
+                            </tr>
+                            <t t-if="current_section and (line_last or o.order_line[line_index+1].display_type == 'line_section')">
+                                <tr class="is-subtotal text-right">
+                                    <td colspan="102" id="subtotal">
+                                        <strong class="mr16">Subtotal</strong>
+                                        <span t-esc="current_subtotal"
+                                              t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </t>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col">
+                        <span>Please inform us if there is any quantity-based price discounting on the item(s) listed
+                            above.&lt;br&gt;&lt;br&gt;
+                        </span>
+                    </div>
+                </div>
+
+
+                <div id="total" class="row justify-content-end">
+                    <div class="col-4">
+                        <table class="table table-sm">
+                            <tr class="border-black">
+                                <td name="td_subtotal_label">
+                                    <strong>Subtotal</strong>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="o.amount_untaxed"
+                                          t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td name="td_taxes_label">Taxes</td>
+                                <td class="text-right">
+                                    <span t-field="o.amount_tax"
+                                          t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                </td>
+                            </tr>
+                            <tr class="border-black o_total">
+                                <td name="td_amount_total_label">
+                                    <strong>Total</strong>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="o.amount_total"
+                                          t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <p t-field="o.notes"/>
+                <div class="oe_structure"/>
+                <div class="row">
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span>&lt;br&gt;<b>SHIPPING INSTRUCTIONS:</b>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <span>For Parcel shipments, please ship UPS (Ground/3 Day/Overnight/Etc as stated above) Collect
+                            account 2T0T80. For LTL Shipments please use Unishippers 1-888-681-7447
+                        </span>
+                    </div>
+                </div>
+
+
+            </div>
+        </t>
+
+    </template>
+    <template id="report_quote_with_photo">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="bv_senasys_custom_fields.report_quote_with_photo_document" t-lang="o.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>

@@ -32,6 +32,10 @@
         'views/purchase_order_rfq_report.xml',
         'views/sale_order_quotation_template_inherit.xml',
         'views/delivery_carrier.xml',
+        'report/sale_order_acknowledgement_report.xml',
+        'report/sale_order_internal_acknowledgement.xml',
+        'report/quote_with_photo_report.xml',
+        'report/report_action.xml',
     ],
     'demo': [
     ],
