@@ -37,6 +37,11 @@
             <xpath expr="//field[@name='fiscal_position_id']" position="after">
                 <field name="po_drawing_attach" string="Attach Drawing" widget="image"/>
             </xpath>
+
+            <xpath expr="//field[@name='order_line']//tree//field[@name='product_id']" position="before">
+                <field name="inv_loc"/>
+            </xpath>
+
         </field>
     </record>
 </odoo>

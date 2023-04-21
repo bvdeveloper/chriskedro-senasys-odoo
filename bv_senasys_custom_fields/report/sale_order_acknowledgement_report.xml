@@ -148,9 +148,9 @@
                                 </span>
                                 <span groups="account.group_show_line_subtotals_tax_included">Total Price</span>
                             </th>
-                            <th>
-                                <span>Loc:</span>
-                            </th>
+<!--                            <th>-->
+<!--                                <span>Loc:</span>-->
+<!--                            </th>-->
 
                             <th>
                                 <span>Promised&lt;br&gt; Ship Date</span>
@@ -198,9 +198,9 @@
                                         <span t-field="line.price_total"
                                               groups="account.group_show_line_subtotals_tax_included"/>
                                     </td>
-                                    <td>
-                                        <span t-field="line.product_template_id.inv_location"/>
-                                    </td>
+<!--                                    <td>-->
+<!--                                        <span t-field="line.product_template_id.inv_location"/>-->
+<!--                                    </td>-->
 
                                     <td>
 <!--                                        <span t-field="line.line_item_est_ship"-->
@@ -238,6 +238,10 @@
                 </div>
 
                 <div class="row">
+                    <div class="col-auto col-3 mw-100 mb-2">
+                        <strong>Lead Time:</strong>
+                        <p class="m-0" t-field="o.lead_time_for_quotes_only"/>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-3">
@@ -429,16 +433,13 @@
 
 
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-12">
                         <span>
                             <strong>Shipping Method:</strong>
                             <br/>
                         </span>
                         <span t-field="o.shipping_method"/>
                     </div>
-                    <div class="col-3"/>
-                    <div class="col-3"/>
-                    <div class="col-3"/>
                 </div>
 
                 <div class="row">

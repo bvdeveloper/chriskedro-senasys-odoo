@@ -145,6 +145,11 @@
                     <p style="margin-bottom: 0px;"><strong>Total Order value</strong></p>
                 </span>
             </xpath>
+            <xpath expr="/t/t/t/t/div/div[9]/div[3]/span" position="after">
+                <span><strong>Initial/1st Shipment Method:</strong></span>
+                <br/>
+                <span t-field="o.x_studio_related_field_He86r"/>
+            </xpath>
             <xpath expr="/t/t/t/t/div/div[9]/div[3]/span" position="replace">
                 <span>
                     <p style="margin-bottom: 0px;">Shipping Method:</p>

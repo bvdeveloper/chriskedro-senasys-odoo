@@ -125,7 +125,16 @@
                     </div>
                 </div>
 
-                <span>&lt;br&gt;Customer Notes:</span>
+                <div class="row">
+                    <div class="col">
+                        <span>
+                            <strong>Customer Notes:</strong>
+                        </span>
+                        <span t-field="o.partner_id.customer_notes"/>
+                    </div>
+                </div>
+
+                <br/>
                 <!-- Is there a discount on at least one line? -->
                 <t t-set="display_discount" t-value="any(l.discount for l in o.order_line)"/>
 
@@ -256,6 +265,10 @@
                 </div>
 
                 <div class="row">
+                    <div class="col-auto col-3 mw-100 mb-2">
+                        <strong>Lead Time:</strong>
+                        <p class="m-0" t-field="o.lead_time_for_quotes_only"/>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
@@ -263,7 +276,7 @@
                             <strong><u>Order Notes:</u></strong>
                             <br/>
                         </span>
-                        <strong>Internal Senasys Notes:- </strong><span t-field="o.lead_time_for_quotes_only"></span>
+                        <strong>Internal Senasys Notes:- </strong><span t-field="o.order_notes_seen_on_int_reports_only"></span>
                         <br/>
                         <br/>
                         <strong>Notes to Cust:- </strong><span t-field="o.enter_order_specific_notes_below"/>
