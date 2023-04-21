@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record model="ir.ui.view" id="mrp_production_inherited_tree_view">
+        <field name="name">mrp.production.inherit.tree</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_qty']" position="after">
+                <field name="work_center" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
     <record model="ir.ui.view" id="mrp_production_inherited_view">
         <field name="name">mrp.production.inherit.form</field>
         <field name="model">mrp.production</field>

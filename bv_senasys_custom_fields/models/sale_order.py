@@ -9,7 +9,7 @@ class SaleOrder(models.Model):
     enter_order_specific_notes_below = fields.Char(string='Order Notes (Visible on Cust PDFs)')
     jobnametag = fields.Char(string='Cust PO# / Ref #')
     lead_time_for_quotes_only = fields.Char(string='Lead Time:')
-    # order_notes_seen_on_int_reports_only = fields.Char(string='Order Notes (Seen on Int. Reports Only)')
+    order_notes_seen_on_int_reports_only = fields.Char(string='Order Notes (Seen on Int. Reports Only)')
     order_promised_ship_date = fields.Date(string='Order Promised Ship Date:')
     portal_cust_contact_method = fields.Selection(
         [('Ariba', 'Ariba - ECM'), ('Email/Phone/Other', 'Email/Phone/Other'),
@@ -46,3 +46,12 @@ class SaleOrder(models.Model):
     deliv_address_default_customer_contact = fields.Char(related='partner_shipping_id.attncontact', string="Deliv. Address Default Customer Contact")
     delivery_address_for_emailing_quotesorders = fields.Char(related='partner_shipping_id.email', string="Delivery Address for Emailing Quotes/Orders")
     x_delivery_address = fields.Char(related='partner_shipping_id.name', string="Delivery Address")
+
+    @api.onchange('partner_id')
+    def onchange_partner_id(self):
+        super().onchange_partner_id()
+        payment_term = self.partner_invoice_id.property_payment_term_id.id if self.partner_invoice_id.property_payment_term_id else self.partner_id.property_payment_term_id.id
+        values = {
+            'payment_term_id': payment_term and payment_term or False,
+        }
+        self.update(values)

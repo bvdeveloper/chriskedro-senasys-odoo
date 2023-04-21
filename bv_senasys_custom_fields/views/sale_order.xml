@@ -10,7 +10,7 @@
                 <field name="shipping_collect_acct_"
                        attrs="{&quot;invisible&quot;: [&quot;|&quot;,&quot;|&quot;,&quot;|&quot;,&quot;|&quot;,&quot;|&quot;,&quot;|&quot;,&quot;|&quot;,&quot;|&quot;,&quot;|&quot;,&quot;|&quot;,[&quot;shipping_method&quot;,&quot;=&quot;,&quot;UPS Ground&quot;],[&quot;shipping_method&quot;,&quot;=&quot;,&quot;UPS 2nd Day Air&quot;],[&quot;shipping_method&quot;,&quot;=&quot;,&quot;UPS Overnight&quot;],[&quot;shipping_method&quot;,&quot;=&quot;,&quot;UPS Overnight (Early AM)&quot;],[&quot;shipping_method&quot;,&quot;=&quot;,&quot;FedEx Ground&quot;],[&quot;shipping_method&quot;,&quot;=&quot;,&quot;FedEx 2nd Day Air&quot;],[&quot;shipping_method&quot;,&quot;=&quot;,&quot;FedEx Overnight&quot;],[&quot;shipping_method&quot;,&quot;=&quot;,&quot;LTL&quot;],[&quot;shipping_method&quot;,&quot;=&quot;,&quot;USPS Economy&quot;],[&quot;shipping_method&quot;,&quot;=&quot;,&quot;USPS Priority&quot;],[&quot;shipping_method&quot;,&quot;=&quot;,&quot;Other (See Notes)&quot;]]}"/>
                 <field name="enter_order_specific_notes_below"/>
-<!--                <field name="order_notes_seen_on_int_reports_only"/>-->
+                <field name="order_notes_seen_on_int_reports_only"/>
                 <field name="lead_time_for_quotes_only"/>
             </xpath>
             <xpath expr="//field[@name='partner_shipping_id']" position="after">
