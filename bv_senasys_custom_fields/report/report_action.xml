@@ -34,16 +34,27 @@
             <field name="binding_type">report</field>
         </record>
 
-<!--        <record id="action_report_purchase_order_product_photo" model="ir.actions.report">-->
-<!--            <field name="name">ECM Purchase Order - Product Photos</field>-->
-<!--            <field name="model">purchase.order</field>-->
-<!--            <field name="report_type">qweb-pdf</field>-->
-<!--            <field name="report_name">bv_senasys_custom_fields.report_purchase_order_product_photo</field>-->
-<!--            <field name="report_file">bv_senasys_custom_fields.report_purchase_order_product_photo</field>-->
-<!--            <field name="print_report_name">'Quote with photos - %s' % (object.name)</field>-->
-<!--            <field name="binding_model_id" ref="model_purchase_order"/>-->
-<!--            <field name="binding_type">report</field>-->
-<!--        </record>-->
+        <record id="action_report_purchase_order_product_photo" model="ir.actions.report">
+            <field name="name">ECM Purchase Order - Product Photos</field>
+            <field name="model">purchase.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">bv_senasys_custom_fields.report_purchase_order_product_photo</field>
+            <field name="report_file">bv_senasys_custom_fields.report_purchase_order_product_photo</field>
+            <field name="print_report_name">'Order with photos - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="model_purchase_order"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_vendor_rfq_product_photo" model="ir.actions.report">
+            <field name="name">ECM Vendor RFQ - Product Photos</field>
+            <field name="model">purchase.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">bv_senasys_custom_fields.report_vendor_rfq_product_photo</field>
+            <field name="report_file">bv_senasys_custom_fields.report_vendor_rfq_product_photo</field>
+            <field name="print_report_name">'Vendor RFQ with photos - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="model_purchase_order"/>
+            <field name="binding_type">report</field>
+        </record>
 
 
     </data>

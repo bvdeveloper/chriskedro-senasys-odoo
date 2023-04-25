@@ -36,6 +36,7 @@
         'report/sale_order_internal_acknowledgement.xml',
         'report/quote_with_photo_report.xml',
         'report/purchase_order_product_photo_report.xml',
+        'report/vendor_rfq_with_product_photo.xml',
         'report/report_action.xml',
     ],
     'demo': [
