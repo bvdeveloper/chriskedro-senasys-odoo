@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="report_purchase_order_product_photo_document">
+    <template id="report_vendor_rfq_product_photo_document">
         <t t-call="web.external_layout">
             <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
             <!--            <t t-set="address">-->
@@ -40,7 +40,7 @@
 
                 <div class="row h2 o_underline" style="color:#8F1515">
                     <div class="col">
-                        <span><b>SENASYS</b>- Purchase Order  #
+                        <span><b>SENASYS</b>- Request for Quotation  #
                         </span>
                         <span t-field="o.name" class="o_bold"/>
 
@@ -72,12 +72,12 @@
                 <!--                </div>-->
 
                 <div class="row">
-                    <p t-if="o.vendor_drop_ship_enter_address_below != &quot;Yes&quot;">
+<!--                    <p t-if="o.vendor_drop_ship_enter_address_below != &quot;Yes&quot;">-->
                     <div class="col-5">
                         <span>
 
                                 <b>
-                                    <u>Delivery Address:</u>
+                                    <u>Delivery Address if Ordered:</u>
                                 </b>
                                 <span t-field="o.company_id" t-options-widget="&quot;contact&quot;"
                                       t-options-fields="['name', 'address', 'phone', 'email']"
@@ -87,12 +87,12 @@
 
                         </span>
                     </div>
-                    </p>
+<!--                    </p>-->
                     <div class="col-5">
-                        <!--                        <span>-->
-                        <!--                            <strong>Invoice Address:</strong>-->
-                        <!--                            <br/>-->
-                        <!--                        </span>-->
+                        <span>
+                            <strong>Vendor:</strong>
+                            <br/>
+                        </span>
 
                         <span t-field="o.partner_id" t-options-widget="&quot;contact&quot;"
                               t-options-fields="['name', 'address', 'phone', 'email']" t-options-no_marker="True"/>
@@ -119,7 +119,7 @@
                         <!--                    <div t-if="o.partner_ref" class="col-3 bm-2">-->
 <!--                    </div>-->
                     <div t-if="o.date_order" class="col-3">
-                        <strong>Order Date:</strong>
+                        <strong>Quotation Date:</strong>
                         <p t-field="o.date_order" class="m-0" t-options-widget="&quot;date&quot;"/>
                     </div>
                     <div t-if="o.incoterm_id" class="col-3">
@@ -140,8 +140,7 @@
                 <div class="col">
                     <span>
                         <b>
-                            <font style="color: rgb(156, 0, 0);">Please acknowledge ship date(s) to
-                                lana@senasys.com.
+                            <font style="color: rgb(156, 0, 0);">Please contact lana@senasys.com with any questions regarding this quotation request.
                             </font>
                         </b>
                     </span>
@@ -165,7 +164,7 @@
                 </div>
                 <div class="col-3">
                     <span>
-                        <strong>Requested Ship Date:</strong>
+                        <strong>Req. Ship Date If Ordered:</strong>
                         <br/>
                         <span t-field="o.select_"/>
 
@@ -175,7 +174,7 @@
                 </div>
                 <div class="col-6">
                     <span>
-                        <strong>P.O. Notes:</strong>
+                        <strong>Quotation Notes:</strong>
                         <br/>
                     </span>
 
@@ -199,8 +198,8 @@
             <!--                </div>-->
 
 
-            <div class="row">
-            </div>
+<!--            <div class="row">-->
+<!--            </div>-->
 
 
             <table class="table o_main_table table-striped">
@@ -221,12 +220,12 @@
                         <th name="th_quantity" class="text-center">
                             <strong>Qty</strong>
                         </th>
-                        <th name="th_price_unit" class="text-center">
-                            <strong>Unit Price</strong>
-                        </th>
-                        <th name="th_amount" class="text-center">
-                            <strong>Amount</strong>
-                        </th>
+<!--                        <th name="th_price_unit" class="text-center">-->
+<!--                            <strong>Unit Price</strong>-->
+<!--                        </th>-->
+<!--                        <th name="th_amount" class="text-center">-->
+<!--                            <strong>Amount</strong>-->
+<!--                        </th>-->
                     </tr>
                 </thead>
                 <tbody>
@@ -262,14 +261,14 @@
                                 <td class="text-right">
                                     <span t-field="line.product_qty" t-options-widget="&quot;integer&quot;"/>
                                 </td>
-                                <td class="text-right">
-                                    <span t-field="line.price_unit" t-options-widget="&quot;float&quot;"
-                                          t-options-precision="2"/>
-                                </td>
-                                <td class="text-right">
-                                    <span t-field="line.price_subtotal"
-                                          t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-                                </td>
+<!--                                <td class="text-right">-->
+<!--                                    <span t-field="line.price_unit" t-options-widget="&quot;float&quot;"-->
+<!--                                          t-options-precision="2"/>-->
+<!--                                </td>-->
+<!--                                <td class="text-right">-->
+<!--                                    <span t-field="line.price_subtotal"-->
+<!--                                          t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>-->
+<!--                                </td>-->
                             </t>
                             <t t-if="line.display_type == 'line_section'">
                                 <td colspan="99" id="section">
@@ -299,68 +298,67 @@
             <div class="row">
                 <div class="col">
                     <span>Please inform us if there is any quantity-based price discounting on the item(s) listed
-                        above.&lt;br&gt;&lt;br&gt;<font color="#ff0000"/>For in-house machined parts, some vendors
-                        make additional item quantities to account for possible losses during production and still
-                        have enough finished parts to fulfill the purchase order. ECM can accept +10% ordered
-                        quantity without written approval, please contact ECM Purchasing if you wish to send OVER
-                        this 10% quantity amount.&lt;br&gt;&lt;br&gt;
+                        above.
+<!--                        &lt;br&gt;&lt;br&gt;<font color="#ff0000"/>For in-house machined parts, some vendors-->
+<!--                        make additional item quantities to account for possible losses during production and still-->
+<!--                        have enough finished parts to fulfill the purchase order. ECM can accept +10% ordered-->
+<!--                        quantity without written approval, please contact ECM Purchasing if you wish to send OVER-->
+<!--                        this 10% quantity amount.&lt;br&gt;&lt;br&gt;-->
                     </span>
                 </div>
             </div>
 
 
-            <div id="total" class="row justify-content-end">
-                <div class="col-4">
-                    <table class="table table-sm">
-                        <tr class="border-black">
-                            <td name="td_subtotal_label">
-                                <strong>Subtotal</strong>
-                            </td>
-                            <td class="text-right">
-                                <span t-field="o.amount_untaxed"
-                                      t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td name="td_taxes_label">Taxes</td>
-                            <td class="text-right">
-                                <span t-field="o.amount_tax"
-                                      t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-                            </td>
-                        </tr>
-                        <tr class="border-black o_total">
-                            <td name="td_amount_total_label">
-                                <strong>Total</strong>
-                            </td>
-                            <td class="text-right">
-                                <span t-field="o.amount_total"
-                                      t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
+<!--            <div id="total" class="row justify-content-end">-->
+<!--                <div class="col-4">-->
+<!--                    <table class="table table-sm">-->
+<!--                        <tr class="border-black">-->
+<!--                            <td name="td_subtotal_label">-->
+<!--                                <strong>Subtotal</strong>-->
+<!--                            </td>-->
+<!--                            <td class="text-right">-->
+<!--                                <span t-field="o.amount_untaxed"-->
+<!--                                      t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td name="td_taxes_label">Taxes</td>-->
+<!--                            <td class="text-right">-->
+<!--                                <span t-field="o.amount_tax"-->
+<!--                                      t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                        <tr class="border-black o_total">-->
+<!--                            <td name="td_amount_total_label">-->
+<!--                                <strong>Total</strong>-->
+<!--                            </td>-->
+<!--                            <td class="text-right">-->
+<!--                                <span t-field="o.amount_total"-->
+<!--                                      t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                    </table>-->
+<!--                </div>-->
+<!--            </div>-->
             <t t-if="o.notes">
                 <span t-field="o.notes"/>
             </t>
-<!--            <div class="oe_structure"/>-->
-<!--            <div class="row">-->
-<!--            </div>-->
             <div class="row">
                 <div class="col">
                     <span>&lt;br&gt;<b>SHIPPING INSTRUCTIONS:</b>
                     </span>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
+                    <br/>
                     <span>For Parcel shipments, please ship UPS (Ground/3 Day/Overnight/Etc as stated above) Collect
                         account 2T0T80. For LTL Shipments please use Unishippers 1-888-681-7447
                     </span>
                 </div>
             </div>
+
+<!--            <div class="row">-->
+<!--                <div class="col">-->
+<!--                    -->
+<!--                </div>-->
+<!--            </div>-->
 
 
             <!--        </div>-->
@@ -368,10 +366,10 @@
 
     </template>
 
-    <template id="report_purchase_order_product_photo">
+    <template id="report_vendor_rfq_product_photo">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <t t-call="bv_senasys_custom_fields.report_purchase_order_product_photo_document" t-lang="o.partner_id.lang"/>
+                <t t-call="bv_senasys_custom_fields.report_vendor_rfq_product_photo_document" t-lang="o.partner_id.lang"/>
             </t>
         </t>
     </template>
