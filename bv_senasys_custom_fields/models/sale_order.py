@@ -50,8 +50,10 @@ class SaleOrder(models.Model):
     @api.onchange('partner_id')
     def onchange_partner_id(self):
         super().onchange_partner_id()
-        payment_term = self.partner_invoice_id.property_payment_term_id.id if self.partner_invoice_id.property_payment_term_id else self.partner_id.property_payment_term_id.id
+        payment_term = self.partner_invoice_id.property_payment_term_id if self.partner_invoice_id.property_payment_term_id else self.partner_id.property_payment_term_id
+        # carrier = self.partner_shipping_id.property_delivery_carrier_id if self.partner_shipping_id.property_delivery_carrier_id else self.partner_id.property_delivery_carrier_id
         values = {
-            'payment_term_id': payment_term and payment_term or False,
+            'payment_term_id': payment_term and payment_term.id or False,
+            # 'carrier_id': carrier and carrier.id or False,
         }
         self.update(values)

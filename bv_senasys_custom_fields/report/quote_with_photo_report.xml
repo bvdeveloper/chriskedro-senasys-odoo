@@ -414,7 +414,7 @@
                 </div>
                 <div class="row">
                 </div>
-<!--                <div class="row">-->
+                <div class="row">
 <!--                    <div class="col-3"-->
 <!--                         t-if="o.x_studio_selection_field_9ruBI == &quot;Yes (Override Standard Shipping Policy)&quot;">-->
 <!--                        <span>-->
@@ -426,14 +426,14 @@
 <!--                    </div>-->
 <!--                    <div class="col-3"/>-->
 <!--                    <div class="col-3"/>-->
-<!--                    <div class="col-3">-->
-<!--                        <span>-->
-<!--                            <strong>Payment Terms:</strong>-->
-<!--                            <br/>-->
-<!--                        </span>-->
-<!--                        <span t-field="o.payment_term_id.name"/>-->
-<!--                    </div>-->
-<!--                </div>-->
+                    <div class="col-12">
+                        <span>
+                            <strong>Payment Terms:</strong>
+                            <br/>
+                        </span>
+                        <span t-field="o.payment_term_id.name"/>
+                    </div>
+                </div>
 
 
                 <div class="row">
