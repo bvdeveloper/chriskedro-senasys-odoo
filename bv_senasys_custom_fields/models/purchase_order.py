@@ -26,6 +26,16 @@ class PurchaseOrder(models.Model):
     dedicated_ecm_contact = fields.Char(related='partner_id.attncontact', string='Dedicated ECM Contact:')
     po_drawing_attach = fields.Binary(string='Attach Drawing')
 
+    @api.depends('order_line.date_planned')
+    def _compute_date_planned(self):
+        """
+        Override
+        """
+        for order in self:
+            if not order.date_planned:
+                order.date_planned = False
+
+
 class PurchaseOrderLine(models.Model):
     _inherit = "purchase.order.line"
 
