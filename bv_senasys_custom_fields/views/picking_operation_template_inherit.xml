@@ -173,11 +173,11 @@
                     <p style="margin-bottom: 0px;"><strong>Total Order value</strong></p>
                 </span>
             </xpath>
-            <xpath expr="/t/t/t/t/div/div[9]/div[3]/span" position="after">
-                <span><strong>Initial/1st Shipment Method:</strong></span>
-                <br/>
-                <span t-field="o.x_studio_related_field_He86r"/>
-            </xpath>
+<!--            <xpath expr="/t/t/t/t/div/div[9]/div[3]/span" position="after">-->
+<!--                <span><strong>Initial/1st Shipment Method:</strong></span>-->
+<!--                <br/>-->
+<!--                <span t-field="o.x_studio_related_field_He86r"/>-->
+<!--            </xpath>-->
             <xpath expr="/t/t/t/t/div/div[9]/div[3]/span" position="replace">
                 <span>
                     <p style="margin-bottom: 0px;">Shipping Method:</p>
@@ -432,6 +432,23 @@
 <!--            </xpath>-->
             <xpath expr="/t[1]/t[1]/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[5]" position="replace"/>
             <xpath expr="/t[1]/t[1]/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[1]/tr[1]/td[5]" position="replace"/>
+        </template>
+
+        <template id="picking_operation_report_inherit_bv"
+                  inherit_id="delivery.report_shipping2">
+            <xpath expr="//div[@t-if='o.weight']" position="before">
+                <div t-if="o.cust_collect_acct" class="col-auto">
+                    <strong>Cust. Collect Acct:</strong>
+                    <p t-field="o.cust_collect_acct"/>
+                </div>
+            </xpath>
+            <xpath expr="//p[@t-field='o.carrier_id']" position="before">
+                <xpath expr="//strong" position="attributes">
+                   <attribute name="invisible"></attribute>
+
+                </xpath>
+                <strong>Initial/1st Shipment Method:</strong>
+            </xpath>
         </template>
     </data>
 </odoo>

@@ -438,7 +438,7 @@
                             <strong>Shipping Method:</strong>
                             <br/>
                         </span>
-                        <span t-field="o.shipping_method"/>
+                        <span t-field="o.carrier_id.name"/>
                     </div>
                 </div>
 

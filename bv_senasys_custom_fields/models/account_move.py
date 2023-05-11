@@ -14,3 +14,5 @@ class AccountMove(models.Model):
     cust_po_submission_invoice_form = fields.Selection(related="invoice_line_ids.portal_cust_contact_method_3")
     pull_to_invoice = fields.Char(related="invoice_line_ids.sale_line_ids.pull_to_invoice", string="Customer_PO#:")
     x_studio_boolean_field_YoU4G = fields.Boolean(string="Inv Sent to Customer?")
+    shipping_method_id = fields.Many2one("delivery.carrier", string="Shipping method")
+    shipping_collect_acct = fields.Char(string='Shipping Collect Acct')

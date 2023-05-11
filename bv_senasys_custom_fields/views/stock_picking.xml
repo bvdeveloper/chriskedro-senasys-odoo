@@ -15,7 +15,8 @@
             <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
                 <group name="studio_group_TX5B4">
                     <group name="left">
-                        <field name="x_studio_related_field_He86r" string="Initial/1st Shipment Method:"/>
+                        <field name="x_studio_related_field_He86r" string="Initial/1st Shipment Method:" invisible="1"/>
+                        <field name="carrier_id" string="Initial/1st Shipment Method"/>
                         <field name="override_shipment_method" string="Override Shipment Method"
                                help="Select YES to enter a specific shipping method...typical case would be an overnight rush partial 1st shipment...but then we would use GROUND for subsequent deliveries...The &quot;Ship Method for This Delivery&quot; will then print on this SPECIFIC delivery instead."/>
                         <field name="ship_method_for_this_delivery" string="Ship. Method For this Delivery"

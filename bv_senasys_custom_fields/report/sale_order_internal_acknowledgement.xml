@@ -463,15 +463,21 @@
 
 
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-4">
                         <span>
                             <strong>Shipping Method:</strong>
                             <br/>
                         </span>
-                        <span t-field="o.shipping_method"/>
+                        <span t-field="o.carrier_id.name"/>
                     </div>
-<!--                    <div class="col-3"/>-->
-<!--                    <div class="col-3"/>-->
+                    <div class="col-4">
+                        <span>
+                            <strong>Shipping Account no:</strong>
+                            <br/>
+                        </span>
+                        <span t-field="o.shipping_collect_acct_"/>
+                    </div>
+                    <div class="col-4"/>
 <!--                    <div class="col-3"/>-->
                 </div>
                 <br/>

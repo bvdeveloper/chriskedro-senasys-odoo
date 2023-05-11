@@ -5,6 +5,10 @@
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_move_form"/>
         <field name="arch" type="xml">
+            <xpath expr="//div[@name='journal_div']" position="after">
+                <field name="shipping_method_id"/>
+                <field name="shipping_collect_acct"/>
+            </xpath>
             <xpath expr="//field[@name='payment_reference']" position="after">
                 <!--                <field name="inv_sent_to_cus"/>-->
                 <field name="payment_terms" string="Payment Terms"/>
@@ -64,6 +68,14 @@
             <div class="col-auto col-3 mw-100 mb-2" t-if="o.pull_to_invoice" name="pull_to_invoice">
                 <strong>Customer PO#:</strong>
                 <p class="m-0" t-field="o.pull_to_invoice"/>
+            </div>
+            <div class="col-auto col-3 mw-100 mb-2" t-if="o.shipping_method_id" name="shipping_method_id">
+                <strong>Shipping Method:</strong>
+                <p class="m-0" t-field="o.shipping_method_id"/>
+            </div>
+            <div class="col-auto col-3 mw-100 mb-2" t-if="o.shipping_collect_acct" name="shipping_collect_acct">
+                <strong>Shipping Collect Acct:</strong>
+                <p class="m-0" t-field="o.shipping_collect_acct"/>
             </div>
         </xpath>
         <xpath expr="//div[@id='informations']" position="after">
