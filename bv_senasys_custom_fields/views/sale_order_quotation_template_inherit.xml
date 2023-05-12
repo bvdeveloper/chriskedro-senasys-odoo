@@ -15,7 +15,7 @@
                     </div>
                     <div class="col-auto col-3 mw-100 mb-2">
                         <strong>Shipping Method:</strong>
-                        <p class="m-0" t-field="doc.shipping_method"/>
+                        <p class="m-0" t-field="doc.carrier_id.name"/>
                     </div>
                 </div>
             </xpath>
