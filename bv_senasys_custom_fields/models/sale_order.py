@@ -50,9 +50,9 @@ class SaleOrder(models.Model):
     @api.onchange('partner_id')
     def onchange_partner_id(self):
         super().onchange_partner_id()
-        payment_term = self.partner_invoice_id.property_payment_term_id if self.partner_invoice_id.property_payment_term_id.id else self.partner_id.property_payment_term_id.id
-        carrier = self.partner_shipping_id.property_delivery_carrier_id if self.partner_shipping_id.property_delivery_carrier_id.id else False
-        account = self.partner_shipping_id.carrier_account_number if self.partner_shipping_id.carrier_account_number else False
+        payment_term = self.partner_invoice_id.property_payment_term_id.id if self.partner_invoice_id.property_payment_term_id else self.partner_id.property_payment_term_id.id
+        carrier = self.partner_id.property_delivery_carrier_id.id if self.partner_id.property_delivery_carrier_id else False
+        account = self.partner_id.carrier_account_number if self.partner_id.carrier_account_number else False
         values = {
             'payment_term_id': payment_term,
             'carrier_id': carrier,
@@ -76,4 +76,4 @@ class SaleOrder(models.Model):
                 lambda r: r.move_type in ('out_invoice', 'out_refund') and (not r.shipping_method_id or not r.shipping_collect_acct ))
             for inv in invoices:
                 inv.shipping_collect_acct = order.shipping_collect_acct_
-                inv.shipping_method_id = order.carrier_id.id
+                inv.shipping_method_id = order.carrier_id.id if order.carrier_id else False
