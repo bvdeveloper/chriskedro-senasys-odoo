@@ -20,3 +20,4 @@ from . import stock_move_line
 from . import purchase_order_ecm_reporting
 from . import ecm_sales_order_by_line_reporting
 from . import delivery_carrier
+from . import stock_move
