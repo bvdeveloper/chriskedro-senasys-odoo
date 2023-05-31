@@ -58,4 +58,4 @@ class ResPartner(models.Model):
     x_studio_binary_field_ruCRS_filename = fields.Char(string="Filename for x_studio_binary_field_ruCRS")
 
     carrier_account_number = fields.Char(String='Carrier Account no.')
-    carried_has_acc_number = fields.Boolean("Carrier has acc no?", related='property_delivery_carrier_id.has_account_number', ondelete='set null')
+    # carried_has_acc_number = fields.Boolean("Carrier has acc no?", related='property_delivery_carrier_id.has_account_number', ondelete='set null')
