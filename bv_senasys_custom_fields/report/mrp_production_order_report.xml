@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="bv_inherited_report_mrporder_id"
+                  inherit_id="mrp.report_mrporder">
+            <xpath expr="//table[@t-if='o.move_raw_ids']//thead//tr//th" position="after">
+                <th> Inv Location</th>
+            </xpath>
+            <xpath expr="//table[@t-if='o.move_raw_ids']//tbody//tr//td" position="after">
+                <td>
+                    <span t-field="raw_line.inv_location"/>
+                </td>
+            </xpath>
+        </template>
+    </data>
+</odoo>

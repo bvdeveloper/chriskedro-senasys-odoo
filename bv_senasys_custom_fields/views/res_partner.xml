@@ -171,8 +171,7 @@
         <field name="inherit_id" ref="delivery.view_partner_property_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='property_delivery_carrier_id']" position="after">
-                <field name="carried_has_acc_number" invisible="1" />
-                <field name="carrier_account_number" attrs="{'invisible': [('carried_has_acc_number','=', False)]}" />
+                <field name="carrier_account_number" />
             </xpath>
         </field>
     </record>

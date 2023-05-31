@@ -61,12 +61,19 @@
                     <span t-field="o.name"/>
                 </h2>
 
-                <div class="row mt32 mb32" id="informations">
-                    <div t-if="o.client_order_ref" class="col-auto col-3 mw-100 mb-2">
+                <div class="row" id="informations">
+                    <div t-if="o.client_order_ref" class="col-3">
                         <strong>Your Reference:</strong>
                         <p class="m-0" t-field="o.client_order_ref"/>
                     </div>
-                    <div t-if="o.date_order and o.state not in ['cancel']" class="col-auto col-3 mw-100 mb-2">
+                    <div t-if="o.payment_term_id" class="col-3">
+                        <span>
+                            <strong>Payment Terms:</strong>
+                            <br/>
+                        </span>
+                        <span t-field="o.payment_term_id.name"/>
+                    </div>
+                    <div t-if="o.date_order and o.state not in ['cancel']" class="col-3">
                         <strong>Order Date:</strong>
                         <p class="m-0" t-field="o.date_order" t-options-widget="&quot;date&quot;"/>
                     </div>
@@ -389,7 +396,7 @@
                 </div>
                 <div class="row">
                 </div>
-                <div class="row">
+<!--                <div class="row">-->
 <!--                    <div class="col-3"-->
 <!--                         t-if="o.x_studio_selection_field_9ruBI == &quot;Yes (Override Standard Shipping Policy)&quot;">-->
 <!--                        <span>-->
@@ -399,16 +406,16 @@
 
 <!--                        <span t-field="o.x_studio_order_fulfillment"/>-->
 <!--                    </div>-->
-                    <div class="col-3"/>
-                    <div class="col-3"/>
-                    <div class="col-3">
-                        <span>
-                            <strong>Payment Terms:</strong>
-                            <br/>
-                        </span>
-                        <span t-field="o.payment_term_id.name"/>
-                    </div>
-                </div>
+<!--                    <div class="col-3"/>-->
+<!--                    <div class="col-3"/>-->
+<!--                    <div class="col-3">-->
+<!--                        <span>-->
+<!--                            <strong>Payment Terms:</strong>-->
+<!--                            <br/>-->
+<!--                        </span>-->
+<!--                        <span t-field="o.payment_term_id.name"/>-->
+<!--                    </div>-->
+<!--                </div>-->
 
 
                 <div class="row">

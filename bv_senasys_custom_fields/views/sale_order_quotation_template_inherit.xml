@@ -3,6 +3,12 @@
     <data>
         <template id="sale_quotation_inherit_bv"
                   inherit_id="sale.report_saleorder_document">
+            <xpath expr="//div[@id='informations']//div[3]" position="after">
+                <div t-if="doc.payment_term_id" class="col-auto col-3 mw-100 mb-2">
+                    <strong>Payment Termsssss:</strong>
+                    <p class="m-0" t-field="doc.payment_term_id.name"/>
+                </div>
+            </xpath>
             <xpath expr="//div[@name='so_total_summary']" position="before">
                 <div class="row mt32 mb32" id="leadtime">
                     <div class="col-auto col-3 mw-100 mb-2">
