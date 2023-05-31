@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='note']" position="replace">
                 <field name="shipping_method" attrs="{}" required="0" invisible="1" />
-                <field name="carrier_id"/>
+                <field name="carrier_id" required="1"/>
                 <field name="shipping_collect_acct_"/>
                 <field name="enter_order_specific_notes_below"/>
                 <field name="order_notes_seen_on_int_reports_only"/>
