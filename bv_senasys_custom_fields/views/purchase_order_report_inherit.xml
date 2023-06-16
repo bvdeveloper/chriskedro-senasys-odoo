@@ -35,6 +35,12 @@
             <br/>
         </xpath>
 
+
+        <xpath expr="//th[@name='th_date_req']" position="replace">
+        </xpath>
+        <xpath expr="//t//div[@class='page']//table//tbody//tr//t//td[3]" position="replace">
+        </xpath>
+
         <xpath expr="//t//div[@class='page']//table//thead//tr//th[@name='th_description']" position="before">
             <th name="inv_location"><strong>INV LOC.</strong></th>
         </xpath>

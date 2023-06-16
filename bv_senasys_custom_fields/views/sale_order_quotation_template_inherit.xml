@@ -5,7 +5,7 @@
                   inherit_id="sale.report_saleorder_document">
             <xpath expr="//div[@id='informations']//div[3]" position="after">
                 <div t-if="doc.payment_term_id" class="col-auto col-3 mw-100 mb-2">
-                    <strong>Payment Termsssss:</strong>
+                    <strong>Payment Terms:</strong>
                     <p class="m-0" t-field="doc.payment_term_id.name"/>
                 </div>
             </xpath>
@@ -16,7 +16,7 @@
                         <p class="m-0" t-field="doc.lead_time_for_quotes_only"/>
                     </div>
                     <div class="col-auto col-3 mw-100 mb-2">
-                        <strong>Quote Notes::</strong>
+                        <strong>Quote Notes:</strong>
                         <p class="m-0" t-field="doc.enter_order_specific_notes_below"/>
                     </div>
                     <div class="col-auto col-3 mw-100 mb-2">
