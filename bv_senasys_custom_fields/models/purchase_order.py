@@ -5,7 +5,7 @@ from odoo import api, fields, models, _
 class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
 
-    drop_ship_to_vendor = fields.Many2one(comodel_name='res.partner', string='Drop Ship Address (Autofill):')
+    drop_ship_to_vendor = fields.Many2many(comodel_name='res.partner', string='Drop Ship Address (Autofill):')
     po_notes = fields.Text(string='P.O. Notes: (Visible on PO)')
     po_notes_internal_use_only = fields.Char(string='P.O. Notes: (Internal Use Only)')
     purchase_order_closed = fields.Boolean(string='Purchase Order Closed')

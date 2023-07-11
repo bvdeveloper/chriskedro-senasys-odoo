@@ -439,7 +439,7 @@
         <field name="inherit_id" ref="product.product_template_search_view"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='categ_id']" position="after">
-                <field name="x_description" filter_domain="[('default_code', 'ilike', self)]"/>
+                <field name="x_description" filter_domain="[('x_description', 'ilike', self)]"/>
             </xpath>
         </field>
     </record>
