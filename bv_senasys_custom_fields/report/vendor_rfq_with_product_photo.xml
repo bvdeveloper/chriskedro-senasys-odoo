@@ -3,37 +3,53 @@
     <template id="report_vendor_rfq_product_photo_document">
         <t t-call="web.external_layout">
             <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
-            <!--            <t t-set="address">-->
-            <!--                <div t-field="o.partner_id"-->
-            <!--                     t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>-->
-            <!--                <p t-if="o.partner_id.vat"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>:-->
-            <!--                    <strong>vat:</strong>-->
-            <!--                    <span t-field="o.partner_id.vat"/>-->
-            <!--                </p>-->
-            <!--            </t>-->
-            <!--            <t t-if="o.dest_address_id">-->
-            <!--                <t t-set="information_block">-->
-            <!--                    <strong>Shipping address:</strong>-->
-            <!--                    <div t-if="o.dest_address_id">-->
-            <!--                        <div t-field="o.dest_address_id"-->
-            <!--                             t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"-->
-            <!--                             name="purchase_shipping_address"/>-->
-            <!--                    </div>-->
+            <t t-set="address">
+                <strong>Vendor address:</strong>
+                <div t-field="o.partner_id"
+                     t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
+                <p t-if="o.partner_id.vat"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>:
+                    <strong>vat:</strong>
+                    <span t-field="o.partner_id.vat"/>
+                </p>
+            </t>
+            <t t-if="o.dest_address_id">
+                <t t-set="information_block">
+                    <strong>Shipping address:</strong>
+                    <div t-if="o.dest_address_id">
+                        <div t-field="o.dest_address_id"
+                             t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"
+                             name="purchase_shipping_address"/>
+                    </div>
 
-            <!--                </t>-->
-            <!--            </t>-->
-            <!--            <t t-else="">-->
-            <!--                <t t-set="information_block">-->
-            <!--                    <stron>dest_address_id </stron>-->
-            <!--                    <strong>-->
-            <!--                        <font style="color: rgb(156, 0, 0); font-size: 18px;">ECM Shipping Address:</font>-->
-            <!--                    </strong>-->
-            <!--                    <div t-if="o.picking_type_id and o.picking_type_id.warehouse_id">-->
-            <!--                        <div t-field="o.picking_type_id.warehouse_id.partner_id"-->
-            <!--                             t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>-->
-            <!--                    </div>-->
-            <!--                </t>-->
-            <!--            </t>-->
+                </t>
+            </t>
+            <t t-else="">
+                <t t-set="information_block">
+                    <strong>
+                        ECM Shipping Address:
+                    </strong>
+                    <div t-if="o.picking_type_id and o.picking_type_id.warehouse_id">
+                        <div t-field="o.picking_type_id.warehouse_id.partner_id"
+                             t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
+                    </div>
+                </t>
+            </t>
+
+            <br/>
+            <div class="row">
+                <t t-if="o.drop_ship_to_vendor">
+                    <br/>
+                    <t t-foreach="o.drop_ship_to_vendor" t-as="d">
+                        <div class="col-3">
+                            <strong>Drop Ship Address:</strong>
+                            <div>
+                                <t t-esc="d"
+                                   t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </div>
 
             <div class="page">
                 <div class="oe_structure"/>
@@ -71,34 +87,34 @@
                 <!--                    <div class="col-3"/>-->
                 <!--                </div>-->
 
-                <div class="row">
-<!--                    <p t-if="o.vendor_drop_ship_enter_address_below != &quot;Yes&quot;">-->
-                    <div class="col-5">
-                        <span>
+<!--                <div class="row">-->
+<!--&lt;!&ndash;                    <p t-if="o.vendor_drop_ship_enter_address_below != &quot;Yes&quot;">&ndash;&gt;-->
+<!--                    <div class="col-5">-->
+<!--                        <span>-->
 
-                                <b>
-                                    <u>Delivery Address if Ordered:</u>
-                                </b>
-                                <span t-field="o.company_id" t-options-widget="&quot;contact&quot;"
-                                      t-options-fields="['name', 'address', 'phone', 'email']"
-                                      t-options-no_marker="True"/>
-                                <!--                            <br/>Senasys&lt;br&gt;ECM Division&lt;br&gt;1435 International Drive&lt;br&gt;Eau-->
-                                <!--                            Claire, WI 54701-->
+<!--                                <b>-->
+<!--                                    <u>Delivery Address if Ordered:</u>-->
+<!--                                </b>-->
+<!--                                <span t-field="o.company_id" t-options-widget="&quot;contact&quot;"-->
+<!--                                      t-options-fields="['name', 'address', 'phone', 'email']"-->
+<!--                                      t-options-no_marker="True"/>-->
+<!--                                &lt;!&ndash;                            <br/>Senasys&lt;br&gt;ECM Division&lt;br&gt;1435 International Drive&lt;br&gt;Eau&ndash;&gt;-->
+<!--                                &lt;!&ndash;                            Claire, WI 54701&ndash;&gt;-->
 
-                        </span>
-                    </div>
-<!--                    </p>-->
-                    <div class="col-5">
-                        <span>
-                            <strong>Vendor:</strong>
-                            <br/>
-                        </span>
+<!--                        </span>-->
+<!--                    </div>-->
+<!--&lt;!&ndash;                    </p>&ndash;&gt;-->
+<!--                    <div class="col-5">-->
+<!--                        <span>-->
+<!--                            <strong>Vendor:</strong>-->
+<!--                            <br/>-->
+<!--                        </span>-->
 
-                        <span t-field="o.partner_id" t-options-widget="&quot;contact&quot;"
-                              t-options-fields="['name', 'address', 'phone', 'email']" t-options-no_marker="True"/>
-                    </div>
-                    <div class="col-2"/>
-                </div>
+<!--                        <span t-field="o.partner_id" t-options-widget="&quot;contact&quot;"-->
+<!--                              t-options-fields="['name', 'address', 'phone', 'email']" t-options-no_marker="True"/>-->
+<!--                    </div>-->
+<!--                    <div class="col-2"/>-->
+<!--                </div>-->
                 <div class="row">
                     <div class="col">
                         <span> </span>

@@ -2,7 +2,26 @@
 <odoo>
 
     <template id="senasys_report_purchaseorder_rfq_document_inherit" inherit_id="purchase.report_purchasequotation_document">
-
+        <xpath expr="//div[@t-field='o.partner_id']" position="before">
+            <strong>Vendor Address:</strong>
+        </xpath>
+        <xpath expr="//div[hasclass('page')]" position="before">
+            <br/>
+            <div class="row">
+                <t t-if="o.drop_ship_to_vendor">
+                    <br/>
+                    <t t-foreach="o.drop_ship_to_vendor" t-as="d">
+                        <div class="col-3">
+                            <strong>Drop Ship Address:</strong>
+                            <div>
+                                <t t-esc="d"
+                                   t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </div>
+        </xpath>
         <xpath expr="//table" position="before">
             <br/>
             <div class="row">
