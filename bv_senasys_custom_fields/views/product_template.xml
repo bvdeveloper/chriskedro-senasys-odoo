@@ -153,6 +153,8 @@
                                    help="Only include if needed to describe the item, and things a customer would need to know if looking to order/quote."/>
                             <field name="catalog_section" string="Catalog Section"
                                    help="This is to be able to arrange the catalog by item type for easier customer usage"/>
+                            <field name="catalog_section_id" string="Catalog Section"
+                                   help="This is to be able to arrange the catalog by item type for easier customer usage"/>
                             <field name="cust_part_names" string="Cust. Part Name/#'s"
                                    help="Enter the information in the template format seen below"
                                    placeholder="GP: tbd / IP: tbd / BHS: tbd / Other: tbd"/>
@@ -444,4 +446,23 @@
         </field>
     </record>
 
+    <record id="catalog_action_share" model="ir.actions.server">
+        <field name="name">Update Catalog section</field>
+        <field name="model_id" ref="model_product_template"/>
+        <field name="binding_model_id" ref="model_product_template"/>
+        <field name="state">code</field>
+        <field name="code">
+            for record in records:
+                if record.catalog_section :
+                    record.update_catalog_section()                                                                                                                                             <!-- record.action_send_email_default() -->
+        </field>
+    </record>
+
+    <record id="catalog_data_action" model="ir.actions.act_window">
+        <field name="name">Catalog Section</field>
+        <field name="res_model">catalog.section</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_view_catalog_section" action="catalog_data_action" parent="sale.prod_config_main"/>
 </odoo>

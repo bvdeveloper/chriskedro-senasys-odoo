@@ -237,5 +237,14 @@ class ProductTemplate(models.Model):
     x_studio_boolean_field_VE9xk = fields.Boolean(string="New Checkbox")
     x_studio_related_field_inBxC = fields.Binary(related="product_variant_id.image_1920", string='Download (Full Res) Image')
     x_studio_related_field_sL8RZ = fields.Binary(related="product_variant_id.image_1024", string='Image (1024 wide)')
+    catalog_section_id= fields.Many2one("catalog.section",string="Catalog Section")
+
+    def update_catalog_section(self):
+        if self.catalog_section:
+            catalog_section_record = self.env['catalog.section'].search(
+                [('name', '=', self.catalog_section)])
+            if catalog_section_record:
+                self.catalog_section_id = catalog_section_record.id
+
 
 

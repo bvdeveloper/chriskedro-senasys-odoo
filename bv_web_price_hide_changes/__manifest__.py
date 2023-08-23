@@ -12,8 +12,12 @@
     'data': [
         'views/inherit_web_template.xml',
         'views/unnecessary_field_hide.xml',
-
     ],
-    'installable': True,
-    'auto_install': False,
+    "qweb": ["static/src/xml/website_sale_templates.xml"],
+    "installable": True,
+    "assets": {
+        "web.assets_frontend": [
+            "bv_web_price_hide_changes/static/src/js/website_sale_hide_price.js",
+        ]
+    },
 }
