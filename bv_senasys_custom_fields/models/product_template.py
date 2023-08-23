@@ -26,12 +26,12 @@ class ProductTemplate(models.Model):
     by_salesperson_3 = fields.Selection(
         [('Alyssa', 'Alyssa'), ('Chris', 'Chris'), ('ECM/Don (Initial Pricing)', 'ECM/Don (Initial Pricing)'),
          ('Jeremy', 'Jeremy'), ('Kayla', 'Kayla'), ('Lana', 'Lana'), ('Sara', 'Sara'), ('Victoria', 'Victoria')], string='By Salesperson 3:')
-    catalog_section = fields.Selection(
-        [('Actuators', 'Actuators'), ('Bearings', 'Bearings'), ('Bearing Housings', 'Bearing Housings'),
-         ('Connectors/Wires', 'Connectors/Wires'), ('Encoders', 'Encoders'), ('Glue Pans', 'Glue Pans'),
-         ('Glue Pan - Accessories', 'Glue Pan - Accessories'), ('Machine Parts', 'Machine Parts'), ('Motors', 'Motors'),
-         ('Rods', 'Rods'),
-         ('Screws/Nuts/Bolts/Washers', 'Screws/Nuts/Bolts/Washers')], string='Catalog Section')
+    # catalog_section = fields.Selection(
+    #     [('Actuators', 'Actuators'), ('Bearings', 'Bearings'), ('Bearing Housings', 'Bearing Housings'),
+    #      ('Connectors/Wires', 'Connectors/Wires'), ('Encoders', 'Encoders'), ('Glue Pans', 'Glue Pans'),
+    #      ('Glue Pan - Accessories', 'Glue Pan - Accessories'), ('Machine Parts', 'Machine Parts'), ('Motors', 'Motors'),
+    #      ('Rods', 'Rods'),
+    #      ('Screws/Nuts/Bolts/Washers', 'Screws/Nuts/Bolts/Washers')], string='Catalog Section')
     country_of_origin = fields.Selection(
         [('Canada', 'Canada'), ('China', 'China'), ('Mexico', 'Mexico'),
          ('USA', 'USA')], string='Country of Origin')
@@ -239,12 +239,12 @@ class ProductTemplate(models.Model):
     x_studio_related_field_sL8RZ = fields.Binary(related="product_variant_id.image_1024", string='Image (1024 wide)')
     catalog_section_id= fields.Many2one("catalog.section",string="Catalog Section")
 
-    def update_catalog_section(self):
-        if self.catalog_section:
-            catalog_section_record = self.env['catalog.section'].search(
-                [('name', '=', self.catalog_section)])
-            if catalog_section_record:
-                self.catalog_section_id = catalog_section_record.id
+    # def update_catalog_section(self):
+    #     if self.catalog_section:
+    #         catalog_section_record = self.env['catalog.section'].search(
+    #             [('name', '=', self.catalog_section)])
+    #         if catalog_section_record:
+    #             self.catalog_section_id = catalog_section_record.id
 
 
 
