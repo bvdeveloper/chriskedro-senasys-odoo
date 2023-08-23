@@ -34,6 +34,7 @@
                     </a>
                 </h6>
             </xpath>
+         
         </template>
 
         <!--        For Image Replace in Product Form view-->
@@ -41,9 +42,9 @@
             <xpath expr="//div[hasclass('carousel-inner')]" position="replace">
                 <t t-foreach="product_images" t-as="product_image">
                     <div t-attf-class="carousel-item h-100#{' active' if product_image_first else ''}">
-                    <div t-field="product_image.image_for_product_catalog"
+                    <div t-field="product_image.image_1920"
                          class="d-flex align-items-center justify-content-center h-100"
-                         t-options='{"widget": "image", "preview_image": "image_for_product_catalog", "class": "product_detail_img mh-100", "alt-field": "name", "zoom": product_image.can_image_1024_be_zoomed and "image_for_product_catalog"}'/>
+                         t-options='{"widget": "image", "preview_image": "image_1920", "class": "product_detail_img mh-100", "alt-field": "name", "zoom": product_image.can_image_1024_be_zoomed and "image_1920"}'/>
                     </div>
                 </t>
             </xpath>
@@ -103,10 +104,6 @@
                   name="Terms and Conditions">
             <xpath expr="//div[@id='o_product_terms_and_share']" position="inside">
                 <p class="text-muted h6 mt-3">
-                    <a href="/terms" class="text-muted">Terms and Conditions</a>
-                    <br/>
-                    10-day money-back guarantee
-                    <br/>
                     Typical Lead Time : <span t-field="product.website_lead_time"/>
                 </p>
             </xpath>
