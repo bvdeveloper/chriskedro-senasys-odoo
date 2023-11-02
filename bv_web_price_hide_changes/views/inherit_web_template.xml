@@ -152,5 +152,10 @@
 <!--                </a>-->
             </xpath>
         </template>
+        <template id="address_demo" inherit_id="website_sale.address">
+            <xpath expr="//t[2]/div[2]" position="replace">
+                <!--Hide TIN / VAT field-->
+            </xpath>
+        </template>
     </data>
 </odoo>
