@@ -40,6 +40,22 @@
                 name="t-if"
             >not website_sale_order.amount_total and not website.checkout_skip_payment</attribute>
         </xpath>
+        <xpath expr="//div[@t-if['errors']]" position="after">
+            <div class="col-12" t-if="show_success_alert">
+                <div class="alert alert-success" role="alert" style="margin-right: 30px;">
+                    <h5>
+                        Your contact details have been captured successfully.
+                    </h5>
+                    Please contact us for more queries if any.
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//t[@t-if='website_sale_order.amount_total']/div[2]" position="replace">
+            <div t-else="" class="alert alert-warning">
+                <strong>Payment details will be finalized at the time of order confirmation.</strong>
+                <br/>
+            </div>
+        </xpath>
     </template>
     <template id="confirmation" inherit_id="website_sale.confirmation">
         <xpath
