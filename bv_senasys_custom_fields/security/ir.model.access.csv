@@ -4,6 +4,6 @@ access_x_purchase_order_ecm_r,x_purchase_order_ecm_r,model_x_purchase_order_ecm_
 access_invoice_lines_export,invoice.lines.export,model_invoice_lines_export,base.group_user,1,1,1,1
 access_test_comm_export,test.comm.export,model_test_comm_export,base.group_user,1,1,1,1
 bv_senasys_custom_fields.access_catalog_section,access_catalog_section,bv_senasys_custom_fields.model_catalog_section,base.group_user,1,1,1,1
-
-
+bv_senasys_custom_fields.access_sales_person_three,access_sales_person_three,bv_senasys_custom_fields.model_sales_person_three,base.group_user,1,1,1,1
+bv_senasys_custom_fields.access_sales_person_two,access_sales_person_two,bv_senasys_custom_fields.model_sales_person_two,base.group_user,1,1,1,1
 

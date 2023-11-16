@@ -151,8 +151,8 @@
                             <field name="add_tech_data_to_print_to_catalog_record"
                                    string="Add Tech. Data to Print to Catalog Record"
                                    help="Only include if needed to describe the item, and things a customer would need to know if looking to order/quote."/>
-<!--                            <field name="catalog_section" string="Catalog Section"-->
-<!--                                   help="This is to be able to arrange the catalog by item type for easier customer usage"/>-->
+                            <!--                            <field name="catalog_section" string="Catalog Section"-->
+                            <!--                                   help="This is to be able to arrange the catalog by item type for easier customer usage"/>-->
                             <field name="catalog_section_id" string="Catalog Section"
                                    help="This is to be able to arrange the catalog by item type for easier customer usage"/>
                             <field name="cust_part_names" string="Cust. Part Name/#'s"
@@ -168,16 +168,16 @@
                     </group>
                 </page>
 
-<!--                <page string="Wahl Information" name="studio_page_zA9s8"-->
-<!--                      attrs="{&quot;invisible&quot;: [[&quot;senasys_division&quot;,&quot;=&quot;,&quot;Empire Corrugated&quot;]]}">-->
-<!--                    <group name="studio_group_zA9s8">-->
-<!--                        <group name="studio_group_zA9s8_left">-->
-<!--                            <field name="used_in_part_s" string="Used in Part #(s)"/>-->
-<!--                            <field widget="pdf_viewer" name="mfg_bom" string="MFG BOM"/>-->
-<!--                        </group>-->
-<!--                        <group name="studio_group_zA9s8_right"/>-->
-<!--                    </group>-->
-<!--                </page>-->
+                <!--                <page string="Wahl Information" name="studio_page_zA9s8"-->
+                <!--                      attrs="{&quot;invisible&quot;: [[&quot;senasys_division&quot;,&quot;=&quot;,&quot;Empire Corrugated&quot;]]}">-->
+                <!--                    <group name="studio_group_zA9s8">-->
+                <!--                        <group name="studio_group_zA9s8_left">-->
+                <!--                            <field name="used_in_part_s" string="Used in Part #(s)"/>-->
+                <!--                            <field widget="pdf_viewer" name="mfg_bom" string="MFG BOM"/>-->
+                <!--                        </group>-->
+                <!--                        <group name="studio_group_zA9s8_right"/>-->
+                <!--                    </group>-->
+                <!--                </page>-->
             </xpath>
 
             <xpath expr="//field[@name='image_1920']" position="attributes">
@@ -217,10 +217,12 @@
                 <group name="studio_group_3RsH9">
                     <group name="studio_group_3RsH9_left" string="Sell Price Verification (Last Updated)">
                         <field name="by_salesperson_2" string="By Salesperson 2:"/>
+                        <field name="salesperson_2_id" string="By Salesperson 2:"/>
                         <field name="date_verified" string="Date Verified:"/>
                     </group>
                     <group name="studio_group_3RsH9_right" string="Purchase Price Verification (Last Updated)">
                         <field name="by_salesperson_3" string="By Salesperson 3:"/>
+                        <field name="salesperson_3_id" string="By Salesperson 3:"/>
                         <field name="date_verified_1" string="Date Verified 1:"/>
                     </group>
                 </group>
@@ -446,17 +448,16 @@
         </field>
     </record>
 
-<!--    <record id="catalog_action_share" model="ir.actions.server">-->
-<!--        <field name="name">Update Catalog section</field>-->
-<!--        <field name="model_id" ref="model_product_template"/>-->
-<!--        <field name="binding_model_id" ref="model_product_template"/>-->
-<!--        <field name="state">code</field>-->
-<!--        <field name="code">-->
-<!--            for record in records:-->
-<!--                if record.catalog_section :-->
-<!--                    record.update_catalog_section()                                                                                                                                             &lt;!&ndash; record.action_send_email_default() &ndash;&gt;-->
-<!--        </field>-->
-<!--    </record>-->
+    <record id="catalog_action_share" model="ir.actions.server">
+        <field name="name">Update Salesperson</field>
+        <field name="model_id" ref="model_product_template"/>
+        <field name="binding_model_id" ref="model_product_template"/>
+        <field name="state">code</field>
+        <field name="code">
+            for record in records:
+            record.update_salesperson_section()
+        </field>
+    </record>
 
     <record id="catalog_data_action" model="ir.actions.act_window">
         <field name="name">Catalog Section</field>
@@ -464,5 +465,25 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+    <record id="sales_person_list2_action" model="ir.actions.act_window">
+        <field name="name">Sales Person List 2</field>
+        <field name="res_model">sales.person.two</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="sales_person_list3_action" model="ir.actions.act_window">
+        <field name="name">Sales Person List 3</field>
+        <field name="res_model">sales.person.three</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
     <menuitem id="menu_view_catalog_section" action="catalog_data_action" parent="sale.prod_config_main"/>
+    <menuitem id="menu_view_sales_person_in_sale_2" action="sales_person_list2_action" sequence="3"
+              parent="sale.menu_sale_config"/>
+    <menuitem id="menu_view_sales_person_in_sale_3" action="sales_person_list3_action" sequence="3"
+              parent="sale.menu_sale_config"/>
+    <menuitem id="menu_view_sales_person2_crm" action="sales_person_list2_action" sequence="5"
+              parent="crm.crm_menu_config"/>
+    <menuitem id="menu_view_sales_person3_crm" action="sales_person_list3_action" sequence="5"
+              parent="crm.crm_menu_config"/>
 </odoo>
