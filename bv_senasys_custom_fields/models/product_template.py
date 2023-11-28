@@ -248,17 +248,17 @@ class ProductTemplate(models.Model):
     #         if catalog_section_record:
     #             self.catalog_section_id = catalog_section_record.id
 
-    # def update_salesperson_section(self):
-    #     if self.by_salesperson_2:
-    #         sale_person_2_record = self.env['sales.person.two'].search(
-    #             [('name', '=', self.by_salesperson_2)])
-    #         if sale_person_2_record:
-    #             self.salesperson_2_id = sale_person_2_record.id
-    #     if self.by_salesperson_3:
-    #         sale_person_3_record = self.env['sales.person.three'].search(
-    #             [('name', '=', self.by_salesperson_3)])
-    #         if sale_person_3_record:
-    #             self.salesperson_3_id = sale_person_3_record.id
+    def update_salesperson_section(self):
+        if self.by_salesperson_2:
+            sale_person_2_record = self.env['sales.person.two'].search(
+                [('name', '=', self.by_salesperson_2)])
+            if sale_person_2_record:
+                self.salesperson_2_id = sale_person_2_record.id
+        if self.by_salesperson_3:
+            sale_person_3_record = self.env['sales.person.three'].search(
+                [('name', '=', self.by_salesperson_3)])
+            if sale_person_3_record:
+                self.salesperson_3_id = sale_person_3_record.id
 
 
 

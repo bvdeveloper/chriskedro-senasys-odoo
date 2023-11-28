@@ -216,12 +216,12 @@
                    position="after">
                 <group name="studio_group_3RsH9">
                     <group name="studio_group_3RsH9_left" string="Sell Price Verification (Last Updated)">
-<!--                        <field name="by_salesperson_2" string="By Salesperson 2:"/>-->
+                        <field name="by_salesperson_2" string="By Salesperson 2:"/>
                         <field name="salesperson_2_id" string="By Salesperson 2:"/>
                         <field name="date_verified" string="Date Verified:"/>
                     </group>
                     <group name="studio_group_3RsH9_right" string="Purchase Price Verification (Last Updated)">
-<!--                        <field name="by_salesperson_3" string="By Salesperson 3:"/>-->
+                        <field name="by_salesperson_3" string="By Salesperson 3:"/>
                         <field name="salesperson_3_id" string="By Salesperson 3:"/>
                         <field name="date_verified_1" string="Date Verified 1:"/>
                     </group>
@@ -448,16 +448,16 @@
         </field>
     </record>
 
-<!--    <record id="catalog_action_share" model="ir.actions.server">-->
-<!--        <field name="name">Update Salesperson</field>-->
-<!--        <field name="model_id" ref="model_product_template"/>-->
-<!--        <field name="binding_model_id" ref="model_product_template"/>-->
-<!--        <field name="state">code</field>-->
-<!--        <field name="code">-->
-<!--            for record in records:-->
-<!--            record.update_salesperson_section()-->
-<!--        </field>-->
-<!--    </record>-->
+   <record id="catalog_action_share" model="ir.actions.server">
+       <field name="name">Update Salesperson</field>
+       <field name="model_id" ref="model_product_template"/>
+       <field name="binding_model_id" ref="model_product_template"/>
+       <field name="state">code</field>
+       <field name="code">
+           for record in records:
+            record.update_salesperson_section()
+       </field>
+   </record>
 
     <record id="catalog_data_action" model="ir.actions.act_window">
         <field name="name">Catalog Section</field>
