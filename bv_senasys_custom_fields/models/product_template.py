@@ -238,6 +238,8 @@ class ProductTemplate(models.Model):
     x_studio_related_field_inBxC = fields.Binary(related="product_variant_id.image_1920", string='Download (Full Res) Image')
     x_studio_related_field_sL8RZ = fields.Binary(related="product_variant_id.image_1024", string='Image (1024 wide)')
     catalog_section_id= fields.Many2one("catalog.section",string="Catalog Section")
+    salesperson_2_id= fields.Many2one("sales.person.two",string="By Salesperson 2")
+    salesperson_3_id= fields.Many2one("sales.person.three",string="By Salesperson 3")
 
     # def update_catalog_section(self):
     #     if self.catalog_section:
@@ -245,6 +247,20 @@ class ProductTemplate(models.Model):
     #             [('name', '=', self.catalog_section)])
     #         if catalog_section_record:
     #             self.catalog_section_id = catalog_section_record.id
+
+    def update_salesperson_section(self):
+        if self.by_salesperson_2:
+            sale_person_2_record = self.env['sales.person.two'].search(
+                [('name', '=', self.by_salesperson_2)])
+            if sale_person_2_record:
+                self.salesperson_2_id = sale_person_2_record.id
+        if self.by_salesperson_3:
+            sale_person_3_record = self.env['sales.person.three'].search(
+                [('name', '=', self.by_salesperson_3)])
+            if sale_person_3_record:
+                self.salesperson_3_id = sale_person_3_record.id
+
+
 
 
 
