@@ -22,7 +22,7 @@
                             with reference:
                             <t t-out="object.partner_ref or ''">REF_XXX</t>
                         </t>
-                        amounting in amounting in
+                        amounting in
                         <strong t-out="format_amount(object.amount_total, object.currency_id)"/>
                         from Empire Corrugated Machinery (<t t-out="object.company_id.name or ''">YourCompany</t>).
                         <br/>
