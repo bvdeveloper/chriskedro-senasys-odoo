@@ -11,7 +11,8 @@
             """,
     'author': 'Brainvire',
     'website': 'https://www.brainvire.com/',
-    'depends':['base', 'sale_management', 'purchase', 'account', 'product', 'stock', 'product_expiry', 'purchase_stock', 'delivery', 'mrp'],
+    'depends': ['base', 'sale_management', 'purchase', 'account', 'product', 'stock', 'product_expiry',
+                'purchase_stock', 'delivery', 'mrp'],
     'data': [
         'security/ir.model.access.csv',
         'views/picking_operation_template_inherit.xml',
@@ -38,6 +39,8 @@
         'report/vendor_rfq_with_product_photo.xml',
         'report/mrp_production_order_report.xml',
         'report/report_action.xml',
+        'data/custom_mail_template.xml',
+        'data/custom_mail_template2.xml',
     ],
     'demo': [
     ],

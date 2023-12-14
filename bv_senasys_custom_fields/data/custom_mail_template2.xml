@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="custom_email_template_edi_purchase_for_po" model="mail.template">
+            <field name="name">Purchase Order: Send PO by River Ortego</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="subject">{{ object.company_id.name }} Order (Ref {{ object.name or 'n/a' }})</field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Dear
+                        <t t-out="object.partner_id.name or ''">Brandon Freeman</t>
+                        <t t-if="object.partner_id.parent_id">
+                            (<t t-out="object.partner_id.parent_id.name or ''">Azure Interior</t>)
+                        </t>
+                        <br/>
+                        <br/>
+                        Here is a (PDF) attachment for purchase order #
+                        <strong style="color:black" t-out="object.name or ''">P00015</strong>
+                        <t t-if="object.partner_ref">
+                            with reference:
+                            <t t-out="object.partner_ref or ''">REF_XXX</t>
+                        </t>
+                        amounting in
+                        <strong t-out="format_amount(object.amount_total, object.currency_id)"/>
+                        from Empire Corrugated Machinery (<t t-out="object.company_id.name or ''">YourCompany</t>).
+                        <br/>
+                        <br/>
+                        <p>The requested delivery date of these products is
+                            <t t-out="format_date(object.request_date)"/>
+                            .
+                        </p>
+                        <span style="background-color:yellow;">Please confirm ECM of delivery date, or inform ECM if an
+                            alternate delivery date is
+                            expected.
+                        </span>
+                        <br/>
+                        <br/>
+                        <p>Please acknowledge the receipt of this order.</p>
+                        <br/>
+                        <strong style="font-size: 13px; color:black;">
+                            <u>River Ortego</u>
+                        </strong>
+                        <p style="margin-top:-3px;">
+                            <a href="ryan.o@senasys.com">ryan.o@senasys.com</a>
+                        </p>
+                        <p style=" color:black;margin-top:-14px;">1435 International Drive - Eau Claire, WI 54701</p>
+                        <p style="margin-top:-12px; color:black">Main: (715) 831-6353</p>
+                        <p style="margin-top:-12px; color:black">Direct: (715) 214-2294</p>
+                        <p style="margin-top:-12px;">
+                            <a href="https://www.senasys.com">www.empirecorrugatedmachinery.com</a>
+                        </p>
+                    </p>
+                </div>
+            </field>
+            <field name="report_template" ref="purchase.action_report_purchase_order"/>
+            <field name="report_name">PO_{{ (object.name or '').replace('/','_') }}</field>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+    </data>
+</odoo>
