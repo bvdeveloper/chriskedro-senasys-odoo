@@ -25,7 +25,8 @@ class PurchaseOrder(models.Model):
     senasys_division = fields.Char(string="Senasys Division", ondelete={'Empire Corrugated': 'set default'}, default='Empire Corrugated')
     dedicated_ecm_contact = fields.Char(related='partner_id.attncontact', string='Dedicated ECM Contact:')
     po_drawing_attach = fields.Binary(string='Attach Drawing')
-
+    show_mail_po_warning = fields.Boolean(string='Mail Warning',related='partner_id.show_mail_po_warning')
+    
     @api.depends('order_line.date_planned')
     def _compute_date_planned(self):
         """

@@ -59,3 +59,4 @@ class ResPartner(models.Model):
 
     carrier_account_number = fields.Char(String='Carrier Account no.')
     # carried_has_acc_number = fields.Boolean("Carrier has acc no?", related='property_delivery_carrier_id.has_account_number', ondelete='set null')
+    show_mail_po_warning = fields.Boolean(string='Mail Warning in PO')
