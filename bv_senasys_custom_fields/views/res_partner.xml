@@ -172,6 +172,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='property_delivery_carrier_id']" position="after">
                 <field name="carrier_account_number" />
+                <field name="show_mail_po_warning" />
             </xpath>
         </field>
     </record>
