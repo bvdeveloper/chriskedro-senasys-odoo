@@ -240,6 +240,11 @@ class ProductTemplate(models.Model):
     catalog_section_id= fields.Many2one("catalog.section",string="Catalog Section")
     salesperson_2_id= fields.Many2one("sales.person.two",string="By Salesperson 2")
     salesperson_3_id= fields.Many2one("sales.person.three",string="By Salesperson 3")
+    catalog_section_ids = fields.Many2many("catalog.section",string="Demo Catalog Section") 
+    
+    def update_catalog_section(self):
+        if self.catalog_section_id:
+            self.catalog_section_ids = [(6, 0, [self.catalog_section_id.id])]
 
     # def update_catalog_section(self):
     #     if self.catalog_section:
