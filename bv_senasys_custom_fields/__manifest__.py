@@ -39,6 +39,7 @@
         'report/vendor_rfq_with_product_photo.xml',
         'report/mrp_production_order_report.xml',
         'report/report_action.xml',
+        'report/inherite_invoice_report.xml',
         'data/custom_mail_template.xml',
         'data/custom_mail_template2.xml',
     ],
