@@ -62,6 +62,15 @@
             </div>
         </xpath>
     </template>
+
+    <record model="ir.ui.view" id="stock_move_line_inherited_view">
+        <field name="name">stock.picking.tree</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="cust_shipping_preference"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>
-
-
