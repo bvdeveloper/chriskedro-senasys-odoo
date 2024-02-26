@@ -46,7 +46,8 @@ class SaleOrder(models.Model):
     deliv_address_default_customer_contact = fields.Char(related='partner_shipping_id.attncontact', string="Deliv. Address Default Customer Contact")
     delivery_address_for_emailing_quotesorders = fields.Char(related='partner_shipping_id.email', string="Delivery Address for Emailing Quotes/Orders")
     x_delivery_address = fields.Char(related='partner_shipping_id.name', string="Delivery Address")
-
+    cust_shipping_preference = fields.Selection(related='partner_id.cust_shipping_preference', string='Cust. Shipping Preference',store=True)
+    
     @api.onchange('partner_id')
     def onchange_partner_id(self):
         super().onchange_partner_id()

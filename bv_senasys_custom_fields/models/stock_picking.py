@@ -23,6 +23,7 @@ class StockPicking(models.Model):
     x_studio_related_field_lWIty = fields.Char(related='sale_id.senasys_division')
     x_studio_related_field_Pl4hB = fields.Char(related='sale_id.attncontact', string='Attn/Contact')
     order_promised_ship_date = fields.Date(string='Order Promised Ship Date:', related="sale_id.order_promised_ship_date")
-
+    cust_shipping_preference = fields.Selection(related='partner_id.cust_shipping_preference',
+                                                string='Cust. Shipping Preference', store=True)
 
 
