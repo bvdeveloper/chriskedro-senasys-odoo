@@ -10,7 +10,7 @@
                 <field name="po_tag_" string="PO# / (Tag) #:"/>
             </xpath>
             <xpath expr="//field[@name='date_done']" position="before">
-                    <field name="order_promised_ship_date" string="Order Promised Ship Date:"/>
+                <field name="order_promised_ship_date" string="Order Promised Ship Date:"/>
             </xpath>
             <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
                 <group name="studio_group_TX5B4">
@@ -70,6 +70,19 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']" position="after">
                 <field name="cust_shipping_preference"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_picking_internal_search" model="ir.ui.view">
+        <field name="name">stock.picking.internal.search</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='available']" position="replace">
+                <filter name="available" string="Ready"
+                        domain="[('state', '=', 'assigned'),('cust_shipping_preference', '=','TBD')]"
+                        help="Assigned Moves"/>
             </xpath>
         </field>
     </record>
