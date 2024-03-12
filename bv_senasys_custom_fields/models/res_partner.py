@@ -12,7 +12,7 @@ class ResPartner(models.Model):
     cc_email_field = fields.Char(string='CC Email Field')
     cust_shipping_preference = fields.Selection(
         [('Ship Items as They Become Available', 'Ship Items as They Become Available'),
-         ('Ship Orders Complete', 'Ship Orders Complete'),('TBD','TBD')], string='Cust. Shipping Preference')
+         ('Ship Orders Complete', 'Ship Orders Complete')], string='Cust. Shipping Preference')
     customer_notes = fields.Text(string='Customer Notes:')
     fax_ = fields.Char(string='Fax #')
     image_1 = fields.Binary(string="Image #1")
