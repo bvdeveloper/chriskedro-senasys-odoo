@@ -453,8 +453,8 @@
         </field>
     </record>
 
-    <!-- <record id="catalog_action_share" model="ir.actions.server">
-        <field name="name">Update Salesperson</field>
+    <record id="catalog_action_share" model="ir.actions.server">
+        <field name="name">Update eCommerce Categories</field>
         <field name="model_id" ref="model_product_template"/>
         <field name="binding_model_id" ref="model_product_template"/>
         <field name="state">code</field>
@@ -462,7 +462,7 @@
             for record in records:
                 record.update_catalog_section()
         </field>
-    </record> -->
+    </record>
 
     <record id="catalog_data_action" model="ir.actions.act_window">
         <field name="name">Catalog Section</field>
