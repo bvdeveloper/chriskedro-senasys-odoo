@@ -265,10 +265,7 @@ class ProductTemplate(models.Model):
     #         if sale_person_3_record:
     #             self.salesperson_3_id = sale_person_3_record.id
 
-    def update_catalog_section(self):
-        if self.catalog_section_ids:
-            categories = self.env['product.public.category'].search([('name', 'in', self.catalog_section_ids.mapped('name'))])
-            self.public_categ_ids = [(4, category.id) for category in categories]
+
 
 
 
