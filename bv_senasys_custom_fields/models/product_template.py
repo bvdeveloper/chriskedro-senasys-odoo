@@ -240,8 +240,8 @@ class ProductTemplate(models.Model):
     catalog_section_id= fields.Many2one("catalog.section",string="Catalog Section")
     salesperson_2_id= fields.Many2one("sales.person.two",string="By Salesperson 2")
     salesperson_3_id= fields.Many2one("sales.person.three",string="By Salesperson 3")
-    catalog_section_ids = fields.Many2many("catalog.section",string="Catalog Section") 
-    
+    catalog_section_ids = fields.Many2many("catalog.section",string="Catalog Section")
+
     # def update_catalog_section(self):
     #     if self.catalog_section_id:
     #         self.catalog_section_ids = [(6, 0, [self.catalog_section_id.id])]
@@ -265,8 +265,9 @@ class ProductTemplate(models.Model):
     #         if sale_person_3_record:
     #             self.salesperson_3_id = sale_person_3_record.id
 
-
-
-
-
-
+    @api.onchange('catalog_section_ids')
+    def onchange_web_category(self):
+        self.public_categ_ids = False
+        categories = self.env['product.public.category'].search(
+            [('name', 'in', self.catalog_section_ids.mapped('name'))])
+        self.public_categ_ids = [(4, category.id) for category in categories]
