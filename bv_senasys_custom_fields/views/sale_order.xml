@@ -56,6 +56,9 @@
                 <field name="x_studio_related_field_Rpv4q" string="On Hand"/>
                 <field name="x_studio_related_field_Af1vN" string="Free 2 Sell"/>
             </xpath>
+            <xpath expr="//field[@name='date_order'][2]" position="after">
+                <field name="requested_delivery_Date"/>
+            </xpath>
         </field>
     </record>
     <!--Inherit Sale order search view-->
