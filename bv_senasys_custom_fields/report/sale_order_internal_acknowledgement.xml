@@ -118,6 +118,13 @@
                         </span>
                         <span t-field="o.order_promised_ship_date"/>
                     </div>
+                     <div class="col-3" style="text-align:center">
+                        <span>
+                            <strong>Requested delivery date:</strong>
+                            <br/>
+                        </span>
+                        <span t-field="o.requested_delivery_Date" />
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col">
