@@ -118,7 +118,7 @@
                         </span>
                         <span t-field="o.order_promised_ship_date"/>
                     </div>
-                     <div class="col-3" style="text-align:center">
+                     <div class="col-3">
                         <span>
                             <strong>Requested delivery date:</strong>
                             <br/>
