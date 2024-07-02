@@ -270,7 +270,7 @@
 <!--                                             width="=200px" height="200px"/>-->
                                          <img t-if="line.product_id.image_1920"
                                              t-att-src="image_data_uri(line.product_id.image_1920)" alt="img"
-                                             width="200px" height="200px"/>
+                                             width="200px" height="150px"/>
                                     </div>
                                 </td>
                                 <td>
