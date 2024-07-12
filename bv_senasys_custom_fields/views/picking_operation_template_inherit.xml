@@ -54,7 +54,13 @@
                         </span>
                         <span t-field="o.order_promised_ship_date"/>
                     </div>
-                    <div class="col-3"/>
+                    <div class="col-3" >
+                          <span t-if="o.sale_id.requested_delivery_Date">
+                            <strong>Requested delivery date:</strong>
+                            <br/>
+                        </span>
+                        <span t-field="o.sale_id.requested_delivery_Date" />
+                    </div>
                     <div class="col-3"/>
                 </div>
             </xpath>
