@@ -38,3 +38,54 @@ class CustomWebsiteForm(WebsiteForm):
             return request.redirect("/shop/checkout?express=1")
 
         return request.redirect("/shop/cart")
+
+    @http.route(['/shop/cart/update_json'], type='json', auth="public", methods=['POST'], website=True, csrf=False)
+    def cart_update_json(self, product_id, line_id=None, add_qty=None, set_qty=None, display=True, **kw):
+        """
+        This route is called :
+            - When changing quantity from the cart.
+            - When adding a product from the wishlist.
+            - When adding a product to cart on the same page (without redirection).
+        """
+        order = request.website.sale_get_order(force_create=1)
+        order.customer_name_name = kw.get('customerName')
+        order.mob_mob = kw.get('customerMob')
+        order.email_email = kw.get('customerEmail')
+        if order.state != 'draft':
+            request.website.sale_reset()
+            if kw.get('force_create'):
+                order = request.website.sale_get_order(force_create=1)
+            else:
+                return {}
+
+        pcav = kw.get('product_custom_attribute_values')
+        nvav = kw.get('no_variant_attribute_values')
+        value = order._cart_update(
+            product_id=product_id,
+            line_id=line_id,
+            add_qty=add_qty,
+            set_qty=set_qty,
+            product_custom_attribute_values=json_scriptsafe.loads(pcav) if pcav else None,
+            no_variant_attribute_values=json_scriptsafe.loads(nvav) if nvav else None
+        )
+
+        if not order.cart_quantity:
+            request.website.sale_reset()
+            return value
+
+        order = request.website.sale_get_order()
+        value['cart_quantity'] = order.cart_quantity
+
+        if not display:
+            return value
+
+        value['website_sale.cart_lines'] = request.env['ir.ui.view']._render_template("website_sale.cart_lines", {
+            'website_sale_order': order,
+            'date': fields.Date.today(),
+            'suggested_products': order._cart_accessories()
+        })
+        value['website_sale.short_cart_summary'] = request.env['ir.ui.view']._render_template(
+            "website_sale.short_cart_summary", {
+                'website_sale_order': order,
+            })
+        return value
