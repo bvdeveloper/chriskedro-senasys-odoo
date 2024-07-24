@@ -24,13 +24,20 @@ odoo.define('bv_web_price_hide_changes.custom_website_sale', function (require) 
         ];
 
         if (customerName === '' || customerEmail === '' || customerMob === '') {
-        alert(_t("Please fill in your name, email, and mobile number."));
-        return $.Deferred().reject();
-    }
-         if (!/^\d+$/.test(customerMob)) {
-                alert(_t("Mobile number should contain only digits."));
-                return $.Deferred().reject();
-            }
+            alert(_t("Please fill in your name, email, and mobile number."));
+            return $.Deferred().reject();
+        }
+
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(customerEmail)) {
+            alert(_t("Please enter a valid email address."));
+            return $.Deferred().reject();
+        }
+
+        if (!/^\d+$/.test(customerMob)) {
+           alert(_t("Mobile number should contain only digits."));
+           return $.Deferred().reject();
+        }
 
         var productReady = this.selectOrCreateProduct(
             $form,
