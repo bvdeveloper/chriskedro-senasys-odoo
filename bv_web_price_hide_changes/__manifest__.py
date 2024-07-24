@@ -18,6 +18,7 @@
     "assets": {
         "web.assets_frontend": [
             "bv_web_price_hide_changes/static/src/js/website_sale_hide_price.js",
+            "bv_web_price_hide_changes/static/src/js/website_customise_add_to_cart.js",
         ]
     },
 }

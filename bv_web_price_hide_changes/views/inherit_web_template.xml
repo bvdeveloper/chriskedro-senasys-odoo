@@ -34,7 +34,6 @@
                     </a>
                 </h6>
             </xpath>
-         
         </template>
 
         <!--        For Image Replace in Product Form view-->
@@ -42,9 +41,9 @@
             <xpath expr="//div[hasclass('carousel-inner')]" position="replace">
                 <t t-foreach="product_images" t-as="product_image">
                     <div t-attf-class="carousel-item h-100#{' active' if product_image_first else ''}">
-                    <div t-field="product_image.image_1920"
-                         class="d-flex align-items-center justify-content-center h-100"
-                         t-options='{"widget": "image", "preview_image": "image_1920", "class": "product_detail_img mh-100", "alt-field": "name", "zoom": product_image.can_image_1024_be_zoomed and "image_1920"}'/>
+                        <div t-field="product_image.image_1920"
+                             class="d-flex align-items-center justify-content-center h-100"
+                             t-options='{"widget": "image", "preview_image": "image_1920", "class": "product_detail_img mh-100", "alt-field": "name", "zoom": product_image.can_image_1024_be_zoomed and "image_1920"}'/>
                     </div>
                 </t>
             </xpath>
@@ -85,14 +84,34 @@
             <xpath expr="//div[@class='card-body p-xl-0']" position="replace"/>
         </template>
 
-        <!--        To Replace ADD TO CART BUTTON on product form view-->
+        <!--To Replace ADD TO CART BUTTON on product form view-->
         <template id="product_website_sale_form_button_replace" inherit_id="website_sale.product">
+
             <xpath expr="//div[@class='d-inline']" position="replace">
+                <t t-set="order_id" t-value="request.session['sale_order_id']"/>
+                <t t-set="sale_order_id" t-value="request.env['sale.order'].sudo().search([('id','=',order_id)])"/>
                 <a role="button" id="add_to_cart"
                    class="btn btn-primary btn-lg js_check_product a-submit my-1 mr-1 px-5 font-weight-bold flex-grow-1"
                    href="#"><i class="fa fa-shopping-cart mr-2"/>ADD TO QUOTE REQUEST
                 </a>
                 <div id="product_option_block" class="d-inline-block align-middle"/>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="customerName" name="customerName"
+                               required="True" placeholder="Name"
+                               t-att-value="sale_order_id.customer_name_name or request.env.user.partner_id.email"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="customerEmail" name="customerEmail"
+                               required="True" placeholder="Email"
+                               t-att-value="sale_order_id.email_email or request.env.user.partner_id.email"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="customerMob" name="customerMob"
+                               required="True" placeholder="Mob"
+                               t-att-value="sale_order_id.mob_mob or request.env.user.partner_id.phone"/>
+                    </div>
+                </div>
             </xpath>
         </template>
 
@@ -104,8 +123,10 @@
                   name="Terms and Conditions">
             <xpath expr="//div[@id='o_product_terms_and_share']" position="inside">
                 <p class="text-muted h6 mt-3">
-                    Typical Lead Time : <span t-field="product.website_lead_time"/>
+                    Typical Lead Time :
+                    <span t-field="product.website_lead_time"/>
                 </p>
+
             </xpath>
         </template>
 
@@ -142,14 +163,14 @@
             </xpath>
         </template>
 
-<!--        Payment Confirmation Page Price Hide-->
+        <!--        Payment Confirmation Page Price Hide-->
         <template id="payment_confirmation_page_price_replace" inherit_id="website_sale.confirmation">
             <xpath expr="//table[@class='table']" position="replace">
-<!--                <a role="button" t-if="website_sale_order and website_sale_order.website_order_line"-->
-<!--                   class="btn btn-primary float-right d-none d-xl-inline-block" href="/shop/checkout?express=1">-->
-<!--                    <span class="">Process Quote</span>-->
-<!--                    <span class="fa fa-chevron-right"/>-->
-<!--                </a>-->
+                <!--                <a role="button" t-if="website_sale_order and website_sale_order.website_order_line"-->
+                <!--                   class="btn btn-primary float-right d-none d-xl-inline-block" href="/shop/checkout?express=1">-->
+                <!--                    <span class="">Process Quote</span>-->
+                <!--                    <span class="fa fa-chevron-right"/>-->
+                <!--                </a>-->
             </xpath>
         </template>
         <template id="address_demo" inherit_id="website_sale.address">

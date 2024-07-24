@@ -48,7 +48,10 @@ class SaleOrder(models.Model):
     x_delivery_address = fields.Char(related='partner_shipping_id.name', string="Delivery Address")
     cust_shipping_preference = fields.Selection(related='partner_id.cust_shipping_preference', string='Cust. Shipping Preference',store=True)
     requested_delivery_Date = fields.Date(string="Requested Delivery Date")
-    
+    customer_name_name = fields.Char(string="Customer name")
+    email_email = fields.Char(string="Email")
+    mob_mob = fields.Char(string="Mobile")
+
     @api.onchange('partner_id')
     def onchange_partner_id(self):
         super().onchange_partner_id()
