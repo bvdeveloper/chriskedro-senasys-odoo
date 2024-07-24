@@ -59,6 +59,19 @@
             <xpath expr="//field[@name='date_order'][2]" position="after">
                 <field name="requested_delivery_Date"/>
             </xpath>
+             <xpath expr="//page[@name='customer_signature']" position="after">
+                <page string='Customer Detail' attrs="{'invisible': ['|',('website_id', '=', False) ,('state', 'not in', 'draft')]}">
+                    <group>
+                        <group>
+                            <field name="customer_name_name" readonly="1"/>
+                            <field name="email_email" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="mob_mob" readonly="1"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
         </field>
     </record>
     <!--Inherit Sale order search view-->

@@ -88,7 +88,7 @@
         <template id="product_website_sale_form_button_replace" inherit_id="website_sale.product">
 
             <xpath expr="//div[@class='d-inline']" position="replace">
-                <t t-set="order_id" t-value="request.session['sale_order_id']"/>
+                <t t-set="order_id" t-value="request.session.get('sale_order_id')"/>
                 <t t-set="sale_order_id" t-value="request.env['sale.order'].sudo().search([('id','=',order_id)])"/>
                 <a role="button" id="add_to_cart"
                    class="btn btn-primary btn-lg js_check_product a-submit my-1 mr-1 px-5 font-weight-bold flex-grow-1"
@@ -99,7 +99,7 @@
                     <div class="form-group">
                         <input type="text" class="form-control" id="customerName" name="customerName"
                                required="True" placeholder="Name"
-                               t-att-value="sale_order_id.customer_name_name or request.env.user.partner_id.email"/>
+                               t-att-value="sale_order_id.customer_name_name or request.env.user.partner_id.name"/>
                     </div>
                     <div class="form-group">
                         <input type="email" class="form-control" id="customerEmail" name="customerEmail"
