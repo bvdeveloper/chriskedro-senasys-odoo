@@ -22,15 +22,16 @@ odoo.define('bv_web_price_hide_changes.custom_website_sale', function (require) 
             'input[type="hidden"][name="product_id"]',
             'input[type="radio"][name="product_id"]:checked'
         ];
-        if (!/^\d+$/.test(customerMob)) {
-                alert(_t("Mobile number should contain only digits."));
-                return $.Deferred().reject();
-            }
 
         if (customerName === '' || customerEmail === '' || customerMob === '') {
         alert(_t("Please fill in your name, email, and mobile number."));
         return $.Deferred().reject();
     }
+         if (!/^\d+$/.test(customerMob)) {
+                alert(_t("Mobile number should contain only digits."));
+                return $.Deferred().reject();
+            }
+
         var productReady = this.selectOrCreateProduct(
             $form,
             parseInt($form.find(productSelector.join(', ')).first().val(), 10),
