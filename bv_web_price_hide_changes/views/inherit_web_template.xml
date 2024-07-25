@@ -107,7 +107,7 @@
                                t-att-value="sale_order_id.email_email or request.env.user.partner_id.email"/>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control" id="customerMob" name="customerMob"
+                        <input type="text" class="form-control" id="customerMob" name="customerMob"
                                required="True" placeholder="Mob"
                                t-att-value="sale_order_id.mob_mob or request.env.user.partner_id.phone"/>
                     </div>

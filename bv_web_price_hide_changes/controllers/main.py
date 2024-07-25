@@ -51,6 +51,11 @@ class CustomWebsiteForm(WebsiteForm):
         order.customer_name_name = kw.get('customerName')
         order.mob_mob = kw.get('customerMob')
         order.email_email = kw.get('customerEmail')
+        if kw.get('customerMob') and  kw.get('customerMob') and kw.get('customerEmail'):
+            message_body = _('Customer name: {}\n').format( kw.get('customerName'))
+            message_body += _('Mobile: {}\n').format(kw.get('customerMob'))
+            message_body += _('Email: {}\n').format(kw.get('customerEmail'))
+            order.message_post(body=message_body)
         if order.state != 'draft':
             request.website.sale_reset()
             if kw.get('force_create'):
