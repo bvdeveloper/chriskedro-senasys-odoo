@@ -19,6 +19,11 @@ class CustomWebsiteForm(WebsiteForm):
         sale_order.customer_name_name = kw.get('customerName')
         sale_order.mob_mob = kw.get('customerMob')
         sale_order.email_email = kw.get('customerEmail')
+        if kw.get('customerMob') and  kw.get('customerMob') and kw.get('customerEmail'):
+            message_body = _('Customer name: {}\n').format( kw.get('customerName'))
+            message_body += _('Mobile: {}\n').format(kw.get('customerMob'))
+            message_body += _('Email: {}\n').format(kw.get('customerEmail'))
+            sale_order.message_post(body=message_body)
         if kw.get('product_custom_attribute_values'):
             product_custom_attribute_values = json_scriptsafe.loads(kw.get('product_custom_attribute_values'))
 

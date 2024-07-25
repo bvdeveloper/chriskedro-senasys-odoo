@@ -34,9 +34,9 @@ odoo.define('bv_web_price_hide_changes.custom_website_sale', function (require) 
             return $.Deferred().reject();
         }
 
-        if (!/^\d+$/.test(customerMob)) {
-           alert(_t("Mobile number should contain only digits."));
-           return $.Deferred().reject();
+       if (!/^\d{10}$/.test(customerMob)) {
+            alert(_t("Mobile number should be 10 digits."));
+            return $.Deferred().reject();
         }
 
         var productReady = this.selectOrCreateProduct(
