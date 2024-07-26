@@ -50,7 +50,7 @@
                 </div>
             </div>
         </xpath>
-        <xpath expr="//t[@t-if='website_sale_order.amount_total']/div[2]" position="replace">
+        <xpath expr="//t[@t-if='not errors and website_sale_order.amount_total']/div[2]" position="replace">
             <div t-else="" class="alert alert-warning">
                 <strong>Payment details will be finalized at the time of order confirmation.</strong>
                 <br/>
@@ -75,7 +75,8 @@
                 role="alert"
                 t-if="website.checkout_skip_payment"
             >
-                <span t-field="website.website_sale_checkout_skip_message" />
+<!--                <span t-field="website.website_sale_checkout_skip_message" />-->
+                <span>Our team will follow up within 24-48 hours with pricing and availability.</span>
             </div>
         </xpath>
         <!-- Hide payment related info if skip payment step -->
@@ -85,6 +86,10 @@
         >
             <attribute name="t-if">not website.checkout_skip_payment</attribute>
         </xpath>
+        <xpath expr="//h1[1]" position="replace">
+            <h1><span>RFQ</span> <em t-field="order.name" /> <t t-if="order.state == 'sale'"><span>Confirmed</span></t></h1>
+        </xpath>
+         <xpath expr="//h3[1]" position="replace" />
     </template>
     <template id="order_state_message">
         <p>Your order is waiting manual confirmation.</p>

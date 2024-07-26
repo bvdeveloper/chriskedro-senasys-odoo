@@ -50,7 +50,7 @@ class SaleOrder(models.Model):
     requested_delivery_Date = fields.Date(string="Requested Delivery Date")
     customer_name_name = fields.Char(string="Customer name")
     email_email = fields.Char(string="Email")
-    mob_mob = fields.Char(string="Mobile")
+    mob_mob = fields.Char(string="Phone Number")
 
     @api.onchange('partner_id')
     def onchange_partner_id(self):

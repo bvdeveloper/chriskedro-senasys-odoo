@@ -99,7 +99,7 @@
                     <div class="form-group">
                         <input type="text" class="form-control" id="customerName" name="customerName"
                                required="True" placeholder="Name"
-                               t-att-value="sale_order_id.customer_name_name or request.env.user.partner_id.name"/>
+                               t-att-value="sale_order_id.customer_name_name"/>
                     </div>
                     <div class="form-group">
                         <input type="email" class="form-control" id="customerEmail" name="customerEmail"
@@ -108,7 +108,7 @@
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" id="customerMob" name="customerMob"
-                               required="True" placeholder="Mob"
+                               required="True" placeholder="Phone Number"
                                t-att-value="sale_order_id.mob_mob or request.env.user.partner_id.phone"/>
                     </div>
                 </div>

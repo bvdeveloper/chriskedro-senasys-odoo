@@ -24,7 +24,7 @@ odoo.define('bv_web_price_hide_changes.custom_website_sale', function (require) 
         ];
 
         if (customerName === '' || customerEmail === '' || customerMob === '') {
-            alert(_t("Please fill in your name, email, and mobile number."));
+            alert(_t("Please fill in your name, email, and Phone Number."));
             return $.Deferred().reject();
         }
 
