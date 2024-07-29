@@ -50,12 +50,12 @@
                 </div>
             </div>
         </xpath>
-<!--        <xpath expr="//t[@t-if='not errors and website_sale_order.amount_total']/div[2]" position="replace">-->
-<!--            <div t-else="" class="alert alert-warning">-->
-<!--                <strong>Payment details will be finalized at the time of order confirmation.</strong>-->
-<!--                <br/>-->
-<!--            </div>-->
-<!--        </xpath>-->
+        <xpath expr="//t[@t-if='website_sale_order.amount_total']/div[2]" position="replace">
+            <div t-else="" class="alert alert-warning">
+                <strong>Payment details will be finalized at the time of order confirmation.</strong>
+                <br/>
+            </div>
+        </xpath>
     </template>
     <template id="confirmation" inherit_id="website_sale.confirmation">
         <xpath
