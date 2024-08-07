@@ -82,3 +82,15 @@ class SaleOrder(models.Model):
             for inv in invoices:
                 inv.shipping_collect_acct = order.shipping_collect_acct_
                 inv.shipping_method_id = order.carrier_id.id if order.carrier_id else False
+
+    def write(self, vals):
+        result = super(SaleOrder, self).write(vals)
+        if 'carrier_id' in vals:
+            for order in self:
+                # Update related delivery orders
+                for picking in order.picking_ids:
+                    picking.write({'carrier_id': vals.get('carrier_id', '')})
+                # Update related invoice orders
+                for invoice in order.invoice_ids:
+                    invoice.write({'shipping_method_id': vals.get('carrier_id', '')})
+        return result

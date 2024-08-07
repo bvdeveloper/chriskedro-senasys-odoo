@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="model_sale_order_action_remove_records" model="ir.actions.server">
+            <field name="name">Remove Selected Sale Orders</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_view_types">form,list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.action_remove_so()</field>
+        </record>
+        <record id="model_purchase_order_action_remove_records" model="ir.actions.server">
+            <field name="name">Remove Selected Purchase Orders</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_view_types">form,list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.action_remove_po()</field>
+        </record>
+        <record id="model_account_payment_action_remove_records" model="ir.actions.server">
+            <field name="name">Remove Selected Payments</field>
+            <field name="model_id" ref="account.model_account_payment"/>
+            <field name="binding_model_id" ref="account.model_account_payment"/>
+            <field name="binding_view_types">form,list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.action_remove_payments()</field>
+        </record>
+        <record id="model_account_move_action_remove_records" model="ir.actions.server">
+            <field name="name">Remove Selected Account Move and related records</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_view_types">form,list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.action_remove_account_move()</field>
+        </record>
+        <record id="model_stock_picking_action_remove_records" model="ir.actions.server">
+            <field name="name">Remove Selected Transfer</field>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="binding_model_id" ref="stock.model_stock_picking"/>
+            <field name="binding_view_types">form,list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.action_remove_transfers()</field>
+        </record>
+        <record id="model_mrp_production_action_remove_records" model="ir.actions.server">
+            <field name="name">Remove Selected Manufacturing Orders</field>
+            <field name="model_id" ref="mrp.model_mrp_production"/>
+            <field name="binding_model_id" ref="mrp.model_mrp_production"/>
+            <field name="binding_view_types">form,list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.action_remove_mrp_production()</field>
+        </record>
+
+    </data>
+</odoo>
