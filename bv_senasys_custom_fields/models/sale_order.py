@@ -51,6 +51,8 @@ class SaleOrder(models.Model):
     customer_name_name = fields.Char(string="Customer name")
     email_email = fields.Char(string="Email")
     mob_mob = fields.Char(string="Phone Number")
+    web_cust_shipping = fields.Char(string="Customer Delivery Method")
+    web_cust_mail_sent = fields.Boolean(string='web mail sent')
 
     @api.onchange('partner_id')
     def onchange_partner_id(self):

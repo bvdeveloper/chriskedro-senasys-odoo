@@ -6,6 +6,28 @@ from odoo.http import request
 from odoo.addons.website.controllers.form import WebsiteForm
 from odoo.tools.json import scriptsafe as json_scriptsafe
 _logger = logging.getLogger(__name__)
+from odoo.addons.website_sale.controllers.main import WebsiteSale
+
+
+class WebsiteSaleInherit(WebsiteSale):
+    @http.route(['/shop/get/carrier'], type='json', auth="public", website=True)
+    def bv_confirm_order(self, **post):
+        order = request.website.sale_get_order()
+
+        # Capture custom field value from the POST request
+        carrier_id = post.get('carrier_id')
+        _logger.info("Custom Field Value: %s", carrier_id)
+        # Save it in the sale order
+        if carrier_id:
+            web_cust_shipping = request.env['delivery.carrier'].sudo().browse(int(carrier_id))
+            if order:
+                order.update({
+                    'web_cust_shipping':web_cust_shipping.name
+                })
+                _logger.info("Custom field saved in Sale Order ID: %s", order.id)
+
+        return True
+
 
 class CustomWebsiteForm(WebsiteForm):
     @http.route(['/shop/cart/update'], type='http', auth="public", methods=['POST'], website=True)

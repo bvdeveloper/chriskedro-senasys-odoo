@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="email_template_public_user_quotation" model="mail.template">
+            <field name="name">Public User Quotation Notification</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="email_from">{{object.company_id.email or ''}}</field>
+            <field name="email_to">orders@senasys.com</field>
+            <field name="subject">Quotation Created by - {{object.customer_name_name}}</field>
+            <field name="body_html" type="html">
+                <p>Hello,</p>
+                <p>A quotation has been created by a public user:</p>
+                <p><strong>Quotation Number:</strong> <t t-out="ctx.get('sale')"/></p>
+                <p><strong>Customer:</strong> <t t-out="ctx.get('cus_name')"/></p>
+                <p><strong>Phone:</strong> <t t-out="ctx.get('cus_mob')"/></p>
+                <p><strong>Email:</strong> <t t-out="ctx.get('cus_email')"/></p>
+                <p>Please review the quotation in the system.</p>
+            </field>
+        </record>
+    </data>
+</odoo>

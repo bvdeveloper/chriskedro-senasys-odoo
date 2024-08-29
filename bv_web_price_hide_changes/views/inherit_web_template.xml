@@ -49,6 +49,24 @@
             </xpath>
         </template>
 
+        <template id="add_custom_shopping_cart" inherit_id="website_sale.cart">
+            <xpath expr="//div[@id='oe_structure_website_sale_cart_1']" position="after">
+                <t t-set="carriers" t-value="request.env['delivery.carrier'].sudo().search([])"/>
+                <div class="form-group">
+                    <label for="carrier_id" class="font-weight-bold">Select Shipping Method</label>
+                    <select class="form-control" id="carrier_id" name="carrier_id"
+                            required="True">
+                        <t t-foreach="carriers" t-as="carrier">
+                            <option t-att-value="carrier.id"
+                                    t-att-id="carrier.id">
+                                <t t-esc="carrier.name"/>
+                            </option>
+                        </t>
+                    </select>
+                </div>
+            </xpath>
+        </template>
+
         <!--        For Untaxed amount remove in Cart Card-->
         <template id="product_website_1_sale_cart_lines" inherit_id="website_sale.total">
             <xpath expr="//tr[@id='order_total_untaxed']" position="replace"/>
@@ -156,7 +174,7 @@
         <template id="product_website_sale_cart_proceed_checkout_button_replace" inherit_id="website_sale.cart">
             <xpath expr="//a[@class='btn btn-primary float-right d-none d-xl-inline-block']" position="replace">
                 <a role="button" t-if="website_sale_order and website_sale_order.website_order_line"
-                   class="btn btn-primary float-right d-none d-xl-inline-block" href="/shop/checkout?express=1">
+                   class="btn btn-primary float-right d-none d-xl-inline-block bv_cart_checkout" href="/shop/checkout?express=1">
                     <span class="">Process Quote</span>
                     <span class="fa fa-chevron-right"/>
                 </a>
