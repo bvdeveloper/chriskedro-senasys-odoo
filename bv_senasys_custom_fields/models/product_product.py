@@ -22,6 +22,7 @@ class ProductProduct(models.Model):
     by_salesperson_1 = fields.Char(related='product_tmpl_id.by_salesperson_1')
     by_salesperson_2 = fields.Selection(related='product_tmpl_id.by_salesperson_2')
     by_salesperson_3 = fields.Selection(related='product_tmpl_id.by_salesperson_3')
+    oem_part_number = fields.Text(related='product_tmpl_id.oem_part_number')
     # catalog_section = fields.Selection(related='product_tmpl_id.catalog_section')
     country_of_origin = fields.Selection(related='product_tmpl_id.country_of_origin')
     country_of_purchase = fields.Selection(related='product_tmpl_id.country_of_purchase')

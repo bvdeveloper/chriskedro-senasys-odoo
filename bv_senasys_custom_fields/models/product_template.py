@@ -20,6 +20,7 @@ class ProductTemplate(models.Model):
     brand_name = fields.Char(string='Brand Name')
     by_salesperson = fields.Char(string='By Salesperson:')
     by_salesperson_1 = fields.Char(string='By Salesperson 1:')
+    oem_part_number = fields.Char(string="OEM Part Number")
     by_salesperson_2 = fields.Selection(
         [('Alyssa', 'Alyssa'), ('Chris', 'Chris'), ('ECM/Don (Initial Pricing)', 'ECM/Don (Initial Pricing)'),
          ('Jeremy', 'Jeremy'), ('Kayla', 'Kayla'), ('Lana', 'Lana'), ('Sara', 'Sara'), ('Victoria', 'Victoria')], string='By Salesperson 2:')
