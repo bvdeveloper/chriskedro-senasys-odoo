@@ -450,6 +450,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='categ_id']" position="after">
                 <field name="x_description" filter_domain="[('x_description', 'ilike', self)]"/>
+                <field name="oem_part_number" filter_domain="[('oem_part_number', 'ilike', self)]"/>
             </xpath>
         </field>
     </record>
