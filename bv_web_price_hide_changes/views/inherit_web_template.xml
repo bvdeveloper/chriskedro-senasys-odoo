@@ -6,8 +6,15 @@
             <xpath expr="//div[@class='product_price d-inline-block mt-2 mb-3']" position="replace">
                 <span t-field="product.default_code" style="font-size:22px"/>
                 <br/>
-                <span class="text-primary text-decoration-none" t-field="product.catalog_section_ids"
-                      style="font-size:20px"/>
+                <t t-if="product.public_categ_ids.ids">
+                        <div class="product_categories" style="font-size:20px">
+                            <t t-foreach="product.public_categ_ids" t-as="category">
+                                <a t-att-href="'/shop/category/%s' % category.id" class="category-link">
+                                    <t t-esc="category.name"/>
+                                </a>
+                            </t>
+                        </div>
+                    </t>
                 <br/>
                 <span t-field="product.add_tech_data_to_print_to_catalog_record" style="font-size:18px"/>
                 <br/>
