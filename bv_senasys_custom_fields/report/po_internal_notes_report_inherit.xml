@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="bv_custom_report_purchaseorder_document_inherit"
+              inherit_id="bv_senasys_custom_fields.bv_report_po_internal_notes_document">
+        <xpath expr="//div[@t-field='o.partner_id']" position="before">
+            <strong>Vendor Address:</strong>
+        </xpath>
+        <xpath expr="//div[hasclass('page')]" position="before">
+            <br/>
+            <div class="row">
+                <t t-if="o.drop_ship_to_vendor">
+                    <br/>
+                    <t t-foreach="o.drop_ship_to_vendor" t-as="d">
+                        <div class="col-3">
+                            <strong>Drop Ship Address:</strong>
+                            <div>
+                                <t t-esc="d.name"/>
+                                <t t-esc="d"
+                                   t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </div>
+        </xpath>
+
+        <xpath expr="//div[@id='informations']" position="after">
+            <br/>
+            <div class="row">
+                <div class="col-3">
+                    <span>
+                        <strong>Requested Delivery Method:</strong>
+                        <br/>
+                    </span>
+
+                    <span t-field="o.requested_delivery_method"/>
+                </div>
+                <div class="col-3">
+                    <span>
+                        <strong>Requested Ship Date:</strong>
+                        <br/>
+                        <span t-field="o.select_"/>
+
+                    </span>
+
+                    <span t-field="o.request_date"/>
+                </div>
+                <div class="col-3">
+                    <span>
+                        <strong>P.O. Notes:</strong>
+                        <br/>
+                    </span>
+
+                    <span t-field="o.po_notes_internal_use_only"/>
+                </div>
+            </div>
+            <br/>
+        </xpath>
+
+
+        <xpath expr="//th[@name='th_date_req']" position="replace">
+        </xpath>
+        <xpath expr="//t//div[@class='page']//table//tbody//tr//t//td[3]" position="replace">
+        </xpath>
+
+        <xpath expr="//t//div[@class='page']//table//thead//tr//th[@name='th_description']" position="before">
+            <th name="inv_location">
+                <strong>INV LOC.</strong>
+            </th>
+        </xpath>
+        <xpath expr="//t//div[@class='page']//table//td[@id='product']" position="before">
+            <td name="inv_location">
+                <span t-field="line.product_id.inv_location"/>
+            </td>
+        </xpath>
+
+        <xpath expr="//t//div[@class='page']//table//thead//tr//th[@name='th_description']" position="after">
+            <th name="th_vendor_or_mfg_disc">
+                <strong>Vendor #/ mfg desc</strong>
+            </th>
+        </xpath>
+        <xpath expr="//t//div[@class='page']//table//td[@id='product']" position="after">
+            <td name="Vendor/Mfg disc">
+                <span t-field="line.product_id.x_description"/>
+            </td>
+        </xpath>
+
+        <xpath expr="//t//div[@class='page']//table//thead//tr//th[@name='th_taxes']" position="replace"/>
+        <xpath expr="//t//div[@class='page']//table//td[@name='td_taxes']" position="replace">
+        </xpath>
+
+        <xpath expr="//t//div[@class='page']//div[@id='total']" position="after">
+            <br/>
+            <br/>
+            <span>For Parcel shipments, please ship UPS (Ground/3 Day/Overnight/Etc as stated above) Collect account
+                2T0T80. 
+                For LTL shipments please email weight, dimensions and dock hours to
+                <a href="mailto:senasys.shipping@senasys.com">senasys.shipping@senasys.com</a>. Please note if you have
+                any special
+                requirements ex: lift-gate, etc.
+            </span>
+        </xpath>
+
+    </template>
+</odoo>

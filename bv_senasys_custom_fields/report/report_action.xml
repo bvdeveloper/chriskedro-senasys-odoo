@@ -56,6 +56,15 @@
             <field name="binding_type">report</field>
         </record>
 
-
+        <record id="action_report_po_internal_notes" model="ir.actions.report">
+            <field name="name">ECM Purchase Order - Internal notes</field>
+            <field name="model">purchase.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">bv_senasys_custom_fields.bv_report_po_internal_notes</field>
+            <field name="report_file">bv_senasys_custom_fields.bv_report_po_internal_notes</field>
+            <field name="print_report_name">'Purchase Order with Internal Notes - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="model_purchase_order"/>
+            <field name="binding_type">report</field>
+        </record>
     </data>
 </odoo>
