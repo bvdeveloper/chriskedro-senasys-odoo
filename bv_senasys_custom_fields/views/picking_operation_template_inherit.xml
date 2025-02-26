@@ -30,6 +30,24 @@
 <!--                                                 width="=200px" height="200px"/>-->
                 <img t-if="ml.product_id.image_1920" t-att-src="image_data_uri(ml.product_id.image_1920)" alt="img" width="200px" height="200px"/>
             </xpath>
+            <xpath expr="//table[1]//th[@name='th_product']" position="replace">
+                <th name="th_name_short">
+                    <strong>Name Short</strong>
+                </th>
+                <th name="th_description">
+                    <strong>Description</strong>
+                </th>
+            </xpath>
+            <xpath expr="//table[1]/tbody//td[1]" position="replace">
+                <td>
+                    <span t-field="ml.product_id.name"/>
+                    <br/>
+                    <img t-if="ml.product_id.image_1920" t-att-src="image_data_uri(ml.product_id.image_1920)" alt="img" width="200px" height="200px"/>
+                </td>
+                <td>
+                    <span t-field="ml.product_id.default_code"/>
+                </td>
+            </xpath>
             <xpath expr="//table[1]//th[@name='th_barcode']" position="replace">
                 <th name="th_packing_instructions" class="text-center">
                     <strong>Packing Instructions</strong>
