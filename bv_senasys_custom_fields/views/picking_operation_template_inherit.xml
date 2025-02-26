@@ -30,6 +30,22 @@
 <!--                                                 width="=200px" height="200px"/>-->
                 <img t-if="ml.product_id.image_1920" t-att-src="image_data_uri(ml.product_id.image_1920)" alt="img" width="200px" height="200px"/>
             </xpath>
+            <xpath expr="//table[1]//th[@name='th_barcode']" position="replace">
+                <th name="th_packing_instructions" class="text-center">
+                    <strong>Packing Instructions</strong>
+                </th>
+                <th name="th_notes" class="text-center">
+                    <strong>Notes</strong>
+                </th>
+            </xpath>
+            <xpath expr="//table[1]/tbody//td[@class='text-center' and @t-if='has_barcode']" position="replace">
+                <td class="text-center">
+                    <span t-field="ml.product_id.packing_instructions"/>
+                </td>
+                <td class="text-center">
+                    <span t-field="ml.product_id.notes"/>
+                </td>
+            </xpath>
             <xpath expr="/t/t/t/t/div/h1" position="after">
                 <div class="row">
                     <div class="col-3">

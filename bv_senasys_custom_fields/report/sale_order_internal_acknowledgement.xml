@@ -177,6 +177,9 @@
                             <th name="td_pre_ship_notes">
                                 <span>Prep/Ship Notes</span>
                             </th>
+                             <th name="td_notes">
+                                <span>Notes</span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody class="sale_tbody">
@@ -254,6 +257,9 @@
                                         <span t-field="line.name"/>
                                     </td>
                                 </t>
+                                <td name="td_notes">
+                                    <span t-field="line.product_id.notes"/>
+                                </td>
                             </tr>
 
                             <t t-if="current_section and (line_last or o.order_line[line_index+1].display_type == 'line_section')">
