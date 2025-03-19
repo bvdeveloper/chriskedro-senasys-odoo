@@ -35,6 +35,13 @@
                 <td name="td_line"><span t-field="line.line_item_number"/></td>
                 <td name="td_part"><span t-field="line.name_short"/></td>
             </xpath>
+            <xpath expr="//td[@name='td_subtotal']" position="replace">
+                <td name="td_subtotal" class="text-right o_price_total">
+                    <t t-esc="line.currency_id.symbol"/>
+                    <span t-esc="'%.2f' % line.price_subtotal_rounded" groups="account.group_show_line_subtotals_tax_excluded"/>
+                    <span t-esc="'%.2f' % line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
+                </td>
+            </xpath>
             <xpath expr="//th[@name='th_taxes']" position="replace"/>
             <xpath expr="//td[@name='td_taxes']" position="replace"/>
 

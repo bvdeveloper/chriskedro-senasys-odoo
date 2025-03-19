@@ -15,6 +15,7 @@
                 'purchase_stock', 'delivery', 'mrp'],
     'data': [
         'security/ir.model.access.csv',
+        'data/product_data.xml',
         'views/picking_operation_template_inherit.xml',
         'views/res_partner.xml',
         'views/product_template.xml',
