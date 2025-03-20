@@ -10,3 +10,9 @@ class AccountMoveLine(models.Model):
     portal_cust_contact_method_3 = fields.Selection(related='sale_line_ids.portal_cust_pull_to_invoice', string='Portal cust contact method 3')
     name_short = fields.Char(related='sale_line_ids.name_short', string='Part#')
     p_description = fields.Char(related='product_id.default_code', string='Description')
+    price_subtotal_rounded_two = fields.Float(string="Subtotal", compute="_compute_price_subtotal_rounded_two", store=True)
+
+    @api.depends("price_subtotal")
+    def _compute_price_subtotal_rounded_two(self):
+        for line in self:
+            line.price_subtotal_rounded_two = "%.2f" % line.price_subtotal
