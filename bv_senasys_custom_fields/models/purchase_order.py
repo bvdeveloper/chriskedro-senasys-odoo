@@ -41,4 +41,5 @@ class PurchaseOrderLine(models.Model):
     _inherit = "purchase.order.line"
 
     inv_loc = fields.Selection(related='product_id.inv_location')
+    price_unit = fields.Float(digits='Unit Price')
 
