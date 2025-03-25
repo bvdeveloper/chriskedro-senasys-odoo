@@ -284,7 +284,7 @@
                                 </td>
                                 <td class="text-right">
                                     <span t-field="line.price_unit" t-options-widget="&quot;float&quot;"
-                                          t-options-precision="2"/>
+                                          t-options-precision="4"/>
                                 </td>
                                 <td class="text-right">
                                     <span t-field="line.price_subtotal"
