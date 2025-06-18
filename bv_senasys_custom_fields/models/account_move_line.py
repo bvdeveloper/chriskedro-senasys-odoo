@@ -11,6 +11,7 @@ class AccountMoveLine(models.Model):
     name_short = fields.Char(related='sale_line_ids.name_short', string='Part#')
     p_description = fields.Char(related='product_id.default_code', string='Description')
     price_subtotal_rounded_two = fields.Float(string="Subtotal", compute="_compute_price_subtotal_rounded_two", store=True)
+    # related_price_subtotal = fields.Float(related='id.price_subtotal', string='Part#', digits='Product Price')
 
     @api.depends("price_subtotal")
     def _compute_price_subtotal_rounded_two(self):
