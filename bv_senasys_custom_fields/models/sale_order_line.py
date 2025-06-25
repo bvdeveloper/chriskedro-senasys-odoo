@@ -15,11 +15,5 @@ class SaleOrder(models.Model):
     portal_cust_pull_to_invoice = fields.Selection(related='order_id.portal_cust_contact_method')
     inv_loc = fields.Selection(related='product_id.inv_location')
     name_short = fields.Char(string="Name Short")
-    price_subtotal_rounded = fields.Float(string="Subtotal", compute="_compute_price_subtotal_rounded", store=True)
-
-    @api.depends("price_subtotal")
-    def _compute_price_subtotal_rounded(self):
-        for line in self:
-            line.price_subtotal_rounded = "%.2f" % line.price_subtotal
 
 

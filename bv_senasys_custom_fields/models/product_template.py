@@ -242,6 +242,14 @@ class ProductTemplate(models.Model):
     salesperson_2_id= fields.Many2one("sales.person.two",string="By Salesperson 2")
     salesperson_3_id= fields.Many2one("sales.person.three",string="By Salesperson 3")
     catalog_section_ids = fields.Many2many("catalog.section",string="Catalog Section")
+    standard_price = fields.Float(
+        'Cost', compute='_compute_standard_price',
+        inverse='_set_standard_price', search='_search_standard_price',
+        digits='Unit Price', groups="base.group_user",
+        help="""In Standard Price & AVCO: value of the product (automatically computed in AVCO).
+            In FIFO: value of the next unit that will leave the stock (automatically computed).
+            Used to value the product when the purchase cost is not known (e.g. inventory adjustment).
+            Used to compute margins on sale orders.""")
 
     # def update_catalog_section(self):
     #     if self.catalog_section_id:

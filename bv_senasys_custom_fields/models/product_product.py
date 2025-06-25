@@ -141,6 +141,15 @@ class ProductProduct(models.Model):
     x_studio_boolean_field_VE9xk = fields.Boolean(related='product_tmpl_id.x_studio_boolean_field_VE9xk')
     x_studio_related_field_inBxC = fields.Binary(related="product_tmpl_id.x_studio_related_field_inBxC", string='Download (Full Res) Image')
     x_studio_related_field_sL8RZ = fields.Binary(related="product_tmpl_id.x_studio_related_field_sL8RZ", string='Image (1024 wide)')
+    standard_price = fields.Float(
+        'Cost', compute='_compute_standard_price',
+        inverse='_set_standard_price', search='_search_standard_price',
+        digits='Unit Price', groups="base.group_user",
+        help="""In Standard Price & AVCO: value of the product (automatically computed in AVCO).
+              In FIFO: value of the next unit that will leave the stock (automatically computed).
+              Used to value the product when the purchase cost is not known (e.g. inventory adjustment).
+              Used to compute margins on sale orders.""")
+
 
 
 
