@@ -43,7 +43,7 @@
         'report/mrp_production_order_report.xml',
         'report/report_action.xml',
         'report/po_internal_notes_report_inherit.xml',
-        'report/inherite_invoice_report.xml',
+        # 'report/inherite_invoice_report.xml',
         'data/custom_mail_template.xml',
         'data/custom_mail_template2.xml',
     ],
