@@ -177,7 +177,7 @@
                             <th name="td_pre_ship_notes">
                                 <span>Prep/Ship Notes</span>
                             </th>
-                             <th name="td_notes">
+                            <th name="td_notes">
                                 <span>Notes</span>
                             </th>
                         </tr>

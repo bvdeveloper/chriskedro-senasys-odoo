@@ -38,8 +38,8 @@
             <xpath expr="//td[@name='td_subtotal']" position="replace">
                 <td name="td_subtotal" class="text-right o_price_total">
                     <t t-esc="line.currency_id.symbol"/>
-                    <span t-esc="'%.2f' % line.price_subtotal_rounded" groups="account.group_show_line_subtotals_tax_excluded"/>
-                    <span t-esc="'%.2f' % line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
+                    <span t-esc="line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                    <span t-esc="line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
                 </td>
             </xpath>
             <xpath expr="//th[@name='th_taxes']" position="replace"/>

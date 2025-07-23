@@ -28,6 +28,10 @@
                     </group>
                 </group>
             </xpath>
+            <xpath expr="//field[@name='line_ids']/tree" position="inside">
+                <field name="line_item_from_sales_order_entry" invisible="1"/>
+                <field name="bill_price_unit" invisible="1"/>
+            </xpath>
             <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='invoice_line_ids']/tree[1]/field[@name='sequence']"
                    position="after">
                 <field name="line_item_from_sales_order_entry" string="Line #"/>
@@ -41,11 +45,13 @@
             <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='invoice_line_ids']/tree[1]/field[@name='name']" position="attributes">
                 <attribute name="optional">hide</attribute>
             </xpath>
-            <xpath expr="//form/sheet/notebook/page/field[@name='invoice_line_ids']/tree/field[@name='price_subtotal']" position="attributes">
-                <attribute name="invisible">context.get('default_move_type') == 'out_invoice'</attribute>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='invoice_line_ids']/tree[1]/field[@name='price_unit']"
+                   position="attributes">
+                <attribute name="invisible">context.get('default_move_type') != 'out_invoice'</attribute>
             </xpath>
-            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='invoice_line_ids']/tree[1]/field[@name='price_subtotal']" position="after">
-                <field name="price_subtotal_rounded_two" invisible="context.get('default_move_type') != 'out_invoice'"/>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='invoice_line_ids']/tree[1]/field[@name='price_unit']"
+                   position="after">
+                <field name="bill_price_unit" invisible="context.get('default_move_type') != 'in_invoice'"/>
             </xpath>
             <xpath expr="//field[@name='product_id']" position="attributes">
                     <attribute name="optional">hide</attribute>
@@ -66,6 +72,9 @@
             <xpath expr="//field[@name='invoice_payment_term_id']"
                    position="attributes">
                 <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='amount_residual']" position="attributes">
+                <attribute name="options">{'widget':'float', 'decimal_precision': 'Product Price'}</attribute>
             </xpath>
         </field>
     </record>
@@ -95,27 +104,29 @@
         <xpath expr="//th[@name='th_description']" position="before">
             <th name="name_short" class="text-left"><span>Part#</span></th>
         </xpath>
-        <xpath expr="//td[hasclass('o_price_total')]" position="replace">
-            <td class="text-right o_price_total">
-                <t t-if="o.move_type == 'out_invoice'">
-                    <t t-esc="line.currency_id.symbol"/>
-                    <span class="text-nowrap" t-esc="'%.2f' % line.price_subtotal_rounded_two" groups="account.group_show_line_subtotals_tax_excluded"/>
-                    <span class="text-nowrap" t-esc="'%.2f' % line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
-                </t>
-                <t t-else="">
-                    <span class="text-nowrap" t-field="line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
-                    <span class="text-nowrap" t-field="line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
-                </t>
+        <xpath expr="//td[@name='account_invoice_line_name']" position="replace">
+            <td name="account_invoice_line_name">
+                <span t-field="line.product_id.default_code" t-options="{'widget': 'text'}"/>
             </td>
         </xpath>
+        <xpath expr="//table[@name='invoice_line_table']//tbody//span[@t-field='line.price_unit']" position="replace">
+            <t t-if="o.move_type == 'in_invoice'">
+                <span class="text-nowrap" t-field="line.bill_price_unit"/>
+            </t>
+            <t t-else="">
+                <span class="text-nowrap" t-field="line.price_unit"/>
+            </t>
+        </xpath>
         <xpath expr="//td[@name='account_invoice_line_name']" position="before">
-            <td name="account_invoice_line_part"><span t-field="line.name_short" t-options="{'widget': 'text'}"/></td>
+            <td name="account_invoice_line_part">
+                <span t-field="line.name_short" t-options="{'widget': 'text'}"/>
+            </td>
         </xpath>
         <xpath expr="//p[@name='payment_term']" position="after">
-            Additional Notes:<b><span t-field="o.additional_notes"/></b>
-        </xpath>
-        <xpath expr="//td[@name='account_invoice_line_name']" position="replace">
-            <td name="account_invoice_line_name"><span t-field="line.product_id.default_code" t-options="{'widget': 'text'}"/></td>
+            Additional Notes:
+            <b>
+                <span t-field="o.additional_notes"/>
+            </b>
         </xpath>
     </template>
 </odoo>
