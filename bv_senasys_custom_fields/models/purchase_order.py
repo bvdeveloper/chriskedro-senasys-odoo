@@ -43,3 +43,13 @@ class PurchaseOrderLine(models.Model):
     inv_loc = fields.Selection(related='product_id.inv_location')
     price_unit = fields.Float(digits='Unit Price')
 
+    def _prepare_account_move_line(self, move=False):
+        """Override to ensure bill_price_unit is properly set when creating vendor bills"""
+        res = super()._prepare_account_move_line(move)
+        
+        # Set the bill_price_unit to the same value as price_unit from purchase order
+        if res.get('price_unit'):
+            res['bill_price_unit'] = res['price_unit']
+        
+        return res
+
