@@ -8,6 +8,13 @@
     'summary': 'Senasys Custom Field Install',
     'description': """
             Senasys Custom Field Install
+            
+            Features:
+            - Custom fields for Senasys business requirements
+            - Vendor bill unit price display and calculation fixes
+            - Proper rounding calculation (multiply first, then round)
+            - Enhanced purchase order and sales order functionality
+            - Custom reporting and templates
             """,
     'author': 'Brainvire',
     'website': 'https://www.brainvire.com/',
