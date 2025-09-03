@@ -23,37 +23,43 @@
                 </t>
             </div>
         </xpath>
+        <xpath expr="//div[@t-if='o.date_order']" position="replace">
+            <div t-if="o.date_approve" class="col-3 bm-2">
+                <strong>Order Date:</strong>
+                <p t-field="o.date_approve" class="m-0"/>
+            </div>
+        </xpath>
 
         <xpath expr="//div[@id='informations']" position="after">
             <br/>
             <div class="row">
-            <div class="col-3">
-                <span>
-                    <strong>Requested Delivery Method:</strong>
-                    <br/>
-                </span>
+                <div class="col-3">
+                    <span>
+                        <strong>Requested Delivery Method:</strong>
+                        <br/>
+                    </span>
 
-                <span t-field="o.requested_delivery_method"/>
+                    <span t-field="o.requested_delivery_method"/>
+                </div>
+                <div class="col-3">
+                    <span>
+                        <strong>Requested Ship Date:</strong>
+                        <br/>
+                        <span t-field="o.select_"/>
+
+                    </span>
+
+                    <span t-field="o.request_date"/>
+                </div>
+                <div class="col-3">
+                    <span>
+                        <strong>P.O. Notes:</strong>
+                        <br/>
+                    </span>
+
+                    <span t-field="o.po_notes"/>
+                </div>
             </div>
-            <div class="col-3">
-                <span>
-                    <strong>Requested Ship Date:</strong>
-                    <br/>
-                    <span t-field="o.select_"/>
-
-                </span>
-
-                <span t-field="o.request_date"/>
-            </div>
-            <div class="col-3">
-                <span>
-                    <strong>P.O. Notes:</strong>
-                    <br/>
-                </span>
-
-                <span t-field="o.po_notes"/>
-            </div>
-        </div>
             <br/>
         </xpath>
 
@@ -64,7 +70,9 @@
         </xpath>
 
         <xpath expr="//t//div[@class='page']//table//thead//tr//th[@name='th_description']" position="before">
-            <th name="inv_location"><strong>INV LOC.</strong></th>
+            <th name="inv_location">
+                <strong>INV LOC.</strong>
+            </th>
         </xpath>
         <xpath expr="//t//div[@class='page']//table//td[@id='product']" position="before">
             <td name="inv_location">
@@ -73,7 +81,9 @@
         </xpath>
 
         <xpath expr="//t//div[@class='page']//table//thead//tr//th[@name='th_description']" position="after">
-            <th name="th_vendor_or_mfg_disc"><strong>Vendor #/ mfg desc</strong></th>
+            <th name="th_vendor_or_mfg_disc">
+                <strong>Vendor #/ mfg desc</strong>
+            </th>
         </xpath>
         <xpath expr="//t//div[@class='page']//table//td[@id='product']" position="after">
             <td name="Vendor/Mfg disc">
@@ -88,7 +98,9 @@
         <xpath expr="//t//div[@class='page']//div[@id='total']" position="after">
             <br/>
             <br/>
-            <span>For Parcel shipments, please ship UPS (Ground/3 Day/Overnight/Etc as stated above) Collect account 2T0T80. For LTL Shipments please use Unishippers 1-888-681-7447</span>
+            <span>For Parcel shipments, please ship UPS (Ground/3 Day/Overnight/Etc as stated above) Collect account
+                2T0T80. For LTL Shipments please use Unishippers 1-888-681-7447
+            </span>
         </xpath>
 
     </template>
