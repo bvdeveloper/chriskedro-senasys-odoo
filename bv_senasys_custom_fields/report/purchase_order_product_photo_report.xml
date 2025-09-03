@@ -135,9 +135,9 @@
                         </div>
                         <!--                    <div t-if="o.partner_ref" class="col-3 bm-2">-->
 <!--                    </div>-->
-                    <div t-if="o.date_order" class="col-3">
+                    <div t-if="o.date_approve" class="col-3">
                         <strong>Order Date:</strong>
-                        <p t-field="o.date_order" class="m-0" t-options-widget="&quot;date&quot;"/>
+                        <p t-field="o.date_approve" class="m-0" t-options-widget="&quot;date&quot;"/>
                     </div>
                     <div t-if="o.incoterm_id" class="col-3">
                         <strong>Incoterm:</strong>
