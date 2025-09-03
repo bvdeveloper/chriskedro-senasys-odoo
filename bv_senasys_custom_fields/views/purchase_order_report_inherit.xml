@@ -23,6 +23,13 @@
                 </t>
             </div>
         </xpath>
+        
+         <xpath expr="//div[@t-if='o.date_order']" position="replace">
+            <div t-if="o.date_approve" class="col-3 bm-2">
+                <strong>Order Date:</strong>
+                <p t-field="o.date_approve" class="m-0"/>
+            </div>
+        </xpath>
 
         <xpath expr="//div[@id='informations']" position="after">
             <br/>
