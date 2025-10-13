@@ -90,8 +90,8 @@ class ProductTemplate(models.Model):
          ('19E', '19E'), ('20A', '20A'), ('20B', '20B'), ('20C', '20C'), ('20D', '20D'), ('20E', '20E'), ('21A', '21A'),
          ('21B', '21B'), ('21C', '21C'), ('21D', '21D'), ('21E', '21E'), ('22A', '22A'), ('22B', '22B'), ('22C', '22C'),
          ('22D', '22D'), ('22E', '22E'), ('23A', '23A'), ('23B', '23B'), ('23C', '23C'), ('23D', '23D'), ('23E', '23E'),
-         ('MACHINE SHOP', 'M. SHOP'), ('M.SHOP-2', 'M.SHOP-2'), ('OTHER', 'OTHER'), ('Zero', 'Zero'),
-         ('GLUE-B', 'GLUE-B'), ('GLUE-R', 'GLUE-R'), ('GLUE-Y', 'GLUE-Y'), ('GLUE-?', 'GLUE-?'), ('Rack 1A', 'Rack 1'),
+         ('MACHINE SHOP', 'M. SHOP-1'), ('M.SHOP-2', 'M.SHOP-2'),('M.SHOP-5', 'M.SHOP-5'), ('OTHER', 'OTHER'), ('Zero', 'M. SHOP-3'),
+         ('GLUE-B', 'GLUE-B'), ('GLUE-R', 'GLUE-R'), ('GLUE-Y', 'GLUE-Y'), ('GLUE-?', 'M. SHOP-4'), ('Rack 1A', 'Rack 1'),
          ('Rack 1B', 'Rack 2'), ('Rack 1C', 'Rack 3'), ('Rack 1D', 'Rack 4'), ('Rack 5', 'Rack 5'),
          ('Rack 6', 'Rack 6')]
         , string='Inv Location:')
