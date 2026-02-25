@@ -143,6 +143,7 @@ class ProductTemplate(models.Model):
          ], string='Packing Instructions')
     pdf_1 = fields.Binary(string='PDF 1')
     pdf_1_filename = fields.Char(string='PDF 1 filename')
+    drawing_revision = fields.Text(string='Drawing Revision')
     pdf_1_1 = fields.Binary(string='PDF 1_1')
     pdf_1_1_filename = fields.Char(string='PDF 1_1 filename')
     pdf_2 = fields.Binary(string='PDF 2')

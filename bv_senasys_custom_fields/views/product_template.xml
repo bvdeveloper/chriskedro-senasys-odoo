@@ -51,6 +51,7 @@
                             <field name="uploadmodified_drawing_date" string="Upload/Modified Drawing Date:"/>
                             <field name="drawing_status" string="Drawing Status:"/>
                             <field name="verified_by" string="Verified By"/>
+                            <field name="drawing_revision" string="Drawing Revision"/>
                             <field filename="pdf_1_1_filename" name="pdf_1_1" widget="pdf_viewer"
                                    string="PDF 1_1">
                                 <field invisible="1" name="pdf_1_1_filename"/>

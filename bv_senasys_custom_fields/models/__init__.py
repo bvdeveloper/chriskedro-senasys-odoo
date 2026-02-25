@@ -14,6 +14,7 @@ from . import stock_warehouse_orderpoint
 from . import mrp_bom
 from . import mrp_production
 from . import purchase_order
+from . import mail_compose_message
 from . import stock_picking
 from . import stock_scrap
 from . import stock_move_line
