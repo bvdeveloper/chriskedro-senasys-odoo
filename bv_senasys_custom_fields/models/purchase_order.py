@@ -39,8 +39,8 @@ class PurchaseOrder(models.Model):
 
     def _get_rfq_product_attachments(self):
         """
-        Build attachments for RFQ email: per product on order lines,
-        create a revision note TXT (drawing_revision value) and attach pdf_1_1.
+        Build attachments for RFQ email: per product on order lines that have pdf_1_1,
+        attach pdf_1_1 and optionally revision note TXT (only when PDF is present).
         Returns list of ir.attachment ids (temporary, res_model=mail.compose.message, res_id=0).
         """
         self.ensure_one()
@@ -54,9 +54,11 @@ class PurchaseOrder(models.Model):
             if product.id in seen_products:
                 continue
             seen_products.add(product.id)
-            # Safe filename base from product
+            # Only add attachments when product has PDF (pdf_1_1)
+            if not product.pdf_1_1:
+                continue
             part_name = (product.default_code or product.name or 'product').replace('/', '-').replace('\\', '-')[:50]
-            # 1. Revision note TXT per product
+            # 1. Revision note TXT only when PDF is present (and drawing_revision has content)
             revision_text = (product.drawing_revision or '').strip()
             if revision_text:
                 revision_content = revision_text.encode('utf-8')
@@ -68,19 +70,18 @@ class PurchaseOrder(models.Model):
                     'type': 'binary',
                 })
                 attachment_ids.append(revision_attach.id)
-            # 2. PDF pdf_1_1 per product if present
-            if product.pdf_1_1:
-                pdf_name = product.pdf_1_1_filename or ('drawing_%s.pdf' % part_name)
-                if not pdf_name.lower().endswith('.pdf'):
-                    pdf_name += '.pdf'
-                pdf_attach = Attachment.create({
-                    'name': pdf_name,
-                    'datas': product.pdf_1_1,
-                    'res_model': 'mail.compose.message',
-                    'res_id': 0,
-                    'type': 'binary',
-                })
-                attachment_ids.append(pdf_attach.id)
+            # 2. PDF pdf_1_1
+            pdf_name = product.pdf_1_1_filename or ('drawing_%s.pdf' % part_name)
+            if not pdf_name.lower().endswith('.pdf'):
+                pdf_name += '.pdf'
+            pdf_attach = Attachment.create({
+                'name': pdf_name,
+                'datas': product.pdf_1_1,
+                'res_model': 'mail.compose.message',
+                'res_id': 0,
+                'type': 'binary',
+            })
+            attachment_ids.append(pdf_attach.id)
         return attachment_ids
 
     def action_rfq_send(self):
