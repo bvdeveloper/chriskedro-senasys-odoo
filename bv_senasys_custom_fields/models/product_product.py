@@ -68,6 +68,7 @@ class ProductProduct(models.Model):
     packing_instructions = fields.Selection(related='product_tmpl_id.packing_instructions')
     pdf_1 = fields.Binary(related='product_tmpl_id.pdf_1')
     pdf_1_filename = fields.Char(related='product_tmpl_id.pdf_1_filename')
+    drawing_revision = fields.Text(related='product_tmpl_id.drawing_revision')
     pdf_1_1 = fields.Binary(related='product_tmpl_id.pdf_1_1')
     pdf_1_1_filename = fields.Char(related='product_tmpl_id.pdf_1_1_filename')
     pdf_2 = fields.Binary(related='product_tmpl_id.pdf_2')
