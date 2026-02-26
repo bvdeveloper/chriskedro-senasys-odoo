@@ -1,0 +1,98 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset0 Arial;}}
+{\*\generator Release Note;}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 
+
+\b RELEASE NOTE\b0\par
+\par
+
+\b Product: Senasys Odoo Customization (chriskedro-senasys-odoo)\b0\par
+\b Module: bv_senasys_custom_fields\b0\par
+\b Release Date: February 2025\b0\par
+\b Version: 15.0\b0\par
+\par
+
+\b Subject: Drawing Revision Field, Product PDF & Revision Note Attachments on Purchase RFQ/PO Email\b0\par
+\par
+
+\pard\sa200\sl276\slmult1\f0\fs22 _______________________________________________________________________________\par
+\par
+
+\b 1.  OVERVIEW\b0\par
+\par
+This release introduces enhancements to the Product and Purchase Order modules to support drawing revision tracking and automatic attachment of product drawings and revision notes when sending Request for Quotation (RFQ) or Purchase Order (PO) emails to vendors.\par
+\par
+
+\b 2.  FEATURES IMPLEMENTED\b0\par
+\par
+
+\b 2.1  Drawing Revision Field on Product Form\b0\par
+\par
+\u8226  A new field \u8220Drawing Revision\u8221 has been added to the Product form.\par
+\u8226  Location: Product \u8594 Technical tab \u8594 Vendor Drawings/Docs section, placed immediately \u8220before\u8221 the existing \u8220PDF 1_1\u8221 field.\par
+\u8226  Field type: Text (multi-line).\par
+\u8226  Purpose: Allows users to store revision notes or revision identifiers for product drawings. This value is used to generate the revision note text file attached to RFQ/PO emails.\par
+\par
+
+\b 2.2  Automatic Attachment of Product PDF (pdf_1_1) in RFQ/PO Email\b0\par
+\par
+\u8226  When you send an RFQ or a Purchase Order by email (\u8220Send by Email\u8221 or \u8220Send PO by Email\u8221), the system now automatically attaches the \u8220PDF 1_1\u8221 file from each product present on the purchase order lines.\par
+\u8226  If multiple order lines use the same product, the PDF is attached once per product (no duplicates).\par
+\u8226  Only products that have a \u8220PDF 1_1\u8221 file uploaded will have their PDF attached.\par
+\u8226  The standard PO/RFQ report (e.g. PO_P01789.pdf) continues to be attached as before; product PDFs are added in addition to it.\par
+\par
+
+\b 2.3  Dynamic Revision Note (TXT) File per Product\b0\par
+\par
+\u8226  For each distinct product on the purchase order lines, the system generates a text file containing the \u8220Drawing Revision\u8221 value of that product.\par
+\u8226  File naming: \u8220revision_note_<Product Part/Name>.txt\u8221 (e.g. revision_note_ABC-123.txt).\par
+\u8226  Content: The exact text stored in the product\u8217s \u8220Drawing Revision\u8221 field. If the field is empty, no revision note file is created for that product (only the PDF is attached if available).\par
+\u8226  These revision note files are attached to the same RFQ/PO email along with the product PDFs and the main PO/RFQ report.\par
+\par
+
+\b 3.  TECHNICAL SUMMARY\b0\par
+\par
+\u8226  New field: \u8220drawing_revision\u8221 (Text) on \u8220product.template\u8221 and \u8220product.product\u8221.\par
+\u8226  Product form view updated to display \u8220Drawing Revision\u8221 before \u8220PDF 1_1\u8221 in the Vendor Drawings/Docs section.\par
+\u8226  Purchase Order: \u8220action_rfq_send\u8221 overridden to pass product-based attachments (revision TXT + pdf_1_1) into the email composer context for both RFQ and PO emails.\par
+\u8226  New helper: \u8220_get_rfq_product_attachments\u8221 on \u8220purchase.order\u8221 builds the list of temporary attachments (revision note TXT and pdf_1_1) per distinct product on the order lines.\par
+\u8226  Mail Composer: \u8220mail.compose.message\u8221 extended so that when composing an email for a Purchase Order, the product attachments are merged with the template attachments in both \u8220default_get\u8221 and \u8220_onchange_template_id\u8221, ensuring they appear in the Compose Email dialog and are sent with the email.\par
+\par
+
+\b 4.  USER INSTRUCTIONS\b0\par
+\par
+
+\b 4.1  Setting Up Products\b0\par
+\par
+1. Open the Product form (Product \u8594 select or create a product).\par
+2. Go to the \u8220Technical\u8221 tab.\par
+3. In the \u8220Vendor Drawings/Docs\u8221 section:\par
+   \u8226  Enter the revision information in the new \u8220Drawing Revision\u8221 field (e.g. revision number or notes).\par
+   \u8226  Upload the drawing file in \u8220PDF 1_1\u8221 and set \u8220PDF 1_1 filename\u8221 if desired.\par
+4. Save the product.\par
+\par
+
+\b 4.2  Sending RFQ or PO by Email\b0\par
+\par
+1. Create or open a Purchase Order (RFQ or confirmed PO) and add order lines with the products that have Drawing Revision and/or PDF 1_1 set.\par
+2. Click \u8220Send by Email\u8221 (for RFQ) or \u8220Send PO by Email\u8221 (for confirmed PO).\par
+3. The Compose Email dialog will open with attachments pre-filled:\par
+   \u8226  The standard PO/RFQ report (e.g. PO_P01789.pdf).\par
+   \u8226  For each product: its revision note file (revision_note_<product>.txt), if Drawing Revision is filled.\par
+   \u8226  For each product: its PDF 1_1 file, if uploaded.\par
+4. Review the recipients and body, then click \u8220Send\u8221 to send the email with all attachments.\par
+\par
+
+\b 5.  NOTES FOR CLIENT\b0\par
+\par
+\u8226  Attachments created for the email (revision TXT and product PDFs) are temporary and are cleaned up by Odoo\u8217s mail composer after use; they do not clutter the database.\par
+\u8226  If the same product appears on multiple lines of the same order, only one revision note and one PDF are attached for that product.\par
+\u8226  This behavior applies to both \u8220Send by Email\u8221 (RFQ) and \u8220Send PO by Email\u8221 (confirmed Purchase Order).\par
+\par
+
+\pard\sa200\sl276\slmult1\f0\fs22 _______________________________________________________________________________\par
+\par
+
+\b Document prepared by: Brainvire\b0\par
+\b For: Senasys \u8211 Drawing Revision & RFQ/PO Email Attachments Feature\b0\par
+\par
+}

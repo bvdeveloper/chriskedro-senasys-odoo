@@ -57,7 +57,7 @@ class PurchaseOrder(models.Model):
             # Only add attachments when product has PDF (pdf_1_1)
             if not product.pdf_1_1:
                 continue
-            part_name = (product.default_code or product.name or 'product').replace('/', '-').replace('\\', '-')[:50]
+            part_name = (product.name or 'product').replace('/', '-').replace('\\', '-')[:50]
             # 1. Revision note TXT only when PDF is present (and drawing_revision has content)
             revision_text = (product.drawing_revision or '').strip()
             if revision_text:
